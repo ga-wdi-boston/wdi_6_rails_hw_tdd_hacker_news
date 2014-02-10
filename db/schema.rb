@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140210230634) do
   create_table "articles", force: true do |t|
     t.text     "title"
     t.text     "url"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
