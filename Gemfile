@@ -13,6 +13,7 @@ gem 'devise'
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
 # You'll have to refer to your notes for spec_helper configuration
+gem 'simplecov', require: false, group: :test
 group :test do
   gem 'capybara'
   gem 'launchy'
