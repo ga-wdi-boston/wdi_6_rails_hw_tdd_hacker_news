@@ -27,7 +27,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'pry-rails'
   gem 'pry-nav'
-  gem 'pry-stack-explorer'
+  gem 'pry-stack_explorer'
 end
 
 # Other gems you may find useful for development
