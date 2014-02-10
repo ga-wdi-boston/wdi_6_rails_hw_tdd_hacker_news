@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
 	def index
+		@articles = Article.all
 	end
 
 	def new
@@ -8,7 +9,19 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		redirect_to articles_path
+		article = Article.create(article_params)
+		if article.save
+			redirect_to articles_path
+		else
+			render :new
+		end
+	end
+
+	private
+
+	def article_params
+		params.require(:article).permit(:title, :url, :user)
+
 	end
 
 end
