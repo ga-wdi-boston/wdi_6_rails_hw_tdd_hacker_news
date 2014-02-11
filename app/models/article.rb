@@ -5,4 +5,9 @@ class Article < ActiveRecord::Base
 	validates :title, presence: true
 	validates :url, presence: true
 	validates :user_id, presence: true
+
+	def up_vote
+		self.increment! :points
+	end
+
 end
