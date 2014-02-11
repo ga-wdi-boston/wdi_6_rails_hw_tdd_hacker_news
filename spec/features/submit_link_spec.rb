@@ -15,14 +15,14 @@ feature "Submit Link" do
 		# how do i put this in background? do i need to make "manage users" two separate features, and then just one has a background block?
 		visit new_user_registration_path # 'users/sign_up'
 		expect(page).to have_content("Sign up")
-		fill_in 'Email', with: "tom@example.com"
+		fill_in 'Email', with: "anna@example.com"
 		fill_in 'Password', with: "password"
 		fill_in 'Password confirmation', with: "password"
 		click_on 'Sign up'
 		expect(page).to have_content("signed in as")
 
-		sample_link = "http://example.com"
-		sample_desc = "Description"
+		sample_link = "http://whoo#{rand(1..100).to_s}.com"
+		sample_desc = "yay!"
 
 		visit root_path
 		click_on 'Submit a Link' # goes to 'posts/new'
@@ -30,9 +30,7 @@ feature "Submit Link" do
 		fill_in 'Link', with: sample_link
 		fill_in 'Description', with: sample_desc
 		click_on 'Submit Link'
-		save_and_open_page
 		expect(page).to have_content(sample_link)
-		# save_and_open_page
 	end
 
 end

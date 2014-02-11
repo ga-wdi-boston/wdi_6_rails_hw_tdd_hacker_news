@@ -11,13 +11,16 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.create(post_params)
-		redirect_to root_path
+		@post = Post.create!(post_params)
+		redirect_to posts_path
 	end
 
 	private
 
 	def post_params
+		# because i don't have nested routes, the form submission for creating a new post doesn't automatically put user_id in the params hash
+		# but i can manually define it using the current_user helper method!
+		params[:post][:user_id] = current_user.id
 		params.require(:post).permit(:link, :description, :user_id)
 	end
 

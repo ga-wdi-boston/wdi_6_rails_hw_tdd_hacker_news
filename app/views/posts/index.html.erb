@@ -9,6 +9,7 @@
 <p><%= link_to 'Submit a Link', new_post_path %></p>
 
 
+<h2> All Posts </h2>
 <% @posts.each do |post| %>
 	<h3><%= link_to "#{post.link}", post.link %></h3>
 	<ul>
