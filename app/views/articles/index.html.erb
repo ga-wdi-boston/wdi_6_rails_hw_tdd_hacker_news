@@ -13,6 +13,7 @@
 		<td> <%= article.title %> </td>
 		<td> <%= article.blurb %> </td>
 		<td> <%= link_to "Comment", new_comment_path %> </td>
+		<td> <%= link_to "more", article_path(article.id) %></td>
 	</tr>
 <%end%>
 </table>

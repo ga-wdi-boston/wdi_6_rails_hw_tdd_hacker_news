@@ -20,14 +20,12 @@ feature "sign up a user" do
 	scenario 'unsuccessfully' do
 		@user = create(:user)
 		visit root_path
-		save_and_open_page
 		click_link 'Sign In?'
 		fill_in 'Email', with: @user.email
 		fill_in 'Password', with: 'something'
 		click_button 'Sign in'
 		expect(page).to have_content 'Invalid'
 		expect(page).to_not have_content "Signed in as"
-		#save_and_open_page
 	end
 end
 

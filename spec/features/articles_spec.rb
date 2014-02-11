@@ -13,6 +13,17 @@ feature "a user can see all the articles" do
 		expect(page).to have_content("to boldly go...")
 	end
 
+	scenario 'view just one articles as a vistor' do
+		# capybara which will allow you act as a user
+		visit articles_path
+		# save_and_open_page
+		expect(page).to have_content("Star Trek")
+		expect(page).to have_content("to boldly go...")
+		click_on "more"
+		expect(page).to have_content("Star Trek")
+		expect(page).to have_content("to boldly go...")
+	end
+
 	scenario 'sign in as a user and add an article' do
 		visit articles_path
 		click_link 'Sign Up'

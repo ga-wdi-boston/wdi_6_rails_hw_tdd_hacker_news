@@ -1,13 +1,17 @@
 class ArticlesController < ApplicationController
-	skip_before_action :authenticate_user!, only: [:index, :new, :create]
+	skip_before_action :authenticate_user!, only: [:index, :new, :create, :show]
 
 	def index
 		@articles = Article.all
 	end
 
+	def show
+		@article = Article.find(params[:id])
+	end
+
 	def new
-			@article = Article.new
-		end
+		@article = Article.new
+	end
 
 		def create
 			@article = Article.new(article_params)

@@ -1,0 +1,17 @@
+<h2>Article Page:</h2>
+
+
+<table>
+<tr>
+	<th>Title</th>
+	<th>Description</th>
+	<th>Comments</th>
+	<th>new comment?</th>
+</tr>
+	<tr>
+		<td> <%= @article.title %> </td>
+		<td> <%= @article.blurb %> </td>
+		<td> <%= @article.comments %></td>
+		<td> <%= link_to "Comment", new_comment_path %> </td>
+	</tr>
+</table>
