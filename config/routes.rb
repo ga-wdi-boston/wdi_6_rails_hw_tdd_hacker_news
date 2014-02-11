@@ -6,4 +6,6 @@ HackerNews::Application.routes.draw do
   end
 
   root to: 'articles#index'
+
+  get 'articles/'
 end

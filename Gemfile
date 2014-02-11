@@ -18,6 +18,7 @@ group :test do
   gem 'launchy'
   gem 'faker'
   gem 'chronic'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do

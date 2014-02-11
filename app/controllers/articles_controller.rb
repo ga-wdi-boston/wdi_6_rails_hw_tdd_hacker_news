@@ -24,7 +24,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def up_vote
-		@article.increment! :points
 	end
 
 	private
