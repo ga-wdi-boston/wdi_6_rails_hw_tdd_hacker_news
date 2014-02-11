@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature 'Sign in' do
-    scenario "Sign in as an existing user" do
+feature 'Sign up' do
+    scenario "Sign up as a new user" do
     visit root_path
     click_on 'Sign up'
     visit new_user_registration_path
