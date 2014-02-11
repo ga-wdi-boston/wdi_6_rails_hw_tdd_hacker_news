@@ -170,9 +170,6 @@ GEM
       ruby-graphviz (~> 1.0.4)
     rails-footnotes (3.7.9)
       rails (>= 3.0.0)
-    rails_12factor (0.0.2)
-      rails_serve_static_assets
-      rails_stdout_logging
     rails_best_practices (1.15.1)
       activesupport
       awesome_print
@@ -182,8 +179,6 @@ GEM
       i18n
       require_all
       ruby-progressbar
-    rails_serve_static_assets (0.0.2)
-    rails_stdout_logging (0.0.3)
     railties (4.0.2)
       actionpack (= 4.0.2)
       activesupport (= 4.0.2)
@@ -295,7 +290,6 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails-erd
   rails-footnotes
-  rails_12factor
   rails_best_practices
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0)

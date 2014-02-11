@@ -34,3 +34,4 @@ feature "a user can see all the articles" do
 	end
 
 end
+
