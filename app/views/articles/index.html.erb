@@ -3,6 +3,9 @@
   <li>
     <%= link_to article.title, article.url %>
     <p><%= article.text %></p>
+    <ul>
+      <li><%= link_to 'comments', [article, :comments] %></li>
+    </ul>
   </li>
   <% end %>
 </ol>

@@ -11,4 +11,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
   end
+
+  factory :comment do
+    content { Faker::Lorem.words.join }
+    article
+  end
 end
