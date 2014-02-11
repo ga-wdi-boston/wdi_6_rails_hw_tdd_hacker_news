@@ -6,9 +6,9 @@ FactoryGirl.define do
 
 	factory :article do
 		user
-		title { Faker::Name.first_name }
-		blurb { Faker::Name.last_name }
-		content 'la la la la'
+		title { Faker::Name.title }
+		blurb { Faker::Name.blurb }
+		url 'https://www.google.com/'
 	end
 
 	factory :comment do

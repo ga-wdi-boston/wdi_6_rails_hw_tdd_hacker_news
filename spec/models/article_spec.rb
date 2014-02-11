@@ -8,7 +8,7 @@ describe Article do
   end
 
   it "is valid with title, blurb, content " do
-  	expect(Article.create(title:"Batman",blurb:"Batman!",content:"NaNa-NaNa-NaNa-Batman")).to be_valid
+  	expect(Article.create(title:"Batman",blurb:"Batman!",url:"https://www.google.com/")).to be_valid
   end
 
 end
