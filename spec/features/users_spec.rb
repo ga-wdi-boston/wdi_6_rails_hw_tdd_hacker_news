@@ -21,4 +21,13 @@ feature 'Manage Users' do
 		click_on 'Sign in'
 		expect(page).to have_content('All Posts')
 	end
+
+	scenario 'A user should be able to create a post' do
+		user = sign_in
+		visit new_user_post_path(user.id)
+		fill_in 'Description', with: 'A new post'
+		fill_in 'Link', with: 'http://www.google.com'
+		click_button 'Create Post'
+		expect(page).to have_content('A new post')
+	end
 end
