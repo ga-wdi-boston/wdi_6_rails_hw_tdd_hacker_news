@@ -1,10 +1,15 @@
 require 'spec_helper'
 
-feature 'Add comments' do
+feature 'User adds comment' do
+	background do
+		@user = create(:user)
+		sign_in_as(@user)
+		@article = create(:article)
 
-	scenario 'a signed in user can add a comment' do
-		sign_up_with('em@example.com', 'password')
-		create_article
+	end
+
+	scenario 'successfully' do
+		visit article_path(@article)
 		click_on 'Add comment'
 		fill_in 'Body', with: 'New comment text'
 		click_on 'Submit comment'

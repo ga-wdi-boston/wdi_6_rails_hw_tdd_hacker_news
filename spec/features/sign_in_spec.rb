@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-feature 'Sign in' do
-	scenario 'A visitor' do
-		visit new_user_session_path
-		fill_in 'Email', with: 'em@example.com'
-		fill_in 'Password', with: 'password'
-		click_on 'Sign in'
+feature 'User signs in' do
+	scenario 'successfully' do
+		user = create(:user)
+		sign_in_as(user)
+
+		expect(page).to have_link 'Sign out'
+		expect(page).to have_content "Signed in as #{user.email}"
 	end
 
 end

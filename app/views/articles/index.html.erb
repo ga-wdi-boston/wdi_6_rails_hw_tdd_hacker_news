@@ -1,10 +1,11 @@
+<h1>Hacker news</h1>
 <table>
 	<tr>
 	<th>Articles</th>
 	</tr>
 	<% @articles.each do |article| %>
 		<tr>
-		<td><%= link_to 'Up vote', action: :up_vote %>
+		<td><%= link_to 'Up vote' %>
 		<td><%= link_to article.title, article.url, target: '_blank' %></td>
 		</tr>
 		<tr>
