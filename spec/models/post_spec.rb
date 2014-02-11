@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Post do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validation' do
+  	it { should validate_presence_of(:link) }
+  	it { should validate_presence_of(:description) }
+  end
 end
