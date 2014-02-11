@@ -12,6 +12,12 @@ FactoryGirl.define do
  	password 'password'
  end
 
+ factory :comment do
+ 	article
+ 	user
+ 	body 'This is a new comment'
+ end
+
 end
 
 
