@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "a user can see all the articles" do
+feature "user can leave a comment" do
 	background do
 		@x = Article.create(title: "Star Trek", blurb: "to boldly go...", content: "xxxxxxxxx")
 		@y = Comment.create(content:"this is great", user_id: "1")
@@ -16,7 +16,7 @@ feature "a user can see all the articles" do
 		click_on 'Sign Up'
 		visit articles_path
 		click_link "Comment"
-		save_and_open_page
+		#save_and_open_page
 		fill_in 'Content', with: 'yay!'
 		click_on "Create Comment"
 	end
