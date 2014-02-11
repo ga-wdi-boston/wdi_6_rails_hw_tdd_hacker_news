@@ -11,7 +11,7 @@
 
 <h2> All Posts </h2>
 <% @posts.each do |post| %>
-	<h3><%= link_to "#{post.link}", post.link %></h3>
+	<h3><%= link_to "#{post.title}", post.link %></h3>
 	<ul>
 		<li><%= post.description %></li>
 	</ul>

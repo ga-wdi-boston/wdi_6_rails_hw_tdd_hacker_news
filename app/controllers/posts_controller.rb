@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 		# because i don't have nested routes, the form submission for creating a new post doesn't automatically put user_id in the params hash
 		# but i can manually define it using the current_user helper method!
 		params[:post][:user_id] = current_user.id
-		params.require(:post).permit(:link, :description, :user_id)
+		params.require(:post).permit(:title, :link, :description, :user_id)
 	end
 
 end
