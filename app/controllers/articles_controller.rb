@@ -20,13 +20,13 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		@comments = @article.comments
 	end
 
 	private
 
 	def article_params
 		params.require(:article).permit(:title, :url, :user)
-
 	end
 
 end

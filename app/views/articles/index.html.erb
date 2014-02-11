@@ -7,8 +7,10 @@
 		<td><%= link_to article.title, article.url, target: '_blank' %></td>
 		</tr>
 		<tr>
-		<td><%= link_to 'comments', article_comments_path %></td>
+		<td><%= link_to 'comments', article_path(article) %></td>
 		</tr>
 
 	<% end %>
 </table>
+
+<%= link_to 'Add article', new_article_path %>
