@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
+
+
 	def create
 		@post = Post.new(post_params)
 		if @post.save
@@ -16,6 +18,12 @@ class PostsController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def upvote
+		@post = Post.find(params[:id])
+		@post.upvotes = @post.upvotes.to_i + 1
+		redirect_to :back
 	end
 
 	private

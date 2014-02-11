@@ -7,4 +7,7 @@ HackerNews::Application.routes.draw do
     	resources :comments
     end
   end
+  resources :posts, only: [:index, :show]
+
+  get 'posts/:id/upvote' => 'posts#upvote', as: 'post_upvote'
 end

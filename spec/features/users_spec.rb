@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Manage Users' do
 	background do
 		user = User.create(email: 'mike@example.com', password: 'password')
+		post = Post.create(description: 'A new post', link: 'http://www.google.com')
 	end
 
 	scenario 'A user should be able to sign up' do
@@ -29,5 +30,12 @@ feature 'Manage Users' do
 		fill_in 'Link', with: 'http://www.google.com'
 		click_button 'Create Post'
 		expect(page).to have_content('A new post')
+	end
+
+	scenario 'A user can upvote a post' do
+		visit root_path
+		post = Post.first
+		click_on "^"
+		expect(post.upvotes).to eq 1
 	end
 end
