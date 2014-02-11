@@ -13,4 +13,9 @@ describe Submission do
 	it 'has a user' do
 		expect(Submission.create(title: 'A Great Read', url: 'http://publishing.cdlib.org/ucpressebooks/view?docId=ft5q2nb3z7&brand=ucpress')).to_not be_valid
 	end
+
+describe 'associations' do
+	it { should have_many :comments }
+end
+
 end
