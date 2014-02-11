@@ -8,9 +8,7 @@ feature 'Manage articles' do
 		fill_in 'Title', with: 'First article'
 		fill_in 'Url', with: 'http://richardlynch.blogspot.com/'
 		click_on 'Submit'
-		expect(page).to have_content 'First article'
+		expect(page).to have_link 'First article'
 	end
-
-	scenario ''
 
 end

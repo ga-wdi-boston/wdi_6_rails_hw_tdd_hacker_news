@@ -8,5 +8,11 @@ module Features
       click_on 'Sign up'
     end
 
+    def create_article(title, url)
+      visit new_user_registration_path
+      fill_in 'Title', with: 'First article'
+      fill_in 'Url', with: 'http://richardlynch.blogspot.com/'
+      click_on 'Submit'
+    end
   end
 end
