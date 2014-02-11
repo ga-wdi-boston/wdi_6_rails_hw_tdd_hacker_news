@@ -8,6 +8,7 @@ feature "a user can see all the articles" do
 	scenario 'view all movies as a vistor' do
 		# capybara which will allow you act as a user
 		visit articles_path
+		# save_and_open_page
 		expect(page).to have_content("Star Trek")
 		expect(page).to have_content("to boldly go...")
 	end
