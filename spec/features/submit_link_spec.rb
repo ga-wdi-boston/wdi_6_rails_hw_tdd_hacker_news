@@ -21,11 +21,18 @@ feature "Submit Link" do
 		click_on 'Sign up'
 		expect(page).to have_content("signed in as")
 
+		sample_link = "http://example.com"
+		sample_desc = "Description"
+
 		visit root_path
 		click_on 'Submit a Link' # goes to 'posts/new'
 		expect(page).to have_content("Submit a Link")
+		fill_in 'Link', with: sample_link
+		fill_in 'Description', with: sample_desc
+		click_on 'Submit Link'
 		save_and_open_page
-		# not finished
+		expect(page).to have_content(sample_link)
+		# save_and_open_page
 	end
 
 end

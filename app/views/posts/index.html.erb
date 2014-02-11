@@ -6,4 +6,13 @@
 	<%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
 
-<%= link_to 'Submit a Link', new_post_path %>
+<p><%= link_to 'Submit a Link', new_post_path %></p>
+
+
+<% @posts.each do |post| %>
+	<h3><%= link_to "#{post.link}", post.link %></h3>
+	<ul>
+		<li><%= post.description %></li>
+	</ul>
+<% end %>
+
