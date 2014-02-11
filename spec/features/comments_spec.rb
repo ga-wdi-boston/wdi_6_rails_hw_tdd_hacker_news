@@ -16,6 +16,7 @@ feature "a user can see all the articles" do
 		click_on 'Sign Up'
 		visit articles_path
 		click_link "Comment"
+		save_and_open_page
 		fill_in 'Content', with: 'yay!'
 		click_on "Create Comment"
 	end
