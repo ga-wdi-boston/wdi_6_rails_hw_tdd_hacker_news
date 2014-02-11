@@ -3,9 +3,11 @@ development:
   encoding: unicode
   database: HackerNews_development
   pool: 5
+  host: 'localhost'
 
 test:
   adapter: postgresql
   encoding: unicode
   database: HackerNews_test
   pool: 5
+  host: 'localhost'
