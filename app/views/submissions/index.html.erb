@@ -3,5 +3,6 @@
 	<ul>
 		<% @submissions.each do |submission| %>
 		<li><%= link_to submission.title, submission.url %></li>
+		<li><%= submission.user.email %>
 		<% end %>
 	</ul>
