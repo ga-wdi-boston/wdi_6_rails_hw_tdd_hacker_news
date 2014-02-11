@@ -17,17 +17,22 @@ describe Post do
 
   describe 'validations' do
   	before :each do
-  		@post = Post.create(description: 'A new post', link: 'http://www.google.com')
+  		@post = Post.create(description: 'A new post', link: 'http://www.google.com', user_id: 82)
   	end
     # pending "add some examples to (or delete) #{__FILE__}"
     it 'has a description' do
     	expect(@post).to be_valid
-    	expect(Post.create(link: 'http://www.google.com')).to_not be_valid
+    	expect(Post.create(link: 'http://www.google.com', user_id: 82)).to_not be_valid
     end
 
     it 'has a link' do
     	expect(@post).to be_valid
-    	expect(Post.create(description: 'A new post')).to_not be_valid
+    	expect(Post.create(description: 'A new post', user_id: 82)).to_not be_valid
+    end
+
+    it 'has a user id' do
+      expect(@post).to be_valid
+      expect(Post.create(description: 'A new post', link: 'http://www.google.com')).to_not be_valid
     end
   end
 end

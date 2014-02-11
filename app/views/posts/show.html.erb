@@ -1,0 +1,10 @@
+<h1><%= @post.description %></h1>
+<%= link_to 'Leave a comment', new_post_comment_path(@post) %>
+<hr>
+<% if @comments %>
+	<% @comments.each do |comment| %>
+		<p><%= comment.body %></p>
+	<% end %>
+<% else %>
+	<p>Be the first to leave a comment</p>
+<% end %>

@@ -4,11 +4,13 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@user = User.find(params[:user_id])
 		@post = Post.new
 	end
 
-
+	def show
+		@post = Post.find(params[:id])
+		@comments = @post.comments
+	end
 
 	def create
 		@post = Post.new(post_params)
@@ -22,13 +24,14 @@ class PostsController < ApplicationController
 
 	def upvote
 		@post = Post.find(params[:id])
-		@post.upvotes = @post.upvotes.to_i + 1
+		@post.upvotes += 1
+		@post.save!
 		redirect_to :back
 	end
 
 	private
 
 	def post_params
-		params.require(:post).permit(:description, :link)
+		params.require(:post).permit(:description, :link, :user_id)
 	end
 end

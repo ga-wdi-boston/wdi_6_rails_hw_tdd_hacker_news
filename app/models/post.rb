@@ -16,4 +16,5 @@ class Post < ActiveRecord::Base
 	has_many :comments
 	validates :description, presence: true
 	validates :link, presence: true
+	validates :user_id, presence: true
 end
