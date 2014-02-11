@@ -47,3 +47,5 @@ group :development do
   gem 'rails-footnotes'
   gem 'smusher'
 end
+
+gem 'simplecov', require: false, group: :test
