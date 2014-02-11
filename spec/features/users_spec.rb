@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 feature "sign up a user" do
+	background do
+		Article.create(title: "Star Trek", blurb: "to boldly go...", content: "xxxxxxxxx")
+	end
 
 	scenario 'sign up a new person' do
-		visit article_path
+		visit articles_path
 		click_link 'Sign Up'
 		fill_in 'Email', with: 'test@email.com'
 		fill_in 'Password', with: 'password'
@@ -11,4 +14,6 @@ feature "sign up a user" do
 		click_on 'Sign Up'
 	end
 end
+
+
 
