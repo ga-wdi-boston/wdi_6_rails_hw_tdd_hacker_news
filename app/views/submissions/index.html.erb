@@ -1,0 +1,13 @@
+<h1>Home</h1>
+
+<table>
+<tr>
+<th>Title</th><th>Link</th><th>Description</th>
+</tr>
+<% @submissions.each do |submission| %>
+<tr>
+  <td><%= submission.title %></td>
+  <td><%= submission.link %></td>
+  <td><%= submission.description %></td>
+</tr>
+<% end %>
