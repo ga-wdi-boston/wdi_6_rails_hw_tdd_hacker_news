@@ -12,4 +12,8 @@ describe Submission do
   it 'is invalid without a description' do
     expect(Submission.create(title: 'Title', link: 'link.com')).to_not be_valid
   end
+
+  describe "associations" do
+    it { should belong_to :user }
+  end
 end
