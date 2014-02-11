@@ -30,7 +30,7 @@ feature "sign up a user" do
 		click_on 'Sign Up'
 		visit articles_path
 		click_link 'Add Article'
-		save_and_open_page
+		#save_and_open_page
 		fill_in 'Title', with: 'Pacific Rim'
 		fill_in 'Blurb', with: 'this was a great movie'
 		fill_in 'Content', with: 'giant robots with neural links to two pilots! fight monsters!'

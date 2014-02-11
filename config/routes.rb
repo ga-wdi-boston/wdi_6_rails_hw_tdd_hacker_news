@@ -2,6 +2,7 @@ HackerNews::Application.routes.draw do
   root to: 'articles#index'
   devise_for :users
   resources :articles
+  resources :comments
 
 
   # The priority is based upon order of creation: first created -> highest priority.

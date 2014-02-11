@@ -6,11 +6,13 @@
 <tr>
 	<th>Title</th>
 	<th>Description</th>
+	<th>Comment</th>
 </tr>
 <% @articles.each do |article|%>
 	<tr>
-		<td> <%= article.title %></td>
-		<td> <%= article.blurb %></td>
+		<td> <%= article.title %> </td>
+		<td> <%= article.blurb %> </td>
+		<td> <%= link_to "Comment", new_comment_path %> </td>
 	</tr>
 <%end%>
 </table>
