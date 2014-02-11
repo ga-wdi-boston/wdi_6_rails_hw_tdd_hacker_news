@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'dotenv-rails'
 gem 'sass-rails', '~> 4.0.0'
