@@ -14,5 +14,12 @@
 require 'spec_helper'
 
 describe Post do
+	before :each do
+		@post = Post.create(description: 'A new post', link: 'http://www.google.com')
+	end
   # pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a description' do
+  	expect(@post).to be_valid
+  	expect(Post.create(link: 'http://www.google.com')).to_not be_valid
+  end
 end
