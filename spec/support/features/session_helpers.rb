@@ -14,5 +14,6 @@ module Features
       fill_in 'Url', with: 'http://richardlynch.blogspot.com/'
       click_on 'Submit'
     end
+
   end
 end

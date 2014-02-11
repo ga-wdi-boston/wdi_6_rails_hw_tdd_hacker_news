@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :title
       t.text :url
       t.references :user
+      t.integer :points, :default => 0
 
       t.timestamps
     end

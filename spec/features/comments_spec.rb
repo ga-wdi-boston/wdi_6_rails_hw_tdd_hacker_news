@@ -7,11 +7,9 @@ feature 'Add comments' do
 		create_article
 		click_on 'Add comment'
 		fill_in 'Body', with: 'New comment text'
-		save_and_open_page
 		click_on 'Submit comment'
 
 		expect(page).to have_content 'New comment text'
-
 	end
 
 end

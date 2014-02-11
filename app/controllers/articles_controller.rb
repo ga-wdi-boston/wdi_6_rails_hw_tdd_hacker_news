@@ -23,6 +23,10 @@ class ArticlesController < ApplicationController
 		@comments = @article.comments
 	end
 
+	def up_vote
+		@article.increment! :points
+	end
+
 	private
 
 	def article_params

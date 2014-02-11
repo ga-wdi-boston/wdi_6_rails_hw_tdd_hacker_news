@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140211002318) do
     t.text     "title"
     t.text     "url"
     t.integer  "user_id"
+    t.integer  "points",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
