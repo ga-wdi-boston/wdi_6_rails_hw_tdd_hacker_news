@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: submissions
+#
+#  id         :integer          not null, primary key
+#  url        :text
+#  title      :text
+#  user_id    :integer
+#  text_block :text
+#
+
 require 'spec_helper'
 
 describe Submission do
@@ -16,7 +27,9 @@ describe Submission do
 
 describe 'associations' do
 	it { should have_many :comments }
+	# it { should have_many :votes, as: :votable }
 	it { should belong_to :user }
+
 end
 
 end
