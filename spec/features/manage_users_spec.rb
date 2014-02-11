@@ -9,23 +9,34 @@ feature "Manage Users" do
  		fill_in 'Password confirmation', with: "12341234"
     click_on 'Sign up'
     expect(page).to have_content('Hacker News')
-    save_and_open_page
+    # save_and_open_page
    end
 
   scenario "Sign in as an existing user" do
-
 		visit new_user_registration_path
 	  fill_in 'Email', with: "matt@aol.com"
   	fill_in 'Password', with: "12341234"
  		fill_in 'Password confirmation', with: "12341234"
 		click_on 'Sign up'
 		click_on 'Sign out'
-
 	  visit new_user_session_path
 	  fill_in 'Email', with: 'matt@aol.com'
 	  fill_in "Password", with: "12341234"
 	  click_on "Sign in"
 	  expect(page).to have_content('Hacker News')
+	  # save_and_open_page
 	end
+
+	scenario "Signed-in user can create post" do
+		user = sign_in
+		visit new_user_post_path(user.id)
+	  expect(page).to have_content('New Post')
+		save_and_open_page
+	end
+
+
+
+
+
 
  end
