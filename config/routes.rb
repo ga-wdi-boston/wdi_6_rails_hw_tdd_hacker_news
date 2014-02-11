@@ -1,5 +1,9 @@
 HackerNews::Application.routes.draw do
   devise_for :users
-  resources :articles
+
+  resources :articles do
+    resources :comments
+  end
+
   root to: 'articles#index'
 end
