@@ -1,0 +1,10 @@
+
+<%= form_for @article do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<%= f.label :blurb %>
+	<%= f.text_field :blurb %>
+	<%= f.label :content %>
+	<%= f.text_field :content %>
+	<%= f.submit "Create Article" %>
+<% end %>
