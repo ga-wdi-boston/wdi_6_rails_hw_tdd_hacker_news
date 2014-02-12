@@ -17,4 +17,9 @@ class Post < ActiveRecord::Base
 	validates :description, presence: true
 	validates :link, presence: true
 	validates :user_id, presence: true
+	has_many :upvotes, as: :upvotable
+
+	def count_votes
+		self.upvotes.where(vote: true).count
+	end
 end

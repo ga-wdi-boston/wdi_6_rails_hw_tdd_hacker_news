@@ -1,7 +1,9 @@
 <h1>All Posts</h1>
 <% @posts.each do |post| %>
-	<h2><%= link_to post.description, "#{post.link}" %></h2>
-	<%= link_to "^" , post_upvote_path(post.id) %>
-	<%= post.upvotes %>
-	<%= link_to 'Leave a comment', new_post_comment_path(post) %>
+	<div class="article" id="article_#{post.id}">
+		<h2><%= link_to post.description, "#{post.link}" %></h2>
+		<%= button_to 'Upvote', new_post_upvote_path(post) %>
+		<%= post.count_votes %>
+		<%= link_to 'Leave a comment', new_post_comment_path(post.id) %>
+	</div>
 <% end %>

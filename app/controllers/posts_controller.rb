@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find(params[:id])
 		@comments = @post.comments
+		# count_votes(@post)
 	end
 
 	def create
@@ -20,13 +21,6 @@ class PostsController < ApplicationController
 		else
 			render :new
 		end
-	end
-
-	def upvote
-		@post = Post.find(params[:id])
-		@post.upvotes += 1
-		@post.save!
-		redirect_to :back
 	end
 
 	private
