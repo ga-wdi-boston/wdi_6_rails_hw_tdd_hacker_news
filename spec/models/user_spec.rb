@@ -17,8 +17,8 @@
 #  updated_at             :datetime
 #
 
-# require 'spec_helper'
+require 'spec_helper'
 
-# describe User do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+describe User do
+  it { should have_many :articles }
+end
