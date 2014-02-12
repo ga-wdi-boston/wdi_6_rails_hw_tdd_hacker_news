@@ -3,7 +3,6 @@ require 'spec_helper'
 feature 'A new user signs up' do
   background do
     visit root_path
-    save_and_open_page
     click_link 'Sign up'
   end
 

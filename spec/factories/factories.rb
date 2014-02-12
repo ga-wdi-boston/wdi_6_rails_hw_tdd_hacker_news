@@ -1,13 +1,20 @@
 FactoryGirl.define do
-  factory :contact do
+
+  factory :comment do
+    body { Faker::Lorem.word }
+    article
+  end
+
+  factory :article do
+    title { Faker::Lorem.word }
+    url 'http://www.example.com'
     user
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
-    phone_number { Faker::PhoneNumber.phone_number }
   end
 
   factory :user do
     email { Faker::Internet.email }
     password 'notrealpassword'
+    name { Faker::Name.name }
   end
+
 end
