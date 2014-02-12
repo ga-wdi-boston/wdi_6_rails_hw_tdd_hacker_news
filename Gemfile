@@ -29,6 +29,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'pry-stack_explorer'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # Other gems you may find useful for development
