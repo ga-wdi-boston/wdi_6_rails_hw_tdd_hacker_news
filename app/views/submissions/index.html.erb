@@ -1,14 +1,15 @@
-<h1>Home</h1>
+<h1>Hacker News</h1>
 
 <table>
 <tr>
-<th>Title</th><th>Link</th><th>Description</th>
+<th>Title</th><th>Link</th><th>Description</th><th>User ID</th>
 </tr>
 <% @submissions.each do |submission| %>
 <tr>
-  <td><%= submission.title %></td>
+  <td><%= link_to "#{submission.title}", submission_path(submission.id) %></td>
   <td><%= submission.link %></td>
   <td><%= submission.description %></td>
+  <td><%= submission.user_id %></td>
 </tr>
 <% end %>
 

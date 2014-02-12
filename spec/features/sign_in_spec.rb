@@ -11,6 +11,6 @@ feature 'Sign in' do
       fill_in 'Email', with: 'sixthemail@gmail.com'
       fill_in 'Password', with: 'password6'
       click_on 'Log in'
-    expect(page).to have_content('Home')
+    expect(page).to have_content('Hacker News')
   end
 end

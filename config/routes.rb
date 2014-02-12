@@ -1,6 +1,8 @@
 HackerNews::Application.routes.draw do
   devise_for :users
-  resources :submissions
+  resources :submissions do
+    resources :comments
+  end
 
   root to: 'submissions#index'
   # The priority is based upon order of creation: first created -> highest priority.
