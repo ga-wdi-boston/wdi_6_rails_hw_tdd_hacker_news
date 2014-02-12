@@ -16,11 +16,12 @@ feature 'User can vote on comment only once and' do
     expect(page).to have_content(1)
   end
 
-  # scenario 'vote down' do
-  #   sign_in_as @user
-  #   click_on 'vote down'
-  #   expect(page).to have_content(-1)
-  #   click_on 'vote up'
-  #   expect(page).to have_content(-1)
-  # end
+  scenario 'vote down' do
+    sign_in_as @user
+    click_on 'comments'
+    click_on 'vote down'
+    expect(page).to have_content(-1)
+    click_on 'vote up'
+    expect(page).to have_content(-1)
+  end
 end
