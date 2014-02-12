@@ -6,6 +6,7 @@
 	<th>Title</th>
 	<th>Description</th>
 	<th>Comments</th>
+	<th>Vote Count</th>
 	<th>new comment?</th>
 	<th>vote on it?</th>
 </tr>
@@ -13,7 +14,8 @@
 		<td> <%= @article.title %> </td>
 		<td> <%= @article.blurb %> </td>
 		<td> <%= @article.comments %></td>
+		<td> up-votes:<%= @article.votes.count %></td>
 		<td> <%= link_to "Comment", new_comment_path %> </td>
-		<td> <%= link_to "vote", new_vote_path %> </td>
+		<td> <%= link_to "vote", [:new, @article, :vote ] %> </td>
 	</tr>
 </table>
