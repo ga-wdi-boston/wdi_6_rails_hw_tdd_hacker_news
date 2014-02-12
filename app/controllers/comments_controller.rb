@@ -5,6 +5,7 @@ class CommentsController < ActionController::Base
 
 	def new
 		@comment = Comment.new
+		@submission = Submission.find(params[:id])
 	end
 
 	def create
