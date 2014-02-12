@@ -9,7 +9,6 @@ class SubmissionsController <  ActionController::Base
 	end
 
 	def create
-		binding.pry
 		@submission = Submission.new(submission_params)
 			if @submission.save!
 				flash[:notice] = 'Created a new submission!'
