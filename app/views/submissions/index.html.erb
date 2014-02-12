@@ -5,15 +5,18 @@
 			<li><%= link_to submission.title, submission.url %></li>
 			<li><%= submission.user.email %></li>
 			<li><%= link_to 'View Comments', submission_comments_path(:submission_id) %></li>
-
-			<% if user_signed_in? %>
-				<li><%= link_to 'Add Comment', new_submission_comment_path(:submission_id) %></li>
-				<li><%= link_to 'Add New Submission', new_submission_path %></li>
-
-			<% else %>
-				<li><%= link_to 'Sign up to add a comment', new_user_registration_path %> or <%= link_to 'Sign in to add a comment',  new_user_session_path %></li>
-				</br>
-
 		<% end %>
+
+		<% if user_signed_in? %>
+			<li><%= link_to 'Add Comment', new_submission_comment_path(:submission_id) %></li>
+		<% else %>
+			<li><%= link_to 'Add Comment', new_user_session_path %></li>
+		<% end %>
+
+		<% if user_signed_in? %>
+			<li><%= link_to 'Add New Submission', new_submission_path %></li>
+		<% else %>
+			<li><%= link_to 'Add New Submission', new_user_session_path %></li>
 		<% end %>
 	</ul>
+
