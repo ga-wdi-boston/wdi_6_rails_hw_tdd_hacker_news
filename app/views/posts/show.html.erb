@@ -4,6 +4,9 @@
 <% if @post.comments %>
 	<% @post.comments.each do |comment| %>
 		<p><%= comment.body %></p>
+		<%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %>
+		<%= button_to 'Down', new_comment_upvote_path(comment, data: { vote: false }) %>
+		<%= comment.count_votes %>
 	<% end %>
 <% else %>
 	<p>Be the first to leave a comment</p>

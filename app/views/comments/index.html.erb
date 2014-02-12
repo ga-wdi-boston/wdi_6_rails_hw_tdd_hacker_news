@@ -1,9 +1,12 @@
 <h1><%= @post.description %></h1>
 <%= link_to 'Leave a comment', new_post_comment_path(@post) %>
 <hr>
+<%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %>
 <% if @post.comments %>
 	<% @comments.each do |comment| %>
 		<p><%= comment.body %></p>
+		<p><%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %></p>
+		<%= button_to 'Down', new_comment_upvote_path(comment, data: { vote: false }) %>
 	<% end %>
 <% else %>
 	<p>Be the first to leave a comment</p>

@@ -11,7 +11,7 @@ class UpvotesController < ApplicationController
 		@upvote.vote = params[:data][:vote]
 		@upvote.save!
 
-		redirect_to root_path
+		redirect_to :back
 
 
 	end
