@@ -1,19 +1,14 @@
-<% if user_signed_in? %>
-	signed in as <%= current_user.email %>
-	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-	<%= link_to 'Sign in', new_user_session_path %>
-	<%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
-
-<p><%= link_to 'Submit a Link', new_post_path %></p>
+<h3><%= link_to 'Submit a Link', new_post_path %></h3>
 
 
-<h2> All Posts </h2>
+<h2>All Posts</h2>
 <% @posts.each do |post| %>
-	<h3><%= link_to "#{post.title}", post.link %></h3>
-	<ul>
-		<li><%= post.description %></li>
-	</ul>
+	<article>
+		<h3><%= link_to post.title, post.link %></h3>
+		<ul style="list-style: none;">
+			<li><%= post.description %></li>
+			<li><%= link_to "Comments", post_comments_path(post, @comment) %></li>
+		</ul>
+	</article>
 <% end %>
 
