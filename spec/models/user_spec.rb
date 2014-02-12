@@ -23,4 +23,8 @@ describe User do
 	it 'is invalid without an email' do
 	expect(User.create(password: 'password')).to_not be_valid
 	end
+
+	it 'is invalid without a password' do
+		expect(User.create(email: 'becky@email.com')).to_not be_valid
+	end
 end
