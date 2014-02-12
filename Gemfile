@@ -42,7 +42,6 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
