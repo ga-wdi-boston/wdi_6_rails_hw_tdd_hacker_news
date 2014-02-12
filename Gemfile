@@ -18,6 +18,7 @@ group :test do
   gem 'launchy'
   gem 'faker'
   gem 'chronic'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
