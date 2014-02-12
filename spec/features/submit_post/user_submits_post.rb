@@ -16,9 +16,11 @@ feature 'User submits new post' do
 		fill_in 'Description', with: 'better than Google?'
 		click_button 'Submit Link'
 
+		# expect new content
 		expect(page).to have_link('DuckDuckGo')
 		expect(page).to have_content('better than Google?')
 
+		# expect old content too
 		expect(page).to have_content('Microfinance loans to the developing world')
 		expect(page).to have_link('Kiva')
 	end
