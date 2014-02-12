@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @articles.sort! { |a, b| b.count_votes <=> a.count_votes }
   end
 
   def new

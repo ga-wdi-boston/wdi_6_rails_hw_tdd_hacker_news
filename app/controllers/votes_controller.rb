@@ -14,7 +14,7 @@ class VotesController < ApplicationController
         redirect_to [article, :comments]
       end
     else
-      flash[:errors] = 'Already voted!'
+      flash[:notice] = 'Already voted!'
       if @votable.is_a?(Article)
         redirect_to root_path
       else
@@ -36,7 +36,7 @@ class VotesController < ApplicationController
         redirect_to [article, :comments]
       end
     else
-      flash[:errors] = 'Already voted!'
+      flash[:notice] = 'Already voted!'
       if @votable.is_a?(Article)
         redirect_to root_path
       else

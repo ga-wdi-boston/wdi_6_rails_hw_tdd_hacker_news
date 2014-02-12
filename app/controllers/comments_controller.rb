@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @article.comments
+    @comments.sort! { |a, b| b.count_votes <=> a.count_votes }
   end
 
   def create

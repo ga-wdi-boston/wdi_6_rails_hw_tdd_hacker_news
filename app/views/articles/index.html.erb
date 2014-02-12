@@ -1,9 +1,9 @@
 <ol>
   <% @articles.each do |article| %>
-  <li>
+  <li class="article-container">
     <%= link_to article.title, article.url %>
     <p><%= article.text %></p>
-    <ul>
+    <ul class="submenu">
       <li><%= article.count_votes %></li>
       <li><%= link_to 'vote up',  [article, :vote_up] %></li>
       <li><%= link_to 'vote down', [article, :vote_down] %></li>

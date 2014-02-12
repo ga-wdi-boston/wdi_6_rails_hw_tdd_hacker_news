@@ -1,13 +1,13 @@
 <h1><%= @article.title %></h1>
 
 <%= form_for :comment do |f| %>
-  <%= f.label :content, 'content' %><%= f.text_field :content %>
+  <%= f.label :content, 'content', class: 'display-none' %><%= f.text_area :content, cols: 30, rows: 8 %><br>
   <%= f.submit 'add comment' %>
 <% end %>
 <% @comments.each do |comment| %>
 <article>
   <p><%= comment.content %></p>
-  <ol>
+  <ol class="submenu">
     <li><%= comment.count_votes %></li>
     <li><%= link_to 'vote up', [@article, comment, :vote_up] %></li>
     <li><%= link_to 'vote down', [@article, comment, :vote_down] %></li>
@@ -15,4 +15,4 @@
 </article>
 <% end %>
 
-<%= link_to 'back', @article %>
+<%= link_to 'back', root_path %>
