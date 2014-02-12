@@ -13,6 +13,14 @@ class VotesController < ApplicationController
   end
 
   def vote_down
+    vote = @votable.votes.new(direction: false)
+    if vote.save
+      flash[:notice] = 'Voted down!'
+      redirect_to root_path
+    else
+      flash[:notice] = 'Already voted!'
+      redirect_to root_path
+    end
   end
 
   private

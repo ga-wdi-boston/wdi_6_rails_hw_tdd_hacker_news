@@ -4,6 +4,9 @@ HackerNews::Application.routes.draw do
     get 'vote_up' => 'votes#vote_up',
       as: 'vote_up',
       defaults: {votable: 'article'}
+    get 'vote_down' => 'votes#vote_down',
+      as: 'vote_down',
+      defaults: {votable: 'article'}
     resources :comments
   end
 

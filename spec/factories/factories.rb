@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :user do
     email { Faker::Internet.email }
-    password { Faker::Internet.password }
+    password 'password'
   end
 
   factory :comment do
