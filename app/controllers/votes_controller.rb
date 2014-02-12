@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   before_action :set_votable
 
   def vote_up
-    vote = @votable.votes.new(direction: true)
+    vote = @votable.votes.new(direction: true, user_id: current_user.id)
     if art_id = params[:article_id]
       article = Article.find(art_id)
     end
@@ -24,7 +24,7 @@ class VotesController < ApplicationController
   end
 
   def vote_down
-    vote = @votable.votes.new(direction: false)
+    vote = @votable.votes.new(direction: false, user_id: current_user.id)
     if art_id = params[:article_id]
       article = Article.find(art_id)
     end

@@ -18,15 +18,18 @@ describe Article do
   it { should have_many :comments }
 
   describe '#count_votes' do
-    it 'returns 2 when there are two up votes' do
+    before :each do
+      @user = create(:user)
       @article = create(:article)
-      @article.votes << create(:vote_up)
+    end
+
+    it 'returns 2 when there are two up votes' do
+      @article.votes << create(:vote_up, user_id: @user.id)
       expect(@article.count_votes).to eq 1
     end
 
     it 'returns -2 when there are two down votes' do
-      @article = create(:article)
-      @article.votes << create(:vote_down)
+      @article.votes << create(:vote_down, user_id: @user.id)
       expect(@article.count_votes).to eq -1
     end
   end

@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'User can vote only once and' do
   background do
     @user = create(:user)
+    @user2 = create(:user)
     @article = create(:article, user: @user)
   end
 
@@ -12,6 +13,13 @@ feature 'User can vote only once and' do
     expect(page).to have_content(1)
     click_on 'vote up'
     expect(page).to have_content(1)
+    click_on 'Sign Out'
+
+    sign_in_as @user2
+    expect(page).to have_content(1)
+    click_on 'vote up'
+    expect(page).to have_content(2)
+
   end
 
   scenario 'vote down' do
