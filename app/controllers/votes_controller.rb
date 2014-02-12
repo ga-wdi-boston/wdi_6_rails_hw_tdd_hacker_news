@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   #before_action :set_votable
 
   def up_vote
-    @vote = Vote.new
+    @vote = Vote.new(vote_params)
     @vote.direction = true
     if @vote.save
       redirect_to root_path, notice: 'vote was successfully created.'
@@ -11,7 +11,7 @@ class VotesController < ApplicationController
   end
 
   def down_vote
-    @vote = Vote.new
+    @vote = Vote.new(vote_params)
     @vote.direction = false
     if @vote.save
       redirect_to root_path, notice: 'vote was successfully created.'
@@ -63,6 +63,6 @@ class VotesController < ApplicationController
     end
 
     def vote_params
-      params.require(:vote).permit(:content)
+      params.permit(:votable_id, :votable_type)
     end
 end

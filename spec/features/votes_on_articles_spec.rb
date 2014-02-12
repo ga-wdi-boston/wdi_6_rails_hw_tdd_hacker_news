@@ -17,8 +17,7 @@ feature "user can up-vote a comment or article" do
 		click_on 'up_vote'
 		expect(page).to have_content 'All Articles'
 		click_link 'more'
-		# save_and_open_page
-		# expect(page).to have_content 'up-votes: 1'
+		expect(page).to have_content 'votes:1'
 	end
 
 	scenario 'user signs in and down-votes an article' do
@@ -36,7 +35,7 @@ feature "user can up-vote a comment or article" do
 		click_on 'down_vote'
 		expect(page).to have_content 'All Articles'
 		click_link 'more'
-		# save_and_open_page
-		# expect(page).to have_content 'up-votes: 1'
+		save_and_open_page
+		expect(page).to have_content 'votes:1'
 	end
 end
