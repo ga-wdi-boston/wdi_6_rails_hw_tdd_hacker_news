@@ -9,4 +9,9 @@ FactoryGirl.define do
     title 'A Wonderful Story'
     url  'http://publishing.cdlib.org/ucpressebooks/view?docId=ft5q2nb3z7&brand=ucpress'
   end
+
+  factory :comment do
+  	submission
+  	body 'This story changed my life'
+  end
 end

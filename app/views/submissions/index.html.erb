@@ -5,5 +5,6 @@
 			<li><%= link_to submission.title, submission.url %></li>
 			<li><%= submission.user.email %></li>
 			<li><%= link_to 'Add Comment', new_submission_comment_path(:submission_id) %></li>
+			<li><%= link_to 'View Comments', submission_comments_path(:submission_id) %></li>
 		<% end %>
 	</ul>
