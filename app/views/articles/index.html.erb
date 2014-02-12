@@ -12,12 +12,12 @@
 	<tr>
 		<td> <%= article.title %> </td>
 		<td> <%= article.blurb %> </td>
-		<td> <%= link_to "Comment", new_comment_path %> </td>
+		<td> <%= link_to "comment", [article, :comments] %> </td>
 		<td> <%= link_to "more", article_path(article.id) %></td>
 	</tr>
 <%end%>
 </table>
 
-<%= link_to "Add Article", new_article_path %>
+<%= link_to "add article", new_article_path %>
 
 

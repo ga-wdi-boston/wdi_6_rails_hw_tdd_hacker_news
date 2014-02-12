@@ -1,27 +1,37 @@
 class CommentsController < ApplicationController
-	skip_before_action :authenticate_user!, only: [:index, :show, :new]
+before_action :set_article
 
 	def index
 		@comments = Comment.all
 	end
 
 	def new
-			@comment = Comment.new
-		end
+		@comment = Comment.new
+	end
 
-		def create
-			@comment = Comment.new(comment_params)
-			@comment.save
-			if @comment.save
-				redirect_to  articles_path
-			else
-				render :new
-			end
+	def create
+		@comment = @article.comments.new(comment_params)
+    @comment.assign_attributes(user: current_user)
+		if @comment.save
+			respond_to do |format|
+      	format.html { redirect_to [@article, :comments], notice: 'comment was successfully created.'}
+      end
+		else
+			redirect_to [@article, :comments]
 		end
+	end
 
-		private
+	private
 
-		def comment_params
-			params.require(:comment).permit(:content)
-		end
+	def comment_params
+		params.require(:comment).permit(:content)
+	end
+
+	def set_article
+    @article = Article.find(params[:article_id])
+  end
 end
+
+
+
+

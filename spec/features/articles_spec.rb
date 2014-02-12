@@ -29,11 +29,11 @@ feature "a user can see all the articles" do
 		fill_in 'Password confirmation', with: 'password'
 		click_on 'Sign Up'
 		visit articles_path
-		click_link 'Add Article'
+		click_link 'add article'
 		fill_in 'Title', with: 'Pacific Rim'
 		fill_in 'Blurb', with: 'this was a great movie'
 		fill_in 'Url', with: 'https://www.google.com/'
-		click_on 'Create Article'
+		click_on 'create article'
 		expect(page).to have_content("Pacific Rim")
 	end
 
