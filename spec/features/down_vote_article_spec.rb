@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'User upvotes an article' do
+feature 'User downvotes an article' do
 
 	background do
 		user = create(:user)
@@ -12,6 +12,8 @@ feature 'User upvotes an article' do
 		visit root_path
 		click_button 'Up vote'
 		expect(page).to have_content '1 points'
+		click_button 'Down vote'
+		expect(page).to have_content '0 points'
 	end
 
 

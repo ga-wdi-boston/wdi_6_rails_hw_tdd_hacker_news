@@ -5,6 +5,7 @@ feature 'Visitor views article comments' do
 		user = create(:user)
 		sign_in_as(user)
 		@article = create(:article)
+
 	end
 
 	scenario 'successfully' do

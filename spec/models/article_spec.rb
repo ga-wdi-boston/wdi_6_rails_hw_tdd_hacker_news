@@ -16,17 +16,5 @@ describe Article do
 		end
 	end
 
-	describe '.up_vote' do
-		it 'adds 1 point to article attribute when invoked' do
-			@article = Article.create(title: 'Article', url: 'www.article.com', user_id: 1)
-			expect(@article.points).to eq 0
-
-			@article.up_vote
-			expect(@article.points).to eq 1
-
-		end
-
-	end
-
 
 end

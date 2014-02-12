@@ -1,18 +1,25 @@
 <h1>Hacker news</h1>
-<table>
-	<tr>
-	<th>Articles</th>
-	</tr>
-	<% @articles.each do |article| %>
+<ol>
+	<table>
 		<tr>
-		<td><%= link_to 'Up vote' %>
-		<td><%= link_to article.title, article.url, target: '_blank' %></td>
+		<th>Articles List</th>
 		</tr>
-		<tr>
-		<td><%= link_to 'comments', article_path(article) %></td>
-		</tr>
+		<% @articles.each do |article| %>
+			<tr>
+			<td><li></td>
+			<td><%= button_to 'Up vote', new_article_vote_path(article, data: {up: true})  %></td>
+			<td><%= button_to 'Down vote', new_article_vote_path(article, data: {up: false}) %></td>
+			<td><%= link_to article.title, article.url, target: '_blank' %></td>
+			</tr>
+			<tr>
+			<td><%= article.get_votes %> points</td>
+			<td><%= link_to 'comments', article_path(article) %></td>
+			</li>
+			</tr>
 
-	<% end %>
-</table>
+		<% end %>
+	</table>
+</ol>
+
 
 <%= link_to 'Add article', new_article_path %>
