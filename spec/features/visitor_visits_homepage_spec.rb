@@ -5,7 +5,6 @@ feature 'visitor lands on site index and' do
 	submission = create(:submission)
 		visit submissions_path
 		expect(page).to have_content 'A Wonderful Story'
-	save_and_open_page
 	end
 
 	scenario 'sees users associated with each submission' do
