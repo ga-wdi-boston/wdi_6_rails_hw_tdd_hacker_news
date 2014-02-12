@@ -1,6 +1,7 @@
 HackerNews::Application.routes.draw do
   devise_for :users
   resources :submissions do
+    resources :votes
     resources :comments
   end
 
