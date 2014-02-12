@@ -1,13 +1,24 @@
 <h1><%= @post.description %></h1>
 <%= link_to 'Leave a comment', new_post_comment_path(@post) %>
 <hr>
-<%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %>
-<% if @post.comments %>
-	<% @comments.each do |comment| %>
-		<p><%= comment.body %></p>
-		<p><%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %></p>
-		<%= button_to 'Down', new_comment_upvote_path(comment, data: { vote: false }) %>
-	<% end %>
+
+<% if !@comments.nil? %>
+	<table class="table table-striped">
+		<tr>
+			<th></th>
+			<th>Comment</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<% @comments.each do |comment| %>
+			<tr>
+				<td><%= comment.count_votes %></td>
+				<td><%= comment.body %></td>
+				<td><%= button_to 'Upvote', new_comment_upvote_path(comment, data: { vote: true }) %></td>
+				<td><%= button_to 'Downvote', new_comment_upvote_path(comment, data: { vote: false }) %></td>
+			</tr>
+		<% end %>
+	</table>
 <% else %>
 	<p>Be the first to leave a comment</p>
 <% end %>

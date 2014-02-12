@@ -12,7 +12,9 @@ feature 'Manage Users' do
 		fill_in 'Email', with: 'mike1@example.com'
 		fill_in 'Password', with: 'password'
 		fill_in 'Password confirmation', with: 'password'
-		click_on 'Sign up'
+		within('form') do
+			click_on 'Sign up'
+		end
 		expect(page).to have_content("Signed in as mike1@example.com")
 	end
 
@@ -21,7 +23,9 @@ feature 'Manage Users' do
 		fill_in 'Email', with: @user.email
 		fill_in 'Password', with: @user.password
 		# save_and_open_page
-		click_on 'Sign in'
+		within('form') do
+			click_on 'Sign in'
+		end
 		expect(page).to have_content("Signed in as #{@user.email}")
 	end
 
@@ -37,18 +41,27 @@ feature 'Manage Users' do
 	scenario 'A user can upvote a post' do
 		sign_in_as(@user)
 		visit root_path
-		upvotes = post1.upvotes
-		click_on "^"
+		expect(page).to have_content(@post.description)
+		click_on 'Upvote'
+		expect(@post.count_votes).to eq 1
+	end
 
-		# save_and_open_page
-
-		expect(upvotes).to eq 1
+	scenario 'A user can downvote a post' do
+		sign_in_as(@user)
+		visit root_path
+		expect(page).to have_content(@post.description)
+		click_on 'Upvote'
+		expect(@post.count_votes).to eq 1
+		click_on 'Downvote'
+		expect(@post.count_votes).to eq 0
 	end
 
 	scenario 'A user should be able to leave a comment' do
 		sign_in_as(@user)
 		visit posts_path
+		click_on 'comment'
 		click_on 'Leave a comment'
+		save_and_open_page
 		fill_in 'Body', with: 'Comment body test'
 		click_on 'Create Comment'
 		expect(page).to have_content('Comment body test')

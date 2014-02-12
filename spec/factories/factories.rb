@@ -7,6 +7,7 @@ FactoryGirl.define do
 	factory :post do
 		description 'A new post'
 		link 'http://www.google.com'
+		id 1
 		user
 	end
 

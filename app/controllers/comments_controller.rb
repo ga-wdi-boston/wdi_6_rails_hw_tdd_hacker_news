@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 	def index
 		@post = Post.find(params[:post_id])
-		@comment = @post.comments
+		@comments = @post.comments.sort_by { |comment| comment.count_votes}.reverse!
 	end
 
 	def new
@@ -10,10 +10,13 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+		@post = Post.find(params[:post_id])
 		@comment = Comment.new(comment_params)
+
 		if @comment.save
+			@post.comments << @comment
 			flash[:notice] = 'Comment posted'
-			redirect_to post_path(@comment.post_id)
+			redirect_to post_comments_path(@comment.post)
 		else
 			render :new
 		end

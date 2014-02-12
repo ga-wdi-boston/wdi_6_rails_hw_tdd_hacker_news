@@ -21,4 +21,5 @@ class Comment < ActiveRecord::Base
   def count_votes
 		self.upvotes.where(vote: true).count
 	end
+
 end

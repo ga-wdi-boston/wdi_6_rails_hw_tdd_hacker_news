@@ -1,11 +1,20 @@
 <h1>All Posts</h1>
-<% @posts.each do |post| %>
-	<div class="article" id="article_#{post.id}">
-		<h2><%= link_to post.description, "#{post.link}" %></h2>
-		<%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %>
-		<%= button_to 'Down', new_post_upvote_path(post, data: { vote: false }) %>
-		<%= post.count_votes %>
+<%= link_to 'Submit post', new_post_path %>
+<table class="table">
+	<tr>
+		<th># Votes</th>
+		<th>Description</th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @posts.each do |post| %>
+	<tr class="article">
+		<td><%= post.count_votes %></td>
+		<td id="article_#{post.id}"><%= link_to post.description, "#{post.link}" %></td>
+		<td><%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %></td>
+		<td><%= button_to 'Downvote', new_post_upvote_path(post, data: { vote: false }) %></td>
+		<td><%= link_to "#{post.count_comments} comments", post_comments_path(post.id) %></td>
+	</tr>
 
-		<%= link_to 'Leave a comment', new_post_comment_path(post.id) %>
-	</div>
 <% end %>
+</table>

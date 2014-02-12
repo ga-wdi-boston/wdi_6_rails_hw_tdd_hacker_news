@@ -22,4 +22,8 @@ class Post < ActiveRecord::Base
 	def count_votes
 		self.upvotes.where(vote: true).count
 	end
+
+	def count_comments
+		self.comments.count
+	end
 end
