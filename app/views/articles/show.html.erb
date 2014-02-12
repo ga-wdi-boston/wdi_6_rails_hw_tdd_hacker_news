@@ -13,9 +13,11 @@
 	<tr>
 		<td> <%= @article.title %> </td>
 		<td> <%= @article.blurb %> </td>
-		<td> <%= @article.comments %></td>
+		<% @article.comments.each do |comment| %>
+		<td> <%= comment.content %> vote on comment?<%= link_to "vote on comment", [:new, comment, :vote ] %></td>
+		<% end %>
 		<td> up-votes:<%= @article.votes.count %></td>
 		<td> <%= link_to "Comment", new_comment_path %> </td>
-		<td> <%= link_to "vote", [:new, @article, :vote ] %> </td>
+		<td> vote on article?<%= link_to "vote on article", [:new, @article, :vote ] %> </td>
 	</tr>
 </table>

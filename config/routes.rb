@@ -8,5 +8,7 @@ HackerNews::Application.routes.draw do
   end
   resources :comments do
     resources :votes, defaults: {votable: 'comment'}
+    	post '/votes/up_vote', to: 'votes#up_vote'
+    	post '/votes/down_vote', to: 'votes#down_vote'
   end
 end

@@ -12,7 +12,7 @@ feature "user can up-vote a comment or article" do
 		click_button 'Sign in'
 		visit root_path
 		click_link 'more'
-		click_on 'vote'
+		click_on 'vote on article'
 		expect(page).to have_content 'Vote'
 		click_on 'up_vote'
 		expect(page).to have_content 'All Articles'
@@ -31,7 +31,7 @@ feature "user can up-vote a comment or article" do
 		click_button 'Sign in'
 		visit root_path
 		click_link 'more'
-		click_on 'vote'
+		click_on 'vote on article'
 		expect(page).to have_content 'Vote'
 		click_on 'down_vote'
 		expect(page).to have_content 'All Articles'
