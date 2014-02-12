@@ -12,8 +12,9 @@ class ArticlesController < ApplicationController
 		article = Article.new(article_params)
 		article.user_id = current_user.id
 		if article.save
-			redirect_to article_path(article)
 			flash[:notice] = 'Article submitted'
+			redirect_to article_path(article)
+
 		else
 			flash.now[:error] = article.errors.full_messages.join(', ')
 			render :new

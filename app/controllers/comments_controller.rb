@@ -13,8 +13,10 @@ class CommentsController < ApplicationController
 		@comment.article_id = params[:article_id]
 
 		if @comment.save
+			flash[:notice] = 'Comment submitted'
 			redirect_to article_path(@article)
 		else
+			flash.now[:error] = @comment.errors.full_messages.join(', ')
 			render :new
 		end
 
