@@ -5,10 +5,10 @@ HackerNews::Application.routes.draw do
     resources :votes, defaults: {votable: 'article'}
     post '/votes/up_vote', to: 'votes#up_vote'
     post '/votes/down_vote', to: 'votes#down_vote'
-  end
-  resources :comments do
-    resources :votes, defaults: {votable: 'comment'}
-    	post '/votes/up_vote', to: 'votes#up_vote'
-    	post '/votes/down_vote', to: 'votes#down_vote'
+    resources :comments do
+      resources :votes, defaults: {votable: 'comment'}
+      	post '/votes/up_vote', to: 'votes#up_vote'
+      	post '/votes/down_vote', to: 'votes#down_vote'
+    end
   end
 end
