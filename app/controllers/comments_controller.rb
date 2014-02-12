@@ -12,3 +12,9 @@ class CommentsController < ActionController::Base
 	end
 
 end
+
+private
+
+	def comment_params
+		params(:comment).require(:body, :user_id, :submission_id)
+	end
