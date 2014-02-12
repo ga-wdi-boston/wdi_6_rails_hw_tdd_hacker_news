@@ -1,19 +1,26 @@
 class VotesController < ApplicationController
-  before_action :set_vote
+  before_action :set_vote, only: [:show, :edit, :update, :destroy]
   before_action :set_votable
- def new
-  @vote = Vote.new
- end
+  def new
+    @vote = Vote.new
+  end
 
- def create
-  @submission = Submission.find(params[:id])
-  @submission.votes << Vote.create(vote_params)
- end
+  def create
 
- private
+    vote = @votable.votes.new(direction: true)
+    if vote.save
+      flash[:notice] = 'Voted up!'
+      redirect_to root_path
+    else
+      flash[:notice] = 'Already voted!'
+      redirect_to root_path
+    end
+  end
+
+  private
 
   def set_vote
-    @votable = Vote.find(params[:id])
+    @vote = Vote.find(params[:id])
   end
 
   def set_votable
@@ -24,7 +31,7 @@ class VotesController < ApplicationController
     params[(params[:votable] + "_id").to_sym]
   end
 
- def vote_params
-  params.require(:vote).permit(:direction, :votable_id, :votable_type, :user_id)
- end
+  def vote_params
+    params.require(:vote).permit(:direction, :votable_id, :votable_type, :user_id)
+  end
 end

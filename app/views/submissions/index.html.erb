@@ -2,7 +2,7 @@
 
 <table>
 <tr>
-<th>Title</th><th>Link</th><th>Description</th><th>User ID</th><th>Vote</th>
+<th>Title</th><th>Link</th><th>Description</th><th>User ID</th><th>Vote</th><th>Vote Count</th>
 </tr>
 <% @submissions.each do |submission| %>
 <tr>
@@ -11,6 +11,7 @@
   <td><%= submission.description %></td>
   <td><%= submission.user_id %></td>
   <td><%= button_to 'Up vote', submission_votes_path(submission.id), method: :post %></td>
+  <td><%= submission.votes.where(direction: true).count %>
 </tr>
 <% end %>
 
