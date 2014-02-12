@@ -1,7 +1,18 @@
-<h2><%= link_to @article.title, @article.url, target: '_blank' %></h2>
+<h2><%= @article.title %></h2>
 
 <% @comments.each do |comment| %>
-	<%= comment.body %>
+<ul>
+	<li><%= comment.body %></li>
+	<li>
+		<ul>
+			<li class='inline'><%= comment.get_votes %> points </li>
+			<li class='inline'><%= button_to 'Up vote', new_comment_vote_path(comment, data: {up: true}) %></li>
+
+			<li class='inline'><%= button_to 'Down vote', new_comment_vote_path(comment, data: {up: false}) %></li>
+		</ul>
+		</li>
+</ul>
+
 <% end %>
 
 

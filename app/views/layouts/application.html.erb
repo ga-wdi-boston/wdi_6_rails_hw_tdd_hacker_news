@@ -2,28 +2,33 @@
 <html>
 <head>
   <title>HackerNews</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <%= stylesheet_link_tag    "application", media: "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class='container'>
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 
-	<nav>
-		<ul>
-			<li><%= link_to 'Submit', new_article_path %></li>
-				<% if user_signed_in? %>
-						<li>Signed in as <%= current_user.email %></li>
-						<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-				<% else %>
-					<li><%= link_to 'Sign in', new_user_session_path %></li>
-				<% end %>
-		</ul>
-	</nav>
+		<nav>
+			<ul class='inline'>
+				<li><%=link_to 'Hacker News', root_path %></li>
+				<li><%= link_to 'Submit', new_article_path %></li>
+			</ul>
+			<ul class='inline float-right'>
+					<% if user_signed_in? %>
+							<li>Signed in as <%= current_user.email %></li>
+							<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+					<% else %>
+						<li><%= link_to 'Sign in', new_user_session_path %></li>
+					<% end %>
+			</ul>
+		</nav>
 
-	<%= yield %>
-
+		<%= yield %>
+	</div>
 </body>
 </html>

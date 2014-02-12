@@ -12,7 +12,7 @@ feature 'Logged in user can add article' do
 		fill_in 'Title', with: 'First article'
 		fill_in 'Url', with: 'http://richardlynch.blogspot.com/'
 		click_button 'Submit'
-		expect(page).to have_link 'First article'
+		expect(page).to have_content 'First article'
 	end
 
 end
