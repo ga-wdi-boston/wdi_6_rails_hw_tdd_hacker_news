@@ -7,11 +7,13 @@
 	<th>Description</th>
 	<th>Comments</th>
 	<th>new comment?</th>
+	<th>vote on it?</th>
 </tr>
 	<tr>
 		<td> <%= @article.title %> </td>
 		<td> <%= @article.blurb %> </td>
 		<td> <%= @article.comments %></td>
 		<td> <%= link_to "Comment", new_comment_path %> </td>
+		<td> <%= link_to "vote", new_vote_path %> </td>
 	</tr>
 </table>

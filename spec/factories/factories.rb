@@ -7,7 +7,7 @@ FactoryGirl.define do
 	factory :article do
 		user
 		title { Faker::Name.title }
-		blurb { Faker::Name.blurb }
+		blurb 'la la la la la'
 		url 'https://www.google.com/'
 	end
 
