@@ -20,4 +20,7 @@
 require 'spec_helper'
 
 describe User do
+	it 'is invalid without an email' do
+	expect(User.create(password: 'password')).to_not be_valid
+	end
 end

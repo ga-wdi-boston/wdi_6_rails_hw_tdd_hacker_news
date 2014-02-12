@@ -14,4 +14,10 @@ feature 'visitor lands on site index and' do
 		expect(page).to have_content 'becky@email.com'
 	end
 
+	scenario 'sees comments association with each submission' do
+		submission = create(:submission)
+		visit submissions_path
+		expect(page).to have_link 'Comments'
+	end
+
 end
