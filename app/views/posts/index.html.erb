@@ -1,0 +1,20 @@
+
+<% if user_signed_in? %>
+signed in as <%= current_user.email %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<%= link_to "Submit link", new_post_path %>
+<% else %>
+<%= link_to 'Sign in', new_user_session_path %>
+<%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+
+<h1>News</h1>
+
+<dl>
+<% @posts.each do |post| %>
+	<dt><%= link_to post.title, post.links %></dt><%= post.votes.where(direction: true).count %> <%= link_to "^", new_post_vote_path(post, :baz => "up") %> <%= link_to "-", new_post_vote_path(post, :baz => "down") %>
+	<%= link_to " #{post.comments.count} comments", post_comments_path(post) %></dd><br>
+<% end %>
+</dl>
+
+
