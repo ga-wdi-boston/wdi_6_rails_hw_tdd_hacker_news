@@ -1,8 +1,10 @@
 <h1><%= @article.title %></h1>
 
-<%= form_for :comment do |f| %>
-  <%= f.label :content, 'content', class: 'display-none' %><%= f.text_area :content, cols: 30, rows: 8 %><br>
-  <%= f.submit 'add comment' %>
+<% if user_signed_in? %>
+  <%= form_for :comment do |f| %>
+    <%= f.label :content, 'content', class: 'display-none' %><%= f.text_area :content, cols: 30, rows: 8 %><br>
+    <%= f.submit 'add comment' %>
+  <% end %>
 <% end %>
 <% @comments.each do |comment| %>
 <article>

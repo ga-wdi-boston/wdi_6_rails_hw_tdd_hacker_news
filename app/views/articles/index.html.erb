@@ -5,8 +5,10 @@
     <p><%= article.text %></p>
     <ul class="submenu">
       <li><%= article.count_votes %></li>
-      <li><%= link_to 'vote up',  [article, :vote_up] %></li>
-      <li><%= link_to 'vote down', [article, :vote_down] %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'vote up',  [article, :vote_up] %></li>
+        <li><%= link_to 'vote down', [article, :vote_down] %></li>
+      <% end %>
       <li><%= link_to 'comments', [article, :comments] %></li>
     </ul>
   </li>
