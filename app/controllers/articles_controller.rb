@@ -8,10 +8,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      flash[:notice] = "Article saved!"
+      flash[:notice] = 'Article saved!'
       redirect_to root_path
     else
-      flash.now[:alert] = "Nope, try again."
+      flash.now[:alert] = 'Nope, try again.'
       render :new
     end
   end
