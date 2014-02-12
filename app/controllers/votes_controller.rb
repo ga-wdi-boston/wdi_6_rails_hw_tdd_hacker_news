@@ -3,23 +3,45 @@ class VotesController < ApplicationController
 
   def vote_up
     vote = @votable.votes.new(direction: true)
+    if art_id = params[:article_id]
+      article = Article.find(art_id)
+    end
     if vote.save
       flash[:notice] = 'Voted up!'
-      redirect_to root_path
+      if @votable.is_a?(Article)
+        redirect_to root_path
+      else
+        redirect_to [article, :comments]
+      end
     else
-      flash[:notice] = 'Already voted!'
-      redirect_to root_path
+      flash[:errors] = 'Already voted!'
+      if @votable.is_a?(Article)
+        redirect_to root_path
+      else
+        redirect_to [article, :comments]
+      end
     end
   end
 
   def vote_down
     vote = @votable.votes.new(direction: false)
+    if art_id = params[:article_id]
+      article = Article.find(art_id)
+    end
     if vote.save
       flash[:notice] = 'Voted down!'
-      redirect_to root_path
+      if @votable.is_a?(Article)
+        redirect_to root_path
+      else
+        redirect_to [article, :comments]
+      end
     else
-      flash[:notice] = 'Already voted!'
-      redirect_to root_path
+      flash[:errors] = 'Already voted!'
+      if @votable.is_a?(Article)
+        redirect_to root_path
+      else
+        redirect_to [article, :comments]
+      end
     end
   end
 

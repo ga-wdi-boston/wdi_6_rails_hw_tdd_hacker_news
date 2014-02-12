@@ -7,6 +7,11 @@
 <% @comments.each do |comment| %>
 <article>
   <p><%= comment.content %></p>
+  <ol>
+    <li><%= comment.count_votes %></li>
+    <li><%= link_to 'vote up', [@article, comment, :vote_up] %></li>
+    <li><%= link_to 'vote down', [@article, comment, :vote_down] %></li>
+  </ol>
 </article>
 <% end %>
 
