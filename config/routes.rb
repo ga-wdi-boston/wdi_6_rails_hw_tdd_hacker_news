@@ -3,10 +3,15 @@ HackerNews::Application.routes.draw do
   root to: 'posts#index'
 
   resources :posts do
-  	resources :comments, only: [:index, :create]
-  end
+    resources :votes, defaults: {votable: :post}
+  	resources :comments, only: [:index, :create] do
+     resources :votes, defaults: {votable: :comment}
+    end
+end
 
   post "/posts/:post_id/comments" => 'comments#create'
+
+
 
   # resources :user do
   # 	resources :posts do
