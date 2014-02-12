@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.new(comment_params)
+    @comment.assign_attributes(user: current_user)
     if @comment.save
       flash[:notice] = 'Comment saved!'
       redirect_to [@article, :comments]
