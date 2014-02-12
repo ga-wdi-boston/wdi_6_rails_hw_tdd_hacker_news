@@ -9,7 +9,6 @@ class CommentsController < ActionController::Base
 	end
 
 	def create
-
 	end
 
 end
