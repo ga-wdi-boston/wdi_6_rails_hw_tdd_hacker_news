@@ -17,7 +17,7 @@ feature 'visitor lands on site index and' do
 	scenario 'sees comments association with each submission' do
 		submission = create(:submission)
 		visit submissions_path
-		expect(page).to have_link 'Comments'
+		expect(page).to have_link 'Add Comment'
 	end
 
 end

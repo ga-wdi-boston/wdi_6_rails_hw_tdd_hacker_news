@@ -27,4 +27,11 @@ describe User do
 	it 'is invalid without a password' do
 		expect(User.create(email: 'becky@email.com')).to_not be_valid
 	end
+
+describe 'associations' do
+	it { should have_many :submissions}
+	it { should have_many :comments}
+end
+
+
 end

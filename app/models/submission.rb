@@ -10,7 +10,8 @@
 #
 
 class Submission < ActiveRecord::Base
-	has_many :comments
+	has_many :comments, as: :votable
+	has_many :votes, as: :votable
 	belongs_to :user
 
 	validates  :title, presence: true

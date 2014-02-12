@@ -7,4 +7,8 @@ class CommentsController < ActionController::Base
 		@comment = Comment.new
 	end
 
+	def create
+
+	end
+
 end

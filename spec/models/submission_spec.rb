@@ -26,8 +26,8 @@ describe Submission do
 	end
 
 describe 'associations' do
-	it { should have_many :comments }
-	# it { should have_many :votes, as: :votable }
+	# it { should have_many(:comments).as(:votable) }
+	# #it { should have_many :votes, as: :votable }
 	it { should belong_to :user }
 
 end
