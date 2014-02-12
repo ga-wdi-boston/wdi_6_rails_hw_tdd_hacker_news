@@ -34,6 +34,6 @@ FactoryGirl.define do
   factory :comment_vote, class: Vote do
     association :votable, factory: :comment
     direction false
-    assoction :user
+    association :user
   end
 end
