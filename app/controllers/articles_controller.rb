@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
 	def index
-		@articles = Article.all.sort { |x,y| x.votes.count <=> y.votes.count }
+		@articles = Article.all.sort! { |x,y| y.votes.count <=> x.votes.count }
 	end
 
 	def new
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
-		@comments = @article.comments
+		@comments = @article.comments.sort! { |x,y| y.votes.count <=> x.votes.count }
 	end
 
 	def up_vote
