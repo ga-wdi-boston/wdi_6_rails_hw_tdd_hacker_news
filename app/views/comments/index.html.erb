@@ -1,5 +1,9 @@
+<h1><%= @submission.title %></h1>
+
 <% @comments.each do |comment| %>
-<ol>
+<ul>
   <li><%= comment.body %></li>
-  <% end %>
-</ol>
+</ul>
+<% end %>
+
+<%= link_to "All Submissions", submissions_path %>
