@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :get_user
+
   def index
     @submissions = Submission.all
   end
@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @user.submissions << Submission.create(submission_params)
+    current_user.submissions << Submission.create(submission_params)
     redirect_to submissions_path
   end
 
@@ -23,9 +23,4 @@ class SubmissionsController < ApplicationController
   def submission_params
     params.require(:submission).permit(:title, :link, :description, :user_id)
   end
-
-  def get_user
-    @user = current_user
-  end
-
 end

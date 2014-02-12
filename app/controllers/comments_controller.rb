@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @submission = Submission.find(params[:submission_id])

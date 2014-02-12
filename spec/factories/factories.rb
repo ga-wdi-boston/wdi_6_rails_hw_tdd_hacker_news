@@ -10,4 +10,5 @@ FactoryGirl.define do
     link 'examplelink.com'
     description 'Here is an article you should check out'
   end
+
 end
