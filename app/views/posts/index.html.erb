@@ -2,8 +2,10 @@
 <% @posts.each do |post| %>
 	<div class="article" id="article_#{post.id}">
 		<h2><%= link_to post.description, "#{post.link}" %></h2>
-		<%= button_to 'Upvote', new_post_upvote_path(post) %>
+		<%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %>
+		<%= button_to 'Down', new_post_upvote_path(post, data: { vote: false }) %>
 		<%= post.count_votes %>
+
 		<%= link_to 'Leave a comment', new_post_comment_path(post.id) %>
 	</div>
 <% end %>

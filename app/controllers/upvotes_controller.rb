@@ -2,14 +2,18 @@ class UpvotesController < ApplicationController
 	before_action :set_upvotable
 
 	def vote
-		@upvote = @upvotable.upvotes.new(vote: true, user_id: current_user.id)
-		if @upvote.save
-			flash[:notice] = 'Vote created'
-			redirect_to root_path
+		if current_user.upvotes.where(upvotable_id: @upvotable.id).present?
+			@upvote = current_user.upvotes.find_by(upvotable_id: @upvotable.id)
 		else
-			flash[:error] = 'You already voted'
-			redirect_to root_path
+			@upvote = @upvotable.upvotes.new(user_id: current_user.id)
 		end
+
+		@upvote.vote = params[:data][:vote]
+		@upvote.save!
+
+		redirect_to root_path
+
+
 	end
 
 	private

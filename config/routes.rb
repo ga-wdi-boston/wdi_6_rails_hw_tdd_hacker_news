@@ -4,7 +4,7 @@ HackerNews::Application.routes.draw do
 
   resources :users
 
-  post '/posts/:post_id/upvotes', to: 'upvotes#vote', as: 'new_post_upvote', defaults: { upvotable: 'post', vote: true }
+  post '/posts/:post_id/upvotes', to: 'upvotes#vote', as: 'new_post_upvote', defaults: { upvotable: 'post' }
 
   resources :posts do
     resources :comments do
