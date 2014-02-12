@@ -15,4 +15,13 @@ feature 'A new user signs up' do
     expect(page).to have_content 'Signed in as bob@example.com'
     expect(page).to have_link 'Sign out'
   end
+
+  scenario 'unsuccessfully' do
+    fill_in 'Email', with: 'bob@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'notapassword'
+    click_button 'Sign up'
+
+    expect(page).to have_content "doesn't match"
+  end
 end
