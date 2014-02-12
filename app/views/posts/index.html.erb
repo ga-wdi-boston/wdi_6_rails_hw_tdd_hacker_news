@@ -1,5 +1,6 @@
-<h3><%= link_to 'Submit a Link', new_post_path %></h3>
+<h3><%= link_to 'Submit', new_post_path %></h3>
 
+<div class="alert alert-danger"><%= flash[:alert] %></div>
 
 <h2>All Posts</h2>
 <% @posts.each do |post| %>

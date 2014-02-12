@@ -11,8 +11,14 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.create!(post_params)
-		redirect_to posts_path
+		@post = Post.new(post_params)
+		if @post.save
+			flash[:notice] = "Your link has been submitted!"
+			redirect_to posts_path
+		else
+			flash.now[:alert] = @post.errors.full_messages.join(', ')
+			render :new
+		end
 	end
 
 	private
