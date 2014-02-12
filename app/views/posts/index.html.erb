@@ -4,7 +4,7 @@
 
 <h2>All Posts</h2>
 <% @posts.each do |post| %>
-	<article>
+	<article class="post_<%= post.id %>">
 		<h3><%= link_to post.title, post.link %></h3>
 		<ul style="list-style: none; margin: 0;">
 			<li><%= post.description %></li>

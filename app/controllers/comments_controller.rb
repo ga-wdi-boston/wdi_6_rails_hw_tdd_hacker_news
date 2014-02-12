@@ -10,8 +10,22 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = Comment.create(comment_params)
-		redirect_to post_comments_path
+		if user_signed_in?
+			@user = current_user
+		end
+		@post = Post.find(params[:post_id])
+		@comment = Comment.new(comment_params)
+		if @comment.save
+			flash[:notice] = "Your comment has been submitted!"
+			redirect_to post_comments_path
+		elsif user_signed_in? == false
+			# this doesn't work yet
+			flash[:alert] = "You must be signed in to comment."
+			render :index
+		else
+			flash[:alert] = @comment.errors.full_messages.join(', ')
+			render :index
+		end
 	end
 
 	private

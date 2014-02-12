@@ -1,17 +1,21 @@
 require 'spec_helper'
 
 feature 'Visitor views all posts on front page' do
-	scenario 'successfully (not signed in)' do
-		google = create(:google)
-		twitter = create(:twitter)
-		kiva = create(:kiva)
+	background do
+		@post_1 = create(:post)
+		@post_2 = create(:post)
+		@post_3 = create(:post)
 
-		visit root_path
-
-		expect(page).to have_content('I can haz search?')
-		expect(page).to have_content('Microfinance loans to the developing world')
-		expect(page).to have_link('Twitter')
-		expect(page).to have_link('Comments')
+		@user = create(:user)
+		sign_in_as(@user)
 	end
+
+	scenario 'successfully (not signed in)' do
+		expect(page).to have_content(@post_3.description)
+		expect(page).to have_content(@post_1.description)
+		expect(page).to have_link(@post_2.title)
+		expect(page).to have_link(@post_1.title)
+	end
+
 
 end

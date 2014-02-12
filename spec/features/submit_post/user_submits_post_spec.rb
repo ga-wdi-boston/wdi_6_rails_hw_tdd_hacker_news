@@ -3,9 +3,8 @@ require 'spec_helper'
 feature 'User submits new post' do
 
 	background do
-		kiva = create(:kiva)
+		@post = create(:post)
 		user = create(:user)
-		visit root_path
 		sign_in_as(user)
 	end
 
@@ -21,8 +20,8 @@ feature 'User submits new post' do
 		expect(page).to have_content('better than Google?')
 
 		# expect old content too
-		expect(page).to have_content('Microfinance loans to the developing world')
-		expect(page).to have_link('Kiva')
+		expect(page).to have_content(@post.description)
+		expect(page).to have_link(@post.title)
 	end
 
 	scenario 'unsuccessfully because they left some fields blank' do

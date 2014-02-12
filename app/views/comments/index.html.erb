@@ -4,18 +4,17 @@
 
 <h3>Comments</h3>
 
-<section>
-	<% @post.comments.each do |comment| %>
+<% @post.comments.each do |comment| %>
+	<article class="comment_<%= comment.id %>">
 		<p><%= comment.body %></p>
 		<p>Posted by <%= comment.user.email %></p>
-	<% end %>
-</section>
+	</article>
+<% end %>
 
-<section>
-	<h4>What does the fox say?</h4>
-	<%= form_for [@post, @comment] do |f| %>
-		<%= f.label :body %>
-		<%= f.text_field :body %>
-		<%= f.submit "Submit Comment", controller: :posts, action: :create %>
-	<% end %>
-</section>
+
+<h4>What does the fox say?</h4>
+<%= form_for [@post, @comment] do |f| %>
+	<%= f.label :body %>
+	<%= f.text_field :body %>
+	<%= f.submit "Submit Comment", controller: :posts, action: :create %>
+<% end %>
