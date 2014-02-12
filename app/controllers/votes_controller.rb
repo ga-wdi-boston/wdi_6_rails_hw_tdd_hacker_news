@@ -12,7 +12,7 @@ class VotesController < ApplicationController
 		@vote.up = params[:data][:up]
 		@vote.save!
 
-		redirect_to root_path
+		redirect_to :back
 
 	end
 

@@ -9,6 +9,8 @@
 </head>
 <body>
 	<div class='container'>
+	<table>
+		<tr>
 		<nav>
 			<ul class='inline'>
 				<li><%=link_to 'Hacker News', root_path %></li>
@@ -23,15 +25,21 @@
 					<% end %>
 			</ul>
 		</nav>
+		</tr>
 
-		<% if flash[:error].present? %>
-				<p class='error'><%= flash[:error] %></p>
-			<% end %>
+		<tr>
+			<% if flash[:error].present? %>
+					<p class='error'><%= flash[:error] %></p>
+				<% end %>
 
-			<% if flash[:notice].present? %>
-				<p><%= flash[:notice] %></p>
-			<% end %>
+				<% if flash[:notice].present? %>
+					<p><%= flash[:notice] %></p>
+				<% end %>
+		</tr>
+		<tr>
 		<%= yield %>
+		</tr>
+		</table>
 	</div>
 </body>
 </html>
