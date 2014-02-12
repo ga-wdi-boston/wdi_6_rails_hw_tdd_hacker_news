@@ -1,5 +1,9 @@
 <h2><%= @article.title %></h2>
 
+<div class='comment-form'>
+	<%= render partial: 'new_comment_form' %>
+</div>
+
 <% @comments.each do |comment| %>
 <ul>
 	<li><%= comment.body %></li>

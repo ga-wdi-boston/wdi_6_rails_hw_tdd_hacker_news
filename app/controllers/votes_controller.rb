@@ -8,7 +8,6 @@ class VotesController < ApplicationController
 		else
 			@vote = @votable.votes.new(user_id: current_user.id)
 		end
-
 		@vote.up = params[:data][:up]
 		@vote.save!
 

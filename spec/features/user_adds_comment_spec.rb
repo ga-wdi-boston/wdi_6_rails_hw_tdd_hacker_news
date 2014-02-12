@@ -10,7 +10,6 @@ feature 'Logged in user can add a comment' do
 	scenario 'successfully' do
 		visit root_path
 		click_link 'comments'
-		click_link 'Add comment'
 		fill_in 'Comment', with: 'Adding new comment'
 		click_button 'Add comment'
 		expect(page).to have_content 'Adding new comment'
