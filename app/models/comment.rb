@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true
 
   def get_votes
-  	self.votes.where(up: true).count
+  	self.votes.count - self.votes.where(up: false).count
   end
 
 end

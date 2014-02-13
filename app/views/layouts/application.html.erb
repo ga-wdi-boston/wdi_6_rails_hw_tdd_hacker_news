@@ -15,11 +15,11 @@
 		<div id='flash-section'>
 
 			<% if flash[:alert].present? %>
-  			<div class="alert"><%= flash.now[:alert] %></div>
+  			<p class="alert"><%= flash.now[:alert] %></p>
 			<% end %>
 
 			<% if flash[:notice].present? %>
-			  <div class="notice"><%= flash.now[:notice] %></div>
+			  <p class="notice"><%= flash.now[:notice] %></p>
 			<% end %>
 
 		</div>

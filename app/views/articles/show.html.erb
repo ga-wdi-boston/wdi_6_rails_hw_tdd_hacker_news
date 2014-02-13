@@ -1,35 +1,39 @@
-<h2><%= @article.title %></h2>
-<h4 class='sub-line'><%= @article.get_votes %> points | <%= @article.comments.count %> comments</h4>
+<div class='container'>
+	<h2><%= @article.title %></h2>
+	<h4 class='sub-line'><%= @article.get_votes %> points | <%= @article.comments.count %> comments</h4>
 
-<div class='margin-bottom'>
-	<%= render partial: 'article_comment_form' %>
-</div>
-
-<% @comments.each do |comment| %>
-<div class='comment-section'>
-	<ul>
-		<l1 class='sub-line'><%= time_ago_in_words(comment.created_at) %></l1>
-		<li><%= comment.body %></li>
-		<li>
-			<ul>
-				<li class='inline'><%= comment.get_votes %> points </li>
-				<li class='inline'><%= button_to 'Up vote', new_comment_vote_path(comment, data: {up: true}) %></li>
-
-				<li class='inline'><%= button_to 'Down vote', new_comment_vote_path(comment, data: {up: false}) %></li>
-				<li><%= link_to 'Reply to comment', [:new, @article, comment, :comment] %>
-			</ul>
-		</li>
-	</ul>
-
-	<div class='nested'>
-		<p>Replies</p>
-		<ul class='nested'>
-			<% comment.sub_comments.each do |comment| %>
-				<l1 class='time'><%= time_ago_in_words(comment.created_at) %></l1>
-				<li><%= comment.body %></li>
-			<% end %>
-		</ul>
+	<div class='margin-bottom'>
+		<%= render partial: 'article_comment_form' %>
 	</div>
-</div>
 
-<% end %>
+	<% @comments.each do |comment| %>
+	<div class='comment-section'>
+		<ul>
+			<li class='sub-line'><%= time_ago_in_words(comment.created_at)%> ago</li>
+			<li><%= comment.body %></li>
+			<li>
+				<ul>
+					<li class='inline'><%= pluralize(comment.get_votes, 'point') %></li>
+					<li class='inline'><%= button_to 'Up vote', new_comment_vote_path(comment, data: {up: true}) %></li>
+
+					<li class='inline'><%= button_to 'Down vote', new_comment_vote_path(comment, data: {up: false}) %></li>
+					<li><%= link_to 'Reply to comment', [:new, @article, comment, :comment] %>
+				</ul>
+			</li>
+		</ul>
+
+		<div class='nested'>
+			<% if comment.sub_comments.present? %>
+				<p><strong>Replies:</strong></p>
+			<% end %>
+			<ul>
+				<% comment.sub_comments.each do |comment| %>
+					<li class='sub-line'><%= time_ago_in_words(comment.created_at) %> ago</li>
+					<li><%= comment.body %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+
+	<% end %>
+</div>

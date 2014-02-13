@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@comment = Comment.new
-		@comments = @article.comments - @article.comments.where(sub_comment_id: 0)
+		@comments = @article.comments
 		@comments.sort! { |x,y| y.votes.count <=> x.votes.count }
 	end
 

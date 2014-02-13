@@ -3,11 +3,7 @@ class VotesController < ApplicationController
 
 	def vote
 		if user_signed_in?
-			if @votable.votes.find_by(user_id: current_user.id).present?
-				@vote = @votable.votes.find_by(user_id: current_user.id)
-			else
-				@vote = @votable.votes.new(user_id: current_user.id)
-			end
+			@vote = @votable.votes.find_or_create_by(user_id: current_user.id)
 			@vote.up = params[:data][:up]
 			@vote.save!
 
