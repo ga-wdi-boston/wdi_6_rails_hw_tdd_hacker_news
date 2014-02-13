@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1><%= link_to 'Hacker News', root_path %></h1>
+<h1><%= link_to 'Hacker Newz', root_path %></h1>
 
 <div class="devise-links">
 	<% if user_signed_in? %>
@@ -19,6 +19,7 @@
 		<%= link_to 'Sign up', new_user_registration_path %>
 	<% end %>
 </div>
+<br>
 
 <div class="alert alert-success"><%= flash[:notice] %></div>
 <div class="alert alert-danger"><%= flash[:alert] %></div>

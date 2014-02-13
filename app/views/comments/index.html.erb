@@ -36,6 +36,6 @@
 			<%= time_ago_in_words(comment.created_at).gsub('about','') %> ago
 			<a href="#<%= comment.id %>">link</a>
 		</p>
-		<p style="margin-left: 20px; margin-top: 0px;"><%= comment.body %></p>
+		<p style="margin-left: 20px"><%= comment.body %></p>
 	</article>
 <% end %>
