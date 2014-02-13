@@ -8,7 +8,7 @@
 			</tr>
 			<tr style="height:10px"></tr>
 			<tr>
-				<%= form_for [current_user, @post] do |f| %>
+				<%= form_for [current_user, @post], method: 'post' do |f| %>
 			</tr>
 			<tr>
 				<td>title</td> <td><%= f.text_field :body, :size => 50 %></td>

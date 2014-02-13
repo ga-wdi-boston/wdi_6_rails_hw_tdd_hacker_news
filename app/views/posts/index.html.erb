@@ -19,7 +19,7 @@
 										ask |
 										jobs |
 										<% if user_signed_in? %>
-											<%= link_to 'submit',  new_user_post_path(current_user) %>
+											<%= link_to 'submit',  new_post_path(current_user) %>
 										<% else %>
 											submit
 										<% end %>
@@ -31,6 +31,7 @@
 											Signed in as
 											<span id="logged_in">
 												<%= current_user.email %>
+
 											</span> |
 											<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 										<% else %>
@@ -68,15 +69,17 @@
 							<td colspan="2"></td>
 							<td class="subtext">
 								<span id="score_unique_id)">
-									50 points
+									<%= post.upvotes %>
 								</span>
 								" by "
 								<a href="user_id">
-									user
+									user <%= post.user_id %> |
 								</a>
-								<a href="article_id">
-									2 comments
-								</a>
+								<% if signed_in? %>
+									<%= link_to 'comments', post_comments_path(current_user.id, post.id) %>
+								<% else %>
+									sign in to see comments
+								<% end %>
 							</td>
 						</tr>
 						<% end %>
