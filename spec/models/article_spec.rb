@@ -17,6 +17,14 @@ describe Article do
   it { should belong_to :user }
   it { should have_many :comments }
 
+
+  describe 'validations' do
+    it 'is invalid without a proper url' do
+      invalid_article = build(:article, url: 'thisisbad')
+      expect(invalid_article).to_not be_valid
+    end
+  end
+
   describe '#count_votes' do
     before :each do
       @user = create(:user)

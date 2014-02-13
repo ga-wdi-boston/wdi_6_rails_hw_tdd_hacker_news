@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :article do
     title { Faker::Lorem.word }
-    url { Faker::Internet.url }
+    url 'http://validurl.com'
     text { Faker::Lorem.words.join }
     user
   end
