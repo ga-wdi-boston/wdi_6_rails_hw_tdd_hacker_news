@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def index
-		@posts = Post.all
+		@posts = Post.all.includes(:user)
 		@posts.sort_by { |post| post.count_votes}.reverse!
 	end
 

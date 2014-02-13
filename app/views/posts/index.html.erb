@@ -11,6 +11,7 @@
 	<tr class="article">
 		<td><%= post.count_votes %></td>
 		<td id="article_#{post.id}"><%= link_to post.description, "#{post.link}" %></td>
+		<td><%= post.user.email %></td>
 		<% if user_signed_in? %>
 			<td><%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %></td>
 			<td><%= button_to 'Downvote', new_post_upvote_path(post, data: { vote: false }) %></td>

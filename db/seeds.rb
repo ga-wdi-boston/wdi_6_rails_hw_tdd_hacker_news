@@ -11,14 +11,14 @@ mike = User.create(email: 'mikestone@example.com', password: 'password')
 	User.create(email: "users#{i}@example.com", password: 'password')
 end
 
-10.times do |i|
-	user = User.find(1)
+200.times do |i|
+	user = User.first
 	Post.create(description: "articles#{i}", link: 'http://www.google.com', user_id: user.id)
 end
 
 
-100.times do |i|
+200.times do |i|
 	post = Post.first
-	user = User.find(3)
-	post.comments(body: "Comment number #{i}", user_id: user.id )
+	user = User.last
+	post.comments.create(body: "Comment number #{i}", user_id: user.id )
 end
