@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
   has_many :upvotes, as: :upvotable
 
   def count_votes
-		self.upvotes.where(vote: true).count
+		(self.upvotes.where(vote: true).count) - (self.upvotes.where(vote: false).count)
 	end
 
 end

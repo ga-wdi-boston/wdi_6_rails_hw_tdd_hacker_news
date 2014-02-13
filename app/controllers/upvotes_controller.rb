@@ -2,8 +2,8 @@ class UpvotesController < ApplicationController
 	before_action :set_upvotable
 
 	def vote
-		if current_user.upvotes.where(upvotable_id: @upvotable.id).present?
-			@upvote = current_user.upvotes.find_by(upvotable_id: @upvotable.id)
+		if current_user.upvotes.where(upvotable_id: @upvotable.id, upvotable_type: @upvotable.class.name).present?
+			@upvote = current_user.upvotes.find_by(upvotable_id: @upvotable.id, upvotable_type: @upvotable.class.name)
 		else
 			@upvote = @upvotable.upvotes.new(user_id: current_user.id)
 		end
