@@ -20,8 +20,18 @@ describe Article do
 
   describe 'validations' do
     it 'is invalid without a proper url' do
-      invalid_article = build(:article, url: 'thisisbad')
+      invalid_article = build(:article, url: 'thisisbad', text: nil)
       expect(invalid_article).to_not be_valid
+    end
+
+    it 'is invalid without either a text or url' do
+      invalid_no_url = build(:article, url: nil, text: nil)
+      valid_url = build(:article, text: nil)
+      valid_text = build(:article, url: nil)
+
+      expect(invalid_no_url).to_not be_valid
+      expect(valid_url).to be_valid
+      expect(valid_text).to be_valid
     end
   end
 
