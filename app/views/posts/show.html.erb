@@ -1,3 +1,4 @@
+
 <center>
 	<table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="f6f6ef">
 		<tbody>
@@ -42,59 +43,5 @@
 					</table>
 				</td>
 			</tr>
-			<tr style="height:10px"></tr>
-			<tr>
-				<td>
-				<table border="0" cellpadding="0" cellspacing="0">
-					<tbody>
-						<tr>
-	<!-- Begin iterate through posts -->
-						<% @posts.each do |post| %>
-							<td align="right" valign="top" class="title"><%= post.id %> </td>
-							<td>
-								<center>
-									<a id="up_unique_id" onclick="return vote" href="vote?for=post_unique_id">
-										<div class="votearrow" title="upvote"></div>
-									</a>
-									<span id="down_unique_id"></span>
-								</center>
-							</td>
-							<td class="title">
-								<%= link_to post.body, post.link %>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2"></td>
-							<td class="subtext">
-								<span id="score_unique_id)">
-									<%= post.upvotes %>
-								</span>
-								" by "
-								<a href="user_id">
-									user <%= post.user_id %> |
-								</a>
-								<% if signed_in? %>
-									<%= link_to 'comments', post_comments_path(current_user.id, post.id) %>
-								<% else %>
-									sign in to see comments
-								<% end %>
-							</td>
-						</tr>
-						<% end %>
-	<!-- End iterate through posts -->
-					</tbody>
-				</table>
-			</tr>
 		</tbody>
-	</table
-</center
-
-
-
-
-
-
-
-
-
-
+	</table>
