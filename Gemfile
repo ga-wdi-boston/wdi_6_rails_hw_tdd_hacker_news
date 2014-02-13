@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.1.0'
+gem 'newrelic_rpm'
 
 
 # These are gems you may find useful for testing
