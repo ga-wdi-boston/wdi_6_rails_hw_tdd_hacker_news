@@ -13,15 +13,14 @@
   <nav class="Comments-Detials-Nav">
   <% @comments.each do |comment| %>
     <%= comment.content %>
-    <ol>
       <% if user_signed_in? %>
-      <li><%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post %></li>
-      <li><%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post%></li>
+      <p>
+      <%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-sm" %> <%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-sm"%>
+      </p>
        <% else %>
-       <li> Sign in for more options </li>
+       <p> Sign in for more options </p>
        <% end %>
   <% end %>
-    </ol>
   </nav>
   <%= link_to 'back', root_path %>
 </section>

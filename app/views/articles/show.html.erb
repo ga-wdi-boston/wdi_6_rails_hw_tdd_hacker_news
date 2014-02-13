@@ -1,30 +1,34 @@
 <section class="Article-Details">
 <h1><% @article.title %></h1>
-	<table>
-	<tr>
-		<th>Title</th>
-		<th>Description</th>
-		<th>Vote Count</th>
-		<th>Comment Count</th>
-	</tr>
+	<table class="table">
+		<div class="panel-heading">
 		<tr>
-			<td> <%= @article.title %> </td>
-			<td> <%= @article.blurb %> </td>
-			<td> <%= @article.votes.count %></td>
-			<td> <%= @article.comments.count %></td>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Vote Count</th>
+			<th>Comment Count</th>
 		</tr>
-	</table>
-	<nav class="Article-Detials-Nav">
-	<% if user_signed_in? %>
-	<ul>
-	<li><%= link_to "see and post comments!", article_comments_path(@article.id) %> </li>
-	<li><%=link_to 'vote up on article', article_up_vote_path(@article), method: :post %></li>
-  <li><%= link_to 'vote down on article', article_down_vote_path(@article), method: :post %></li>
-  <% else %>
-  <li> Sign in for more options </li>
-  <% end %>
-  </ul>
-	</nav>
+		</div>
+		<div class="panel-body">
+			<tr>
+				<td> <%= @article.title %> </td>
+				<td> <%= @article.blurb %> </td>
+				<td> <%= @article.votes.count %></td>
+				<td> <%= @article.comments.count %></td>
+			</tr>
+		</div>
+		</table>
+		<nav class="Article-Detials-Nav">
+		<% if user_signed_in? %>
+		<ul>
+		<li><%= link_to "see and post comments!", article_comments_path(@article.id) %> </li>
+		<li><%=link_to 'vote up on article', article_up_vote_path(@article), method: :post %></li>
+	  <li><%= link_to 'vote down on article', article_down_vote_path(@article), method: :post %></li>
+	  <% else %>
+	  <li> Sign in for more options </li>
+	  <% end %>
+	  </ul>
+		</nav>
 </section>
 
 

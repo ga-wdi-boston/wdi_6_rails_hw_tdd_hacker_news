@@ -6,7 +6,6 @@ feature "a user can see all the articles" do
 	end
 
 	scenario 'view all articles as a vistor' do
-		# capybara which will allow you act as a user
 		visit articles_path
 		expect(page).to have_content("Star Trek")
 		expect(page).to have_content("to boldly go...")
