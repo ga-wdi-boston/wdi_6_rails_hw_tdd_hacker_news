@@ -3,7 +3,7 @@ before_action :set_article
 
 	def index
 		@comments = Article.find(params[:article_id]).comments { |x,y|
-			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === true }.count
+			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === false }.count
 		}.reverse
 	end
 

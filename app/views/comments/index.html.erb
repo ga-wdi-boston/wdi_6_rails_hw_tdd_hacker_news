@@ -4,7 +4,7 @@
   <% if user_signed_in? %>
     <%= form_for :comment do |f| %>
       <%= f.label :content, 'content', class: 'display-none'%>
-  		<%= f.text_field :content %>
+  		<%= f.text_area :content, cols: 30, rows: 15 %>
       <%= f.submit 'create comment' %>
     <% end %>
   <% end %>
