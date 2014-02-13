@@ -1,27 +1,35 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :get_submission
 
   def index
-    @submission = Submission.find(params[:submission_id])
     @comments = @submission.comments
   end
 
   def new
     @comment = Comment.new
-    @submission = Submission.find(params[:submission_id])
     @user = current_user
   end
 
   def create
-    @submission = Submission.find(params[:submission_id])
-    @submission.comments << Comment.create(comment_params)
-    current_user.comments << Comment.create(comment_params)
-    redirect_to submission_comments_path(@submission.id)
+    @comment = @submission.comments.new(comment_params)
+    @comment.assign_attributes(user: current_user)
+    if @comment.save
+      flash[:notice] = 'Comment added!'
+      redirect_to [@submission, :comments]
+    else
+      flash[:errors] = @comment.errors.full_messages.join(', ')
+      redirect_to [@submission, :comments]
+    end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :submission_id, :user_id)
+    params.require(:comment).permit(:body)
+  end
+
+  def get_submission
+    @submission = Submission.find(params[:submission_id])
   end
 end

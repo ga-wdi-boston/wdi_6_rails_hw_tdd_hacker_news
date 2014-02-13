@@ -6,7 +6,6 @@ class VotesController < ApplicationController
   end
 
   def create
-
     vote = @votable.votes.new(direction: true)
     if vote.save
       flash[:notice] = 'Voted up!'
@@ -29,9 +28,5 @@ class VotesController < ApplicationController
 
   def votable_id
     params[(params[:votable] + "_id").to_sym]
-  end
-
-  def vote_params
-    params.require(:vote).permit(:direction, :votable_id, :votable_type, :user_id)
   end
 end

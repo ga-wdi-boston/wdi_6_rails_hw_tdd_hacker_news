@@ -2,7 +2,9 @@
 
 <% @comments.each do |comment| %>
 <ul>
-  <li><%= comment.body %></li>
+  <li>Comment: <%= comment.body %></li>
+  <li><%= button_to 'Up vote', submission_comment_votes_path(@submission.id, comment.id), method: :post %></li>
+  <li>Vote Count: <%= comment.votes.where(direction: true).count %></li>
 </ul>
 <% end %>
 
