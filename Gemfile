@@ -47,3 +47,5 @@ group :development do
   gem 'smusher'
   gem 'better_errors'
 end
+
+gem 'rails_12factor', group: :production

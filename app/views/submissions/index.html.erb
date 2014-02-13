@@ -6,7 +6,7 @@
 			<li><%= submission.user.email %></li>
 
 				<% if submission.comments.count >= 1 %>
-					<li><%= submission.comments.count %></li>
+					<li><%= submission.comments.count%> comments</li>
 				<%else %>
 					<li><%= link_to 'Be the first to leave a comment', new_submission_comment_path(submission.id) %></li>
 				<% end %>
