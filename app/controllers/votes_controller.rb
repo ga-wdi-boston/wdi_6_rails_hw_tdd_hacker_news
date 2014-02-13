@@ -2,17 +2,20 @@ class VotesController < ApplicationController
 	before_action :set_votable
 
 	def vote
+		if user_signed_in?
+			if @votable.votes.find_by(user_id: current_user.id).present?
+				@vote = @votable.votes.find_by(user_id: current_user.id)
+			else
+				@vote = @votable.votes.new(user_id: current_user.id)
+			end
+			@vote.up = params[:data][:up]
+			@vote.save!
 
-		if current_user.votes.where(votable_id: @votable.id).present?
-			@vote = current_user.votes.find_by(votable_id: @votable.id)
+			redirect_to :back
 		else
-			@vote = @votable.votes.new(user_id: current_user.id)
+			flash.now[:alert] = 'Please sign in or sign up!'
+			redirect_to root_path
 		end
-		@vote.up = params[:data][:up]
-		@vote.save!
-
-		redirect_to :back
-
 	end
 
 	private
@@ -24,6 +27,5 @@ class VotesController < ApplicationController
   def votable_id
     params[(params[:votable] + "_id").to_sym]
   end
-
 
 end
