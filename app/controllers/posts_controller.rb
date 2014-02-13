@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :new]
 
 	def index
-		@posts = Post.order(created_at: :desc)
+		@posts = Post.order(created_at: :desc) # sorts by most recent
 	end
 
 	def new

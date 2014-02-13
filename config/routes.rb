@@ -3,9 +3,7 @@ HackerNews::Application.routes.draw do
   root to: 'posts#index'
 
   resources :posts, only: [:index, :new, :create] do
-    # resources :votes, defaults: {votable: :post}
   	resources :comments, only: [:index, :create] do
-     # resources :votes, defaults: {votable: :comment}
     end
   end
 
@@ -25,16 +23,5 @@ HackerNews::Application.routes.draw do
   # downvoting comments
   get "/posts/:post_id/comments/:comment_id/downvoted" => 'votes#downvote',
     as: "post_comment_downvote", defaults: {votable: :comment}
-
-
-
-  # resources :user do
-  # 	resources :posts do
-  # 		resources :comments, only: [:index, :create]
-  # 	end
-  # end
-
-  # post "people/:id" => 'people#show'
-  # resources :users, only: [:index, :show, :new, :create]
 
 end

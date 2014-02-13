@@ -3,7 +3,6 @@ class VotesController < ApplicationController
 	before_action :authenticate_user!
 
 	def upvote
-		# you can only vote on the posts/1/comments page, not on front page (at the moment)
 		# binding.pry
 		vote = Vote.new(direction: true, user_id: current_user.id)
 
@@ -14,7 +13,7 @@ class VotesController < ApplicationController
 			redirect_to :back
 		else
 			# else show error and redirect to the same page you were at
-			flash[:alert] = "You can't do that!"
+			flash[:alert] = "You've already voted."
 			redirect_to :back
 		end
 
@@ -30,13 +29,12 @@ class VotesController < ApplicationController
 			redirect_to :back
 		else
 			# else show error and redirect to the same page you were at
-			flash[:alert] = "You can't do that!"
+			flash[:alert] = "You've already voted."
 			redirect_to :back
 		end
 	end
 
 	def delete_vote
-
 	end
 
 	private
