@@ -9,11 +9,11 @@ feature 'Manage Articles' do
     @article2 = create(:article, title: 'one')
     @article3 = create(:article, title: 'three')
 
-    create(:article_vote, votable: @article2, direction: true, user_id: user1.id)
-    create(:article_vote, votable: @article2, direction: true, user_id: user2.id)
-    create(:article_vote, votable: @article1, direction: false, user_id: user1.id)
-    create(:article_vote, votable: @article3, direction: false, user_id: user2.id)
-    create(:article_vote, votable: @article3, direction: false, user_id: user1.id)
+    create(:article_vote, votable: @article2, direction: true, user: user1)
+    create(:article_vote, votable: @article2, direction: true, user: user2)
+    create(:article_vote, votable: @article1, direction: false, user: user1)
+    create(:article_vote, votable: @article3, direction: false, user: user2)
+    create(:article_vote, votable: @article3, direction: false, user: user1)
   end
 
   scenario 'View all article titles that are links to an ext webpage' do

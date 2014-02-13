@@ -11,11 +11,11 @@ feature 'User can comment on an article' do
     @comment2 = create(:comment, article: @article, content: 'one')
     @comment3 = create(:comment, article: @article, content: 'three')
 
-    create(:comment_vote, votable: @comment2, direction: true, user_id: @user1.id)
-    create(:comment_vote, votable: @comment2, direction: true, user_id: @user2.id)
-    create(:comment_vote, votable: @comment1, direction: false, user_id: @user1.id)
-    create(:comment_vote, votable: @comment3, direction: false, user_id: @user2.id)
-    create(:comment_vote, votable: @comment3, direction: false, user_id: @user1.id)
+    create(:comment_vote, votable: @comment2, direction: true, user: @user1)
+    create(:comment_vote, votable: @comment2, direction: true, user: @user2)
+    create(:comment_vote, votable: @comment1, direction: false, user: @user1)
+    create(:comment_vote, votable: @comment3, direction: false, user: @user2)
+    create(:comment_vote, votable: @comment3, direction: false, user: @user1)
   end
 
   scenario 'successfully' do

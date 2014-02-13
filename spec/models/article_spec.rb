@@ -42,12 +42,12 @@ describe Article do
     end
 
     it 'returns 2 when there are two up votes' do
-      @article.votes << create(:vote_up, user_id: @user.id)
+      @article.votes << create(:vote_up, user: @user)
       expect(@article.count_votes).to eq 1
     end
 
     it 'returns -2 when there are two down votes' do
-      @article.votes << create(:vote_down, user_id: @user.id)
+      @article.votes << create(:vote_down, user: @user)
       expect(@article.count_votes).to eq -1
     end
   end
