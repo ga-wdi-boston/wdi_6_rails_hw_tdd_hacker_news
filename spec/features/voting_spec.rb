@@ -6,7 +6,6 @@ feature 'Vote' do
     submission = create(:submission, user: user)
     sign_in_as(user)
     click_on 'Up vote'
-
     click_on 'Up vote'
     expect(page).to have_content 'Already voted!'
   end
