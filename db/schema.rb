@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20140211235334) do
     t.text     "title"
     t.text     "url"
     t.integer  "user_id"
-    t.integer  "points",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140211235334) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "article_id"
+    t.integer  "sub_comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

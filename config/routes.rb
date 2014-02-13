@@ -2,7 +2,9 @@ HackerNews::Application.routes.draw do
   devise_for :users
 
   resources :articles do
-    resources :comments
+    resources :comments do
+    	resources :comments
+    end
   end
 
   root to: 'articles#index'
