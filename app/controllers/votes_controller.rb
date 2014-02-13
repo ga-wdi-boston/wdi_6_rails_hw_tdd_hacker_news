@@ -15,7 +15,7 @@ class VotesController < ApplicationController
         	return redirect_to [article, :comments]
       	end
     else
-    	flash[:notice] = 'you voted already.'
+    	flash[:notice] = 'something went wrong.'
 	  end
 	end
 
@@ -33,7 +33,7 @@ class VotesController < ApplicationController
 	      	redirect_to [article, :comments]
 	    	end
     else
-    	flash[:notice] = 'you voted already.'
+    	flash[:notice] = 'something went wrong.'
 	  end
 	end
 

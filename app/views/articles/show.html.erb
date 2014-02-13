@@ -1,5 +1,5 @@
 <section class="Article-Details">
-<h1>@article.title</h1>
+<h1><% @article.title %></h1>
 	<table>
 	<tr>
 		<th>Title</th>
@@ -16,14 +16,14 @@
 	</table>
 	<nav class="Article-Detials-Nav">
 	<% if user_signed_in? %>
-	<ol>
+	<ul>
 	<li><%= link_to "see and post comments!", article_comments_path(@article.id) %> </li>
 	<li><%=link_to 'vote up on article', article_up_vote_path(@article), method: :post %></li>
   <li><%= link_to 'vote down on article', article_down_vote_path(@article), method: :post %></li>
   <% else %>
   <li> Sign in for more options </li>
   <% end %>
-  </ol>
+  </ul>
 	</nav>
 </section>
 
