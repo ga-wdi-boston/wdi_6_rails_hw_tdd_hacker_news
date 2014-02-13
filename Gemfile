@@ -48,5 +48,8 @@ group :development do
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
   gem 'smusher'
+end
+
+group :production, :development do
   gem 'rails_12factor'
 end
