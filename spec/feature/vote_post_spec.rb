@@ -33,7 +33,7 @@ feature "comment link" do
 	 	user = create(:another_user)
 	 	sign_in_as(user)
 	 	click_on "-"
-	 	expect(page).to have_content("1")
+	 	expect(page).to have_content("0")
 	 	#end
 	end
 

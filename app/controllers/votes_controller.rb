@@ -9,7 +9,12 @@ class VotesController < ApplicationController
     if par =="up"
       @vote = Vote.new(voteable_type: params[:voteable].classify, user_id: current_user.id)
       @vote.direction = true
-      @voteable.votes << @vote
+      if @voteable.votes << @vote
+        flash[:miig] = "success"
+      else
+        flash[:miig] = "you've already upvote"
+      end
+      
       redirect_to :back
     elsif par == "down"
       @vote = Vote.new(voteable_type: params[:voteable].classify, user_id: current_user.id)

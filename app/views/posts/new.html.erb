@@ -1,7 +1,11 @@
+
+<%= flash[:msg]%>
 <%= form_for @post do |f| %>
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :links %>
 	<%= f.text_field :links %>
+	<%= f.label :article %>
+	<%= f.text_area :article %>
 	<%= f.submit "Create Post" %>
 <% end %>

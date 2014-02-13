@@ -4,13 +4,13 @@
 <ul>
 <% @comments.each do |comment| %>
 <div class="comment" id="<%= comment.id %>">
-	<li><%= comment.comment %></li>created by <%= User.find(comment.user_id).email	 if comment.user_id.present? %></dt><%= comment.votes.where(direction: true).count %> <%= link_to "^", new_post_comment_vote_path(@post, comment, :baz => "up") %> <%= link_to "-", new_post_comment_vote_path(@post, comment, :baz => "down") %>
+	<li><h4><%= comment.comment %></h4></li>
+	created by <%= User.find(comment.user_id).email	 if comment.user_id.present? %></dt>&nbsp &nbsp
+	<%= comment.votes.where(direction: true).count - comment.votes.where(direction: false).count%>
+	votes <%= link_to "^", new_post_comment_vote_path(@post, comment, :baz => "up") %> <%= link_to "-", new_post_comment_vote_path(@post, comment, :baz => "down") %>
 	</div>
 <% end %>
 </ul>
 
 
 <%= link_to "back", posts_path %>
-
-
-Vote the comment
