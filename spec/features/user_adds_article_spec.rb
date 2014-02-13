@@ -15,4 +15,11 @@ feature 'Logged in user can add article' do
 		expect(page).to have_content 'First article'
 	end
 
+	scenario 'unsuccessfully if not logged in' do
+		click_link 'Sign out'
+		visit root_path
+		expect(page).to_not have_link 'Sumbit'
+
+	end
+
 end

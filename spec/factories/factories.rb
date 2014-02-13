@@ -4,7 +4,6 @@ FactoryGirl.define do
  	user
  	title 'Test article'
  	url 'www.article.com'
- 	points 0
  end
 
  factory :user do
