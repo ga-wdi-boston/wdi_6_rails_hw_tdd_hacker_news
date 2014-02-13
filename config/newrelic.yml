@@ -218,7 +218,7 @@ test:
 production:
   <<: *default_settings
   monitor_mode: true
-  app_name: Hacker News (Test)
+  app_name: Hacker News (Production)
 
 # Many applications have a staging environment which behaves
 # identically to production. Support for that environment is provided
