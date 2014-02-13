@@ -3,7 +3,7 @@
 	<%= f.label :title %>
 	<%= f.text_field :title %>
 	<%= f.label :blurb %>
-	<%= f.text_field :blurb %>
+	<%= f.text_area :blurb, cols: 30, rows: 15 %>
 	<%= f.label :url %>
 	<%= f.text_field :url %>
 	<%= f.submit "create article" %>
