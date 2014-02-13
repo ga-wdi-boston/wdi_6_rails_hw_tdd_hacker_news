@@ -11,7 +11,6 @@ signed in as <%= current_user.email %>
 <% end %>
 
 <h1>All Posts</h1>
-pluralize(post.comments.length)
 <dl>
 <% @posts.each do |post| %>
 	<dt><h2><%= link_to post.title, post.links.include?("http") ? post.links : "http://#{post.links}" %> </h2></dt>
