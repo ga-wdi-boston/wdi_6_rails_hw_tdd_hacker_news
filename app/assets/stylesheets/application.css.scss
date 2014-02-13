@@ -16,7 +16,6 @@
 ul {
 	padding: 0;
 	list-style-type: none;
-	padding-bottom: 20px;
 }
 
 body {
@@ -29,13 +28,19 @@ table {
 }
 
 ol {
+	list-style-type: decimal;
 	list-style-position: inside;
 	padding: 0;
 	margin: 0;
 }
 
 th, td {
-	padding: 10px 10px;
+	padding: 0 10px;
+	vertical-align: center;
+}
+
+tr.pad-bottom > td {
+	padding-bottom: 20px;
 }
 
 nav {
@@ -49,7 +54,7 @@ nav ul li {
 }
 
 .short-cell {
-	width: 10%;
+	width: 5%;
 }
 
 .inline {
@@ -60,9 +65,19 @@ nav ul li {
 	float: right;
 }
 
-
-.comment-form {
-	margin-bottom: 20px;
+.pad-bottom {
+	padding-bottom: 20px;
 }
 
+.nested {
+	margin-left: 20px;
+}
 
+.sub-line {
+	font-size: 80%;
+	color: gray;
+}
+
+#flash-section {
+	min-height: 60px;
+}

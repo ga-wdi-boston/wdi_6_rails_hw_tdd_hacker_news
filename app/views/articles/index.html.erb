@@ -1,22 +1,18 @@
-<ol>
-	<table>
-		<tr>
-		<th colspan='2'>Articles List</th>
-		</tr>
-		<% @articles.each do |article| %>
+<table>
+	<% @articles.each do |article| %>
+		<div class='article'>
 			<tr>
-			<td class='short-cell'><li></li></td>
-			<td class='short-cell'><%= button_to 'Up vote', new_article_vote_path(article, data: {up: true})  %></td>
-			<td class='short-cell'><%= button_to 'Down vote', new_article_vote_path(article, data: {up: false}) %></td>
-			<td><%= link_to article.title, article.url, target: '_blank' %></td>
+				<td class='short-cell up'><div class='btn btn-default up'>
+				<%= link_to raw("<span class='glyphicon glyphicon-chevron-up'></span>"), new_article_vote_path(article, data: {up: true}), method: :post %></div>
+				</td>
+				<td><h4><%= link_to article.title, article.url, target: '_blank' %></h4></td>
 			</tr>
-			<tr>
-			<td></td>
-			<td><%= article.get_votes %> points</td>
-			<td><%= link_to "#{article.comments.count} comments", article_path(article) %></td>
-
+			<tr class='pad-bottom'>
+				<td class='down'><div class='btn btn-default'><%= link_to raw("<span class='glyphicon glyphicon-chevron-down'></span>"), new_article_vote_path(article, data: {up: false}), method: :post %></div></td>
+				<td><%= article.get_votes %> points | by <%= article.user.email %> <%= time_ago_in_words(article.created_at) %> | <%= link_to "#{article.comments.count} comments", article_path(article) %></td>
 			</tr>
+		</div>
+	<% end %>
+	</ol>
+</table>
 
-		<% end %>
-	</table>
-</ol>
