@@ -20,3 +20,4 @@ post = Post.first
 100.times do |i|
 	user = User.find(3)
 	post.comments(body: "Comment number #{i}", user_id: user.id )
+end
