@@ -10,7 +10,11 @@
   <td><%= @submission.description %></td>
   <td><%= @submission.user_id %></td>
 </tr>
+</table><br>
 
-<%= link_to "View comments", submission_comments_path(@submission.id) %>
-<%= link_to "Leave comment", new_submission_comment_path(@submission.id) %>
+<nav>
+  <%= link_to "View comments", submission_comments_path(@submission.id) %>
+  <%= link_to "Leave comment", new_submission_comment_path(@submission.id) %>
+</nav>
+
 

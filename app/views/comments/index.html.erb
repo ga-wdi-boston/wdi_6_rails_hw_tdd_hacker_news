@@ -1,11 +1,12 @@
 <h1><%= @submission.title %></h1>
+<h3>Comments</h3>
 
 <% @comments.each do |comment| %>
 <ul>
-  <li>Comment: <%= comment.body %></li>
-  <li><%= button_to 'Up vote', submission_comment_votes_path(@submission.id, comment.id), method: :post %></li>
-  <li>Vote Count: <%= comment.votes.where(direction: true).count %></li>
+  <li>Comment: <%= comment.body %>
+      <%= button_to 'Up vote', submission_comment_votes_path(@submission.id, comment.id), method: :post %>
+      Votes: <%= comment.votes.where(direction: true).count %></li>
 </ul>
 <% end %>
 
-<%= link_to "All Submissions", submissions_path %>
+<%= link_to "View All Submissions", submissions_path %>
