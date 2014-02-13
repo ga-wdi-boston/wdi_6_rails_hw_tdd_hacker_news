@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 before_action :set_article
 
 	def index
-		@comments = Comment.all { |x,y|
+		@comments = Article.find(params[:article_id]).comments { |x,y|
 			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === true }.count
 		}.reverse
 	end

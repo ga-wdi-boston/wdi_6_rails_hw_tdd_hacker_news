@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
 
 	def index
+		#should move logic to model
 		@articles = Article.all.sort { |x,y|
-			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === true }.count
+			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === false }.count
 		}.reverse
 	end
 
