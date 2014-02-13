@@ -1,21 +1,27 @@
-<h1>leave a comment on <%= @article.title %> </h1>
-
-<% if user_signed_in? %>
-  <%= form_for :comment do |f| %>
-    <%= f.label :content, 'content', class: 'display-none'%>
-		<%= f.text_field :content %>
-    <%= f.submit 'create comment' %>
+<section class="Comments-For-Article">
+<h1>leave a comment on: <%= @article.title %> </h1>
+  <div>
+  <% if user_signed_in? %>
+    <%= form_for :comment do |f| %>
+      <%= f.label :content, 'content', class: 'display-none'%>
+  		<%= f.text_field :content %>
+      <%= f.submit 'create comment' %>
+    <% end %>
   <% end %>
-<% end %>
-<% @comments.each do |comment| %>
-  <%= comment.content %>
-  <ol>
-    <% if user_signed_in? %>
-    <p><%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post %></p>
-    <p><%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post%></p>
-     <% else %>
-     <p> Sign in for more options </p>
-     <% end %>
-<% end %>
-  </ol>
-<%= link_to 'back', root_path %>
+  </div>
+
+  <nav class="Comments-Detials-Nav">
+  <% @comments.each do |comment| %>
+    <%= comment.content %>
+    <ol>
+      <% if user_signed_in? %>
+      <li><%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post %></li>
+      <li><%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post%></li>
+       <% else %>
+       <li> Sign in for more options </li>
+       <% end %>
+  <% end %>
+    </ol>
+  </nav>
+  <%= link_to 'back', root_path %>
+</section>
