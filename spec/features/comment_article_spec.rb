@@ -29,6 +29,14 @@ feature 'User can comment on an article' do
     expect(page).to have_content(comment.content)
   end
 
+  scenario 'unsuccessfully' do
+    sign_in_as @user
+    click_on 'comments'
+    click_button 'add comment'
+
+    expect(page).to have_content("Content can't be blank")
+  end
+
   scenario 'view comments in order of votes, descending' do
     visit root_path
     click_on 'comments'

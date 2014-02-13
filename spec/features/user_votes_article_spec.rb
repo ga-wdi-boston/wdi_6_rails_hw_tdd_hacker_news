@@ -13,6 +13,7 @@ feature 'User can vote only once and' do
     expect(page).to have_content(1)
     click_on 'vote up'
     expect(page).to have_content(1)
+    expect(page).to have_content('Already voted!')
     click_on 'Sign Out'
 
     sign_in_as @user2
@@ -26,9 +27,11 @@ feature 'User can vote only once and' do
     sign_in_as @user
     click_on 'vote down'
     expect(page).to have_content(-1)
-    click_on 'vote up'
+    click_on 'vote down'
     expect(page).to have_content(-1)
+    expect(page).to have_content('Already voted!')
   end
+
 end
 
 

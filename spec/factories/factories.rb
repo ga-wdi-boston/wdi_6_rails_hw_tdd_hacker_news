@@ -17,6 +17,8 @@ FactoryGirl.define do
     article
   end
 
+  # Vote factories
+
   factory :vote_up, class: Vote do
     direction true
   end
