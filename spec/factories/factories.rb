@@ -17,6 +17,11 @@ FactoryGirl.define do
  	body 'This is a new comment'
  end
 
+ factory :vote do
+ 	user
+ 	up true
+ end
+
 end
 
 

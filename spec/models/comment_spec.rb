@@ -18,4 +18,26 @@ describe Comment do
 			expect(Comment.create(body: 'Test comment', article_id: 1)).to_not be_valid
 		end
 	end
+
+	describe '.get_votes' do
+
+		before do
+			user = create(:user)
+			article = create(:article)
+			@comment = create(:comment)
+
+		end
+
+		it 'returns a count of up votes for an object' do
+			@comment.votes << create(:vote) << create(:vote)
+			expect(@comment.get_votes).to eq 2
+
+			@comment.votes << create(:vote, up: false)
+			expect(@comment.get_votes).to eq 2
+
+		end
+
+
+	end
+
 end

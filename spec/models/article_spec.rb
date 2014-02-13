@@ -16,5 +16,19 @@ describe Article do
 		end
 	end
 
+	describe '.get_votes' do
+
+		before do
+			user = create(:user)
+			@article = create(:article)
+		end
+
+		it 'returns a count of up votes for an object' do
+			@article.votes << create(:vote)
+			expect(@article.get_votes).to eq 1
+		end
+
+	end
+
 
 end
