@@ -1,20 +1,39 @@
-<h2><%= link_to @post.title, @post.link %></h2>
+<h2>
+	<%= link_to '[+]', [@post, :upvote] %>
+	<%= link_to '[-]', [@post, :downvote] %>
+	<%= link_to @post.title, @post.link %>
+</h2>
+
+
+<h3>
+	<%= @post.votes.where(direction: true).count - @post.votes.where(direction: false).count %> votes
+</h3>
 
 <p><%= @post.description %></p>
 
 <h3>Comments</h3>
 
 <% @post.comments.each do |comment| %>
-	<article class="comment_<%= comment.id %>">
-		<p><%= comment.body %></p>
-		<p>Posted by <%= comment.user.email %></p>
+	<article class="comment_<%= comment.id %>" id="<%= comment.id %>">
+		<p style="margin-left: 0px; margin-bottom: 0px;">
+			<%= comment.votes.where(direction: true).count - comment.votes.where(direction: false).count %> votes
+
+			<%= link_to '[+]', [@post, comment, :upvote] %>
+			<%= link_to '[-]', [@post, comment, :downvote] %>
+
+
+			<%= comment.user.email %>
+			<%= time_ago_in_words(comment.created_at) %> ago
+			<a href="#<%= comment.id %>">link</a>
+		</p>
+		<p style="margin-left: 20px; margin-top: 0px;"><%= comment.body %></p>
 	</article>
 <% end %>
 
 
-<h4>What does the fox say?</h4>
+<h3>What does the fox say?</h3>
 <%= form_for [@post, @comment] do |f| %>
-	<%= f.label :body %>
-	<%= f.text_field :body %>
-	<%= f.submit "Submit Comment", controller: :posts, action: :create %>
+	<p><%= f.hidden_field :body %></p>
+	<p><%= f.text_area :body %></p>
+	<p><%= f.submit "Submit Comment", controller: :posts, action: :create %></p>
 <% end %>

@@ -1,10 +1,8 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!, only: [:create]
+	# if there is no user logged in, the create action doesn't run at all, because it runs authenticate_user! which returns false so create doesn't run
 
 	def index
-		if user_signed_in?
-				@user = current_user
-		end
 		@post = Post.find(params[:post_id])
 		@comment = Comment.new
 	end
@@ -18,10 +16,6 @@ class CommentsController < ApplicationController
 		if @comment.save
 			flash[:notice] = "Your comment has been submitted!"
 			redirect_to post_comments_path
-		elsif user_signed_in? == false
-			# this doesn't work yet
-			flash[:alert] = "You must be signed in to comment."
-			render :index
 		else
 			flash[:alert] = @comment.errors.full_messages.join(', ')
 			render :index

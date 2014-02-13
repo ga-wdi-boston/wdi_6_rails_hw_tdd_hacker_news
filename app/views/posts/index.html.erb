@@ -3,12 +3,13 @@
 <div class="alert alert-danger"><%= flash[:alert] %></div>
 
 <h2>All Posts</h2>
+
 <% @posts.each do |post| %>
 	<article class="post_<%= post.id %>">
 		<h3><%= link_to post.title, post.link %></h3>
 		<ul style="list-style: none; margin: 0;">
 			<li><%= post.description %></li>
-			<li><%= link_to "Comments", post_comments_path(post, @comment) %></li>
+			<li><%= link_to "Comments", post_comments_path(post) %></li>
 		</ul>
 	</article>
 <% end %>
