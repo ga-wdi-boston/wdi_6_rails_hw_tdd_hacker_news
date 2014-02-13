@@ -69,12 +69,13 @@
 								<span id="score_unique_id)">
 									<%= post.upvotes %>
 								</span>
-								" by "
+								 by
 								<a href="user_id">
 									user <%= post.user_id %> |
 								</a>
 								<% if signed_in? %>
-									<%= link_to 'comments', post_comments_path(current_user.id, post.id) %>
+									<%= link_to 'comments', post_comments_path(current_user, post) %> |
+									<%= link_to 'add new comment', new_post_comment_path(current_user, post) %>
 								<% else %>
 									sign in to see comments
 								<% end %>
