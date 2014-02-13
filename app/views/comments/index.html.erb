@@ -1,4 +1,4 @@
-<h1>leave a comment</h1>
+<h1>leave a comment on <%= @article.title %> </h1>
 
 <% if user_signed_in? %>
   <%= form_for :comment do |f| %>
@@ -10,9 +10,12 @@
 <% @comments.each do |comment| %>
   <%= comment.content %>
   <ol>
-    <li><%= comment %></li>
-    <li><%= link_to 'vote up'%></li>
-    <li><%= link_to 'vote down'%></li>
+    <% if user_signed_in? %>
+    <p><%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post %></p>
+    <p><%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post%></p>
+     <% else %>
+     <p> Sign in for more options </p>
+     <% end %>
 <% end %>
-
+  </ol>
 <%= link_to 'back', root_path %>

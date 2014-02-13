@@ -1,67 +1,58 @@
-# class VotesController < ApplicationController
-#   #before_action :set_votable
+class VotesController < ApplicationController
+  before_action :set_votable
 
-#   def up_vote
-#     @vote = Vote.new(vote_params)
-#     @vote.direction = true
-#     if @vote.save
-#       redirect_to root_path, notice: 'vote was successfully created.'
-#     end
-#   end
+	def up_vote
+		vote = @votable.votes.find_or_create_by(user_id: current_user.id)
+	  vote.direction = true
+	  if article_id = params[:article_id]
+    	article = Article.find(article_id)
+    end
+	  if vote.save
+	    flash[:notice] = 'vote was successfully created - up vote.'
+	    	if @votable.is_a?(Article)
+        	return redirect_to root_path
+      	else
+        	return redirect_to [article, :comments]
+      	end
+    else
+    	flash[:notice] = 'you voted already.'
+	  end
+	end
 
-#   def down_vote
-#     @vote = Vote.new(vote_params)
-#     @vote.direction = false
-#     if @vote.save
-#       redirect_to root_path, notice: 'vote was successfully created.'
-#     end
-#   end
+	def down_vote
+	  vote = @votable.votes.find_or_create_by(user_id: current_user.id)
+	  vote.direction = false
+	  if article_id = params[:article_id]
+    	article = Article.find(article_id)
+    end
+	  if vote.save
+	    flash[:notice] = 'vote was successfully created - down vote.'
+	    	if @votable.is_a?(Article)
+	      	redirect_to root_path
+	    	else
+	      	redirect_to [article, :comments]
+	    	end
+    else
+    	flash[:notice] = 'you voted already.'
+	  end
+	end
 
-#   def edit
-#   end
+	private
 
-#   def create
-#     @vote = @votable.votes.new(vote_params)
-#     respond_to do |format|
-#       if @vote.save
-#         format.html { redirect_to [@votable, @vote], notice: 'vote was successfully created.' }
-#       else
-#         format.html { render action: 'new' }
-#       end
-#     end
-#   end
+	def set_votable
+    @votable = params[:votable].classify.constantize.find(votable_id)
+  end
 
-#   def update
-#     respond_to do |format|
-#       if @vote.update(vote_params)
-#         format.html { redirect_to [@votable, @vote], notice: 'vote was successfully updated.' }
-#       else
-#         format.html { render action: 'edit' }
-#       end
-#     end
-#   end
+  def votable_id
+    params[(params[:votable] + "_id").to_sym]
+  end
 
-#   def destroy
-#     @vote.destroy
-#     respond_to do |format|
-#       format.html { redirect_to [@votable, :votes] }
-#     end
-#   end
+  def vote_params
+    params.permit(:votable_id, :votable_type)
+	end
+end
 
-#   private
-#     def set_vote
-#       @vote = vote.find(params[:id])
-#     end
 
-#     def set_voteable
-#       @votable = params[:votable].classify.constantize.find(votable_id)
-#     end
 
-#     def voteable_id
-#       params[(params[:votable] + "_id").to_sym]
-#     end
 
-#     def vote_params
-#       params.permit(:votable_id, :votable_type)
-#     end
-# end
+

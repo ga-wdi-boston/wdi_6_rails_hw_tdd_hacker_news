@@ -6,14 +6,21 @@
 <tr>
 	<th>Title</th>
 	<th>Description</th>
-	<th>Comment</th>
+	<th>More Info?</th>
+	<th>Comment on it?</th>
 </tr>
 <% @articles.each do |article|%>
 	<tr>
 		<td> <%= article.title %> </td>
 		<td> <%= article.blurb %> </td>
-		<td> <%= link_to "comment", [article, :comments] %> </td>
 		<td> <%= link_to "more", article_path(article.id) %></td>
+		<% if user_signed_in? %>
+		<td><%= link_to "comment", [article, :comments] %> </td>
+		<td><%= link_to 'vote up on article',   article_up_vote_path(article), method: :post %></td>
+    <td><%= link_to 'vote down on article', article_down_vote_path(article), method: :post %></td>
+    <% else %>
+    <td> Sign in for more options </td>
+    <% end %>
 	</tr>
 <%end%>
 </table>

@@ -15,7 +15,6 @@ feature "user can leave a comment" do
 		click_button 'Sign in'
 		visit articles_path
 		click_link "comment"
-		save_and_open_page
 		fill_in 'content', with: 'yay!'
 		click_on "create comment"
 	end

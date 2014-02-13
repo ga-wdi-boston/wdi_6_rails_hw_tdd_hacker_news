@@ -5,19 +5,24 @@
 <tr>
 	<th>Title</th>
 	<th>Description</th>
-	<th>Comments</th>
 	<th>Vote Count</th>
-	<th>new comment?</th>
-	<th>vote on it?</th>
+	<th>Comment Count</th>
 </tr>
 	<tr>
 		<td> <%= @article.title %> </td>
 		<td> <%= @article.blurb %> </td>
-		<% @article.comments.each do |comment| %>
-		<td> <%= comment.content %> vote on comment?<%= link_to "vote on comment", [:new, comment, :vote ] %></td>
-		<% end %>
-		<td> votes:<%= @article.votes.count %></td>
-		<td> <%= link_to "comment", article_comments_path(@article.id) %> </td>
-		<td> vote on article?<%= link_to "vote on article", [:new, @article, :vote ] %> </td>
+		<td> <%= @article.votes.count %></td>
+		<td> <%= @article.comments.count %></td>
+		<nav>
+		<% if user_signed_in? %>
+		<p><%= link_to "see and post comments!", article_comments_path(@article.id) %> </p>
+		<p><%=link_to 'vote up on article', article_up_vote_path(@article), method: :post %></p>
+    <p><%= link_to 'vote down on article', article_down_vote_path(@article), method: :post %></p>
+    <% else %>
+    <p> Sign in for more options </p>
+    <% end %>
+    </nav>
 	</tr>
 </table>
+
+
