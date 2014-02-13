@@ -6,13 +6,21 @@ class VotesController < ApplicationController
   end
 
   def create
-    vote = @votable.votes.new(direction: true)
+    vote = @votable.votes.new(direction: true, user_id: current_user.id)
     if vote.save
       flash[:notice] = 'Voted up!'
-      redirect_to root_path
+      if @votable.class == Submission
+        redirect_to root_path
+      elsif @votable.class == Comment
+        redirect_to submission_comments_path(@votable.submission)
+      end
     else
       flash[:notice] = 'Already voted!'
-      redirect_to root_path
+      if @votable.class == Submission
+        redirect_to root_path
+      elsif @votable.class == Comment
+        redirect_to submission_comments_path(@votable.submission)
+      end
     end
   end
 
