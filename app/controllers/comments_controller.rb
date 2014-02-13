@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
 	end
 
 	def new
+		@submission = Submission.find(params[:submission_id])
 		@comment = Comment.new
-		@submission = Submission.find(params[:id])
 	end
 
 	def create
@@ -16,5 +16,5 @@ end
 private
 
 	def comment_params
-		params(:comment).require(:body, :user_id, :id)
+		params(:comment).require(:body, :user_id, :submission_id)
 	end

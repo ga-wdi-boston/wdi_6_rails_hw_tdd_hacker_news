@@ -11,13 +11,13 @@
 				<% else %>
 					<li><%= link_to 'Add Comment', new_user_session_path %></li>
 				<% end %>
-			</br>
+				</br>
 			<% end %>
-			</br>
+				</br>
 				<% if user_signed_in? %>
-					<li><%= link_to 'Add New Submission', new_submission_path %></li>
+					<p><%= link_to 'Add New Submission', new_submission_path %></p>
 				<% else %>
-					<li><%= link_to 'Add New Submission', new_user_session_path %></li>
+					<p><%= link_to 'Add New Submission', new_user_session_path %></p>
 
 			<% end %>
 	</ul>

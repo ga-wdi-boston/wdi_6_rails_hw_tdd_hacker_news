@@ -1,5 +1,6 @@
-<%= form_for [@comment, @submission] do |f| %>
-	<%= f.text_field :title %>
-	<%= f.text_area(:post, :body, cols: 20, rows: 40) %>
+<h1>Add Your Comment</h1>
+
+<%= form_for [@submission, @comment] do |f| %>
+	<%= f.text_area :body, cols: 40, rows: 20 %>
 	<%= f.submit 'Create Comment' %>
 <% end %>
