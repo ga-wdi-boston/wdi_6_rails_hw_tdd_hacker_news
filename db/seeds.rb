@@ -8,7 +8,7 @@
 mike = User.create(email: 'mikestone@example.com', password: 'password')
 
 10.times do |i|
-	"user#{i}" = User.create(email: "user#{i}@example.com", password: 'password')
+	User.create(email: "user#{i}@example.com", password: 'password')
 end
 
 10.times do |i|
