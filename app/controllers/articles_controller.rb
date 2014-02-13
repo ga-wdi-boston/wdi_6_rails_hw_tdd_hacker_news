@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
+    @articles = Article.includes(:user)
     @articles.sort! { |a, b| b.count_votes <=> a.count_votes }
   end
 
