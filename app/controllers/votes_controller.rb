@@ -9,8 +9,8 @@ class VotesController < ApplicationController
 
 			redirect_to :back
 		else
-			flash.now[:alert] = 'Please sign in or sign up!'
-			redirect_to root_path
+			flash[:warning] = 'Please sign in or sign up!'
+			redirect_to :back
 		end
 	end
 

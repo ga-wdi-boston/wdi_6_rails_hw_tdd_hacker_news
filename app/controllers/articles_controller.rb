@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 
 	def index
 		@articles = Article.all
-		@articles.sort! { |x,y| y.votes.count <=> x.votes.count }
+		@articles.sort! { |x,y| y.get_votes <=> x.get_votes }
 	end
 
 	def new
@@ -10,14 +10,13 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		article = Article.new(article_params)
-		article.user_id = current_user.id
-		if article.save
+		@article = Article.new(article_params)
+		@article.user_id = current_user.id
+		if @article.save
 			flash[:notice] = 'Article submitted'
-			redirect_to article_path(article)
-
+			redirect_to article_path(@article)
 		else
-			flash.now[:error] = article.errors.full_messages.join(', ')
+			flash.now[:error] = @article.errors.full_messages.join(', ')
 			render :new
 		end
 	end
@@ -25,8 +24,8 @@ class ArticlesController < ApplicationController
 	def show
 		@article = Article.find(params[:id])
 		@comment = Comment.new
-		@comments = @article.comments
-		@comments.sort! { |x,y| y.votes.count <=> x.votes.count }
+		@comments = @article.comments.all
+		@comments.sort! { |x,y| y.get_votes <=> x.get_votes }
 	end
 
 	def up_vote

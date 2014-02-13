@@ -10,10 +10,14 @@ feature 'User downvotes an article' do
 
 	scenario 'successfully' do
 		visit root_path
-		page.find('.glyphicon-chevron-up').click
-		expect(page).to have_content '1 points'
-		page.find('.glyphicon-chevron-down').clic
-		expect(page).to have_content '0 points'
+		within('.article') do
+			find('.glyphicon-chevron-up').click
+		end
+		expect(page).to have_content '1 point'
+		within('.article') do
+			find('.glyphicon-chevron-down').click
+		end
+		expect(page).to have_content '-1 points'
 	end
 
 

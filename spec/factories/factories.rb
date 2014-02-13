@@ -14,7 +14,7 @@ FactoryGirl.define do
  factory :comment do
  	article
  	user
- 	body 'This is a new comment'
+ 	body { Faker::Lorem.sentence }
  end
 
  factory :vote do

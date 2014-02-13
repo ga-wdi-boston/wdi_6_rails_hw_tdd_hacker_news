@@ -14,13 +14,9 @@
 
 		<div id='flash-section'>
 
-			<% if flash[:alert].present? %>
-  			<p class="alert"><%= flash.now[:alert] %></p>
-			<% end %>
-
-			<% if flash[:notice].present? %>
-			  <p class="notice"><%= flash.now[:notice] %></p>
-			<% end %>
+			<p class="alert"><%= flash[:warning] %></p>
+		  <p class="notice"><%= flash.now[:notice] %></p>
+		  <p class="error"><%= flash.now[:error] %></p>
 
 		</div>
 

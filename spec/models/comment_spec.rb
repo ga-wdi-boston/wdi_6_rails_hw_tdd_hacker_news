@@ -33,7 +33,7 @@ describe Comment do
 			expect(@comment.get_votes).to eq 2
 
 			@comment.votes << create(:vote, up: false)
-			expect(@comment.get_votes).to eq 2
+			expect(@comment.get_votes).to eq 1
 
 		end
 

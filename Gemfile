@@ -19,6 +19,7 @@ group :test do
   gem 'faker'
   gem 'chronic'
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 group :development, :test do

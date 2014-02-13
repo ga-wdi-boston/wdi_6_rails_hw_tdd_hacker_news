@@ -9,19 +9,24 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = Comment.new(comment_params)
-		@comment.user_id = current_user.id
-		@comment.article_id = params[:article_id]
-		if params[:comment_id].present?
-			@comment.sub_comment_id = params[:comment_id]
-		end
+		if user_signed_in?
+			@comment = Comment.new(comment_params)
+			@comment.user_id = current_user.id
+			@comment.article_id = params[:article_id]
+			if params[:comment_id].present?
+				@comment.sub_comment_id = params[:comment_id]
+			end
 
-		if @comment.save
-			flash[:notice] = 'Comment submitted'
-			redirect_to article_path(@article)
+			if @comment.save
+				flash[:notice] = 'Comment submitted'
+				redirect_to article_path(@article)
+			else
+				flash.now[:error] = @comment.errors.full_messages.join(', ')
+				render :new
+			end
 		else
-			flash.now[:error] = @comment.errors.full_messages.join(', ')
-			render :new
+			flash[:warning] = 'Please sign in or sign up!'
+			redirect_to new_user_session_path
 		end
 
 	end
