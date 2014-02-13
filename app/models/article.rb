@@ -19,12 +19,9 @@ class Article < ActiveRecord::Base
   validates :text, presence: true, unless: :url?
 
   def count_votes
-    up_votes = votes.where(direction: true).count
-    down_votes = votes.where(direction: false).count
+    up_votes = votes.where(direction: true).length
+    down_votes = votes.where(direction: false).length
     up_votes - down_votes
   end
 
-  def count_comments
-    comments.count
-  end
 end
