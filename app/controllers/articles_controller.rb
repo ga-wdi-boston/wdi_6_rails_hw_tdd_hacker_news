@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
 
 	def index
-		@articles = Article.all.sort_by()
+		@articles = Article.all.sort { |x,y|
+			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === true }.count
+		}.reverse
 	end
 
 	def show
