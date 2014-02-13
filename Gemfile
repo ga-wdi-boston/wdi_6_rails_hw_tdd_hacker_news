@@ -9,7 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
-
+gem 'newrelic_rpm'
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
 # You'll have to refer to your notes for spec_helper configuration
