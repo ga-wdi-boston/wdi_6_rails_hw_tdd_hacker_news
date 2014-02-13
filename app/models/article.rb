@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_many :votes, as: :votable
-  validates :url, presence: true, format: { with: /http:\/\/.*/, message: 'must be a valid webpage' }, unless: :text?
+  validates :url, presence: true, format: { with: /https?:\/\/.*/, message: 'must be a valid webpage' }, unless: :text?
   validates :title, presence: true
   validates :text, presence: true, unless: :url?
 
