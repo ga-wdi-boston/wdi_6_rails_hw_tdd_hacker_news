@@ -27,16 +27,6 @@ feature "Manage Users" do
 	  # save_and_open_page
 	end
 
-	scenario "Signed-in user can create post" do
-		user = sign_in
-		visit new_user_post_path(user.id)
-	  expect(page).to have_content('New Post')
-		save_and_open_page
-	end
+end
 
 
-
-
-
-
- end

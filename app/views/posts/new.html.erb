@@ -1,9 +1,25 @@
-<% if user_signed_in? %>
-	Signed in as <%= current_user.email %>
-	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-	<%= link_to 'Sign in', new_user_session_path %>
-	<%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
-<hr>
-<h1>New Post</h1>
+<center>
+	<table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+		<thead>
+			<td bgcolor="#ff6600">Submit</td>
+			<td bgcolor="#ff6600"> </td>
+		</thead>
+		<tbody>
+			</tr>
+			<tr style="height:10px"></tr>
+			<tr>
+				<%= form_for [current_user, @post] do |f| %>
+			</tr>
+			<tr>
+				<td>title</td> <td><%= f.text_field :body, :size => 50 %></td>
+			</tr>
+			<tr>
+				<td>url</td> <td><%= f.text_field :link, :size => 50 %></td>
+			</tr>
+			<tr>
+				<td><%= f.submit "Post" %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</center>
