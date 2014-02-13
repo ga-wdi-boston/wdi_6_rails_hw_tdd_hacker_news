@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :new]
 
 	def index
-		@posts = Post.all.sort_by{ |post| post.created_at}
+		@posts = Post.order(created_at: :desc)
 	end
 
 	def new

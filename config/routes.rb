@@ -2,10 +2,10 @@ HackerNews::Application.routes.draw do
   devise_for :users
   root to: 'posts#index'
 
-  resources :posts do
-    resources :votes, defaults: {votable: :post}
+  resources :posts, only: [:index, :new, :create] do
+    # resources :votes, defaults: {votable: :post}
   	resources :comments, only: [:index, :create] do
-     resources :votes, defaults: {votable: :comment}
+     # resources :votes, defaults: {votable: :comment}
     end
   end
 

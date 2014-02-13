@@ -5,13 +5,23 @@
 </h2>
 
 
-<h3>
+<h4>
 	<%= @post.votes.where(direction: true).count - @post.votes.where(direction: false).count %> votes
-</h3>
+	by <%= @post.user.email %>
+	<%= time_ago_in_words(@post.created_at).gsub('about','') %> ago
+</h4>
 
 <p><%= @post.description %></p>
 
 <h3>Comments</h3>
+
+<h3>What does the fox say?</h3>
+<%= form_for [@post, @comment] do |f| %>
+	<p><%= f.hidden_field :body %></p>
+	<p><%= f.text_area :body %></p>
+	<p><%= f.submit "Submit Comment", controller: :posts, action: :create %></p>
+<% end %>
+
 
 <% @post.comments.each do |comment| %>
 	<article class="comment_<%= comment.id %>" id="<%= comment.id %>">
@@ -23,17 +33,9 @@
 
 
 			<%= comment.user.email %>
-			<%= time_ago_in_words(comment.created_at) %> ago
+			<%= time_ago_in_words(comment.created_at).gsub('about','') %> ago
 			<a href="#<%= comment.id %>">link</a>
 		</p>
 		<p style="margin-left: 20px; margin-top: 0px;"><%= comment.body %></p>
 	</article>
-<% end %>
-
-
-<h3>What does the fox say?</h3>
-<%= form_for [@post, @comment] do |f| %>
-	<p><%= f.hidden_field :body %></p>
-	<p><%= f.text_area :body %></p>
-	<p><%= f.submit "Submit Comment", controller: :posts, action: :create %></p>
 <% end %>

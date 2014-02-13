@@ -11,11 +11,11 @@ class VotesController < ApplicationController
 		if @votable.votes << vote
 			# then show confirmation and redirect to the same page you were at
 			flash[:notice] = "Vote submitted!"
-			redirect_to post_comments_path
+			redirect_to :back
 		else
 			# else show error and redirect to the same page you were at
 			flash[:alert] = "You can't do that!"
-			redirect_to post_comments_path
+			redirect_to :back
 		end
 
 	end
@@ -27,11 +27,11 @@ class VotesController < ApplicationController
 		if @votable.votes << vote
 			# then show confirmation and redirect to the same page you were at
 			flash[:notice] = "Vote submitted!"
-			redirect_to post_comments_path
+			redirect_to :back
 		else
 			# else show error and redirect to the same page you were at
 			flash[:alert] = "You can't do that!"
-			redirect_to post_comments_path
+			redirect_to :back
 		end
 	end
 
