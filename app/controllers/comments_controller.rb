@@ -9,6 +9,14 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+		@comment = Comment.create(comment_params)
+			if @comment.save!
+				flash[:notice] = 'Created a new comment!'
+      	redirect_to submissions_path
+    	else
+      	flash.now[:errors] = @submission.errors.full_messages
+      	render :new
+    	end
 	end
 
 end
