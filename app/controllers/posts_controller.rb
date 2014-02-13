@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index]
 
 	def index
-		@posts = Post.all
+		@posts = Post.includes(:user).order(created_at: :desc)
+
 	end
 
 	def new

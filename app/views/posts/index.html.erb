@@ -11,12 +11,12 @@ signed in as <%= current_user.email %>
 <% end %>
 
 <h1>All Posts</h1>
-
+pluralize(post.comments.length)
 <dl>
 <% @posts.each do |post| %>
 	<dt><h2><%= link_to post.title, post.links.include?("http") ? post.links : "http://#{post.links}" %> </h2></dt>
 	<h3><%= post.article %></h3><br>
-	 <%= link_to "^", new_post_vote_path(post, :baz => "up") %> <%= link_to "-", new_post_vote_path(post, :baz => "down") %><%= post.votes.where(direction: true).count - post.votes.where(direction: false).count %> votes <span>&nbsp</span><%= link_to " #{post.comments.count} comments", post_comments_path(post) %>, created by <%= User.find(post.user_id).email if post.user_id != nil%></dd><br><br>
+	 <%= link_to "^", new_post_vote_path(post, :baz => "up") %> <%= link_to "-", new_post_vote_path(post, :baz => "down") %><%= post.votes.where(direction: true).count - post.votes.where(direction: false).count %> votes <span>&nbsp</span><%= link_to "#{pluralize(post.comments_count, 'comments')} ", post_comments_path(post) %>, created by <%= post.user.email if post.user_id != nil%></dd><br><br>
 <% end %>
 </dl>
 
