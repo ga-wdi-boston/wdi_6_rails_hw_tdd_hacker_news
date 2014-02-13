@@ -1,0 +1,101 @@
+<center>
+	<table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="f6f6ef">
+		<tbody>
+			<tr>
+				<td bgcolor="ff6600">
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+						<tbody>
+							<tr>
+								<td style="width:18px;padding-right:4x">
+								<%= image_tag('icon1.gif') %>
+								<td style="line-height:12pt; height:10px;"
+									<span class="pagetop">
+										<b>Real Hacker News</b>
+										<img src="s.gif"height="1" width="10">
+										new |
+										comments |
+										ask |
+										jobs |
+										<% if user_signed_in? %>
+											<%= link_to 'submit',  new_post_path(current_user) %>
+										<% else %>
+											submit
+										<% end %>
+										</span>
+								</td>
+								<td style="text-align:right;padding-right:4px;">
+									<span class="pagetop">
+										<% if user_signed_in? %>
+											Signed in as
+											<span id="logged_in">
+												<%= current_user.email %>
+
+											</span> |
+											<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+										<% else %>
+											<%= link_to 'Login', new_user_session_path %>
+										<% end %>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr style="height:10px"></tr>
+			<tr>
+				<td>
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+	<!-- Begin iterate through posts -->
+						<% @posts.each do |post| %>
+							<td align="right" valign="top" class="title"><%= post.id %> </td>
+							<td>
+								<center>
+									<a id="up_unique_id" onclick="return vote" href="vote?for=post_unique_id">
+										<div class="votearrow" title="upvote"></div>
+									</a>
+									<span id="down_unique_id"></span>
+								</center>
+							</td>
+							<td class="title">
+								<%= link_to post.body, post.link %>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"></td>
+							<td class="subtext">
+								<span id="score_unique_id)">
+									<%= post.upvotes %>
+								</span>
+								 by
+								<a href="user_id">
+									user <%= post.user_id %> |
+								</a>
+								<% if signed_in? %>
+									<%= link_to 'comments', post_comments_path(current_user, post) %> |
+									<%= link_to 'add new comment', new_post_comment_path(current_user, post) %>
+								<% else %>
+									sign in to see comments
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+	<!-- End iterate through posts -->
+					</tbody>
+				</table>
+			</tr>
+		</tbody>
+	</table
+</center
+
+
+
+
+
+
+
+
+
+

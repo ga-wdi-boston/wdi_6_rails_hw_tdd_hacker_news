@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+	Signed in as <%= current_user.email %> |
+	<%= link_to 'Sign out', destroy_user_session_path, method: :delete %> |
+	<%= link_to 'Home', '/index' %> |
+	<%= link_to 'New post', new_user_post_path(current_user) %>
+<% end %>
+<hr>
+<h1>The Real Hacker News</h1>

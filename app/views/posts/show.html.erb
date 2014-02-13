@@ -1,0 +1,47 @@
+
+<center>
+	<table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="f6f6ef">
+		<tbody>
+			<tr>
+				<td bgcolor="ff6600">
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+						<tbody>
+							<tr>
+								<td style="width:18px;padding-right:4x">
+								<%= image_tag('icon1.gif') %>
+								<td style="line-height:12pt; height:10px;"
+									<span class="pagetop">
+										<b>Real Hacker News</b>
+										<img src="s.gif"height="1" width="10">
+										new |
+										comments |
+										ask |
+										jobs |
+										<% if user_signed_in? %>
+											<%= link_to 'submit',  new_post_path(current_user) %>
+										<% else %>
+											submit
+										<% end %>
+										</span>
+								</td>
+								<td style="text-align:right;padding-right:4px;">
+									<span class="pagetop">
+										<% if user_signed_in? %>
+											Signed in as
+											<span id="logged_in">
+												<%= current_user.email %>
+
+											</span> |
+											<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+										<% else %>
+											<%= link_to 'Login', new_user_session_path %>
+										<% end %>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>

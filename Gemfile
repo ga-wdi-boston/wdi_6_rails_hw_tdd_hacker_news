@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'newrelic_rpm'
+
 gem 'rails', '4.0.2'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'dotenv-rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -41,7 +43,7 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'

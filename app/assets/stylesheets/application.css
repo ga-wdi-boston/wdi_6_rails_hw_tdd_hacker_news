@@ -11,3 +11,49 @@
  *= require_self
  *= require_tree .
  */
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+.title a:visited {
+
+	text-decoration: none;
+}
+
+#logged_in {
+	color: green;
+}
+
+body {
+ 	font-family: Verdana;
+ 	font-size: 10pt;
+ }
+
+table {
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: gray;
+}
+
+.subtext {
+	font-family: Verdana;
+	font-size: 7pt;
+	color: #828282;
+}
+
+.votearrow {
+	width: 10px;
+	height: 10px;
+	border: 0px;
+	margin: 3px 2px 6px;
+	background: url("grayarrow.gif") no-repeat;
+}
+
+
