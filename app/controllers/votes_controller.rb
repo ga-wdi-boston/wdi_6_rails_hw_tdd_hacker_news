@@ -1,2 +1,2 @@
-class VotesController < ActionController::Base
+class VotesController < ApplicationController
 end

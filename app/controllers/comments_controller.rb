@@ -1,4 +1,4 @@
-class CommentsController < ActionController::Base
+class CommentsController < ApplicationController
 
 	def index
 	end
@@ -16,5 +16,5 @@ end
 private
 
 	def comment_params
-		params(:comment).require(:body, :user_id, :submission_id)
+		params(:comment).require(:body, :user_id, :id)
 	end
