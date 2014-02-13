@@ -1,9 +1,9 @@
 HackerNews::Application.routes.draw do
   devise_for :users
-    resources :submissions do
-        resources :votes, defaults: {votable: 'submissions'}
-      resources :comments do
-        resources :votes, defaults: {votable: 'comments'}
+    resources :submissions, defaults: {votable: 'submission'} do
+        resources :votes
+      resources :comments, defaults: {votable: 'comment'} do
+        resources :votes
         end
       end
     root :to => 'submissions#index'

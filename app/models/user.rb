@@ -19,7 +19,7 @@
 
 class User < ActiveRecord::Base
 	has_many :submissions
-	has_many :comments, as: :votable
+	has_many :comments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

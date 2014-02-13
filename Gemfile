@@ -45,4 +45,5 @@ group :development do
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
   gem 'smusher'
+  gem 'better_errors'
 end

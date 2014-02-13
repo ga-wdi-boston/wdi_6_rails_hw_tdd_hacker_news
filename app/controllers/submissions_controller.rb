@@ -9,7 +9,8 @@ class SubmissionsController < ApplicationController
 	end
 
 	def create
-		@submission = Submission.new(submission_params)
+		@submission = Submission.create(submission_params)
+		@submission.user_id = current_user.id
 			if @submission.save!
 				flash[:notice] = 'Created a new submission!'
       	redirect_to submissions_path
@@ -23,6 +24,6 @@ class SubmissionsController < ApplicationController
 private
 
 	def submission_params
-		params.require(:submission).permit(:title, :url, :user_id)
+		params.require(:submission).permit(:title, :url, :text_block)
 	end
 end

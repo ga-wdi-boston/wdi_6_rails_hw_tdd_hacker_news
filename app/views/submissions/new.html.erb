@@ -5,6 +5,7 @@
 	<%= f.text_field :title %>
 	<%= f.label :url %>
 	<%= f.text_field :url %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.label :text_block %>
+	<%= f.text_area :text_block %>
 	<%= f.submit 'Create Submission' %>
 <% end %>
