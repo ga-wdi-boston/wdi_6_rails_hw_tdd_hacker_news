@@ -16,7 +16,7 @@
 			<td><%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %></td>
 			<td><%= button_to 'Downvote', new_post_upvote_path(post, data: { vote: false }) %></td>
 		<% end %>
-		<td><%= link_to "#{post.count_comments} comments", post_comments_path(post.id) %></td>
+		<td><%= link_to "#{post.comments_count} comments", post_comments_path(post.id) %></td>
 	</tr>
 
 <% end %>

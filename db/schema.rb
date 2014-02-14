@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140213205817) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "comments_count"
+    t.integer  "comments_count", default: 0, null: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
