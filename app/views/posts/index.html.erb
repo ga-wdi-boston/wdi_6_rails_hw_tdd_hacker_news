@@ -1,0 +1,27 @@
+<h3 class="submit"><%= link_to 'Submit Link', new_post_path %></h3>
+
+<% @posts.each do |post| %>
+	<article class="post_<%= post.id %>">
+		<h3>
+			<%= link_to post.title, post.link %>
+		</h3>
+		<p class="indented"><%= post.description %></p>
+		<p class="indented">
+
+		  <%= render partial: "votes", locals: {post: post} %>
+
+			<%= post.count_votes %> votes |
+			posted by <%= post.user.email %>
+			<%= time_ago_in_words(post.created_at).gsub('about','') %> ago |
+
+			<% if post.comments.count == 0 %>
+				<%= link_to "comment", [post, :comments] %>
+			<% else %>
+				<%= link_to pluralize(post.comments.count, "comment"), [post, :comments] %>
+			<% end %>
+
+		</p>
+
+	</article>
+<% end %>
+

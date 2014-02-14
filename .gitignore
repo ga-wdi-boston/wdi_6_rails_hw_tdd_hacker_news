@@ -20,3 +20,5 @@
 
 # Ignore the .env file
 .env
+
+workflow.txt

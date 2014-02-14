@@ -1,0 +1,40 @@
+<h2>
+	<%= link_to @post.title, @post.link %>
+</h2>
+
+<p>
+	<%= render partial: "posts/votes", locals: {post: @post} %>
+
+	<%= @post.count_votes %> votes |
+	posted by <%= @post.user.email %>
+	<%= time_ago_in_words(@post.created_at).gsub('about','') %> ago |
+
+	<% if @post.comments.count > 0 %>
+		<%= pluralize(@post.comments.count, "comment") %>
+	<% end %>
+</p>
+
+<p class="indented"><%= @post.description %></p><br><br>
+
+<%= form_for [@post, @comment] do |f| %>
+	<p><%= f.hidden_field :body %></p>
+	<p class="indented"><%= f.text_area :body %></p>
+	<p class="indented"><%= f.submit "Submit Comment" %></p>
+<% end %>
+
+<br>
+
+<% @post.comments.each do |comment| %>
+	<article class="comment_<%= comment.id %>" id="<%= comment.id %>">
+		<p class="metadata">
+			<%= comment.count_votes %> votes
+
+			<%= render partial: "votes", locals: {post: @post, comment: comment} %>
+
+			<%= comment.user.email %>
+			<%= time_ago_in_words(comment.created_at).gsub('about','') %> ago
+			<a href="#<%= comment.id %>">link</a>
+		</p>
+		<p class="indented"><%= comment.body %></p>
+	</article>
+<% end %>

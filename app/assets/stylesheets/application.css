@@ -11,3 +11,40 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+	font-family: Verdana, sans-serif;
+	font-size: 90%;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 a, {
+	color: rgb(235, 99, 22);
+}
+
+.comments {
+	font-weight: normal;
+	font-size: 100%;
+}
+
+.grayed_out {
+	color: gray;
+}
+
+.indented {
+	margin-left: 20px;
+}
+
+.metadata {
+	margin: 0;
+}
+
+textarea {
+	width: 500px;
+	height: 200px;
+	border: 1px solid gray;
+	font-family: Verdana, sans-serif;
+}
