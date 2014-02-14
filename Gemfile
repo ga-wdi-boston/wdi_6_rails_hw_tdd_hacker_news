@@ -36,6 +36,8 @@ group :development, :test do
 end
 
 # Other gems you may find useful for development
+
+
 group :development do
   gem 'time_difference'
   gem 'better_errors'
@@ -46,7 +48,7 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  # gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'

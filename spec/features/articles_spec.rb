@@ -21,13 +21,12 @@ feature "a user can see all the articles" do
 	end
 
 	scenario 'sign in as a user and add an article' do
-		visit articles_path
-		click_link 'Sign Up'
-		fill_in 'Email', with: 'test3@email.com'
-		fill_in 'Password', with: 'password'
-		fill_in 'Password confirmation', with: 'password'
-		click_on 'Sign Up'
-		visit articles_path
+		user = create(:user)
+		visit root_path
+		click_link 'Sign In?'
+		fill_in 'Email', with: user.email
+		fill_in 'Password', with: user.password
+		click_button 'Sign in'
 		click_link 'add article'
 		fill_in 'Title', with: 'Pacific Rim'
 		fill_in 'Blurb', with: 'this was a great movie'
@@ -35,6 +34,5 @@ feature "a user can see all the articles" do
 		click_on 'create article'
 		expect(page).to have_content("Pacific Rim")
 	end
-
 end
 

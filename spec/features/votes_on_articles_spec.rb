@@ -11,7 +11,7 @@ feature "user can up-vote an article" do
 		fill_in 'Password', with: user.password
 		click_button 'Sign in'
 		visit root_path
-		click_on 'vote up on article'
+		click_link 'up vote'
 		expect(page).to have_content 'up vote.'
 		expect(page).to have_content 'All Articles'
 		click_link 'more'
@@ -27,7 +27,7 @@ feature "user can up-vote an article" do
 		fill_in 'Password', with: user.password
 		click_button 'Sign in'
 		visit root_path
-		click_on 'vote down on article'
+		click_on 'down vote'
 		expect(page).to have_content 'down vote.'
 		expect(page).to have_content 'All Articles'
 		click_link 'more'
@@ -43,13 +43,13 @@ feature "user can up-vote an article" do
 		fill_in 'Password', with: user.password
 		click_button 'Sign in'
 		visit root_path
-		click_on 'vote up on article'
+		click_link 'up vote'
 		expect(page).to have_content 'up vote.'
 		expect(page).to have_content 'All Articles'
 		click_link 'more'
 		expect(page).to have_content '1'
 		visit root_path
-		click_on 'vote down on article'
+		click_on 'down vote'
 		expect(page).to have_content 'down vote.'
 		click_link 'more'
 		expect(page).to have_content '1'

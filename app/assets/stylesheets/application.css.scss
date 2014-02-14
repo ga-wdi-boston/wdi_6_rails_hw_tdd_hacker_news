@@ -13,4 +13,25 @@
  */
 
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Ovo);
 
+body {
+	font-family: 'Ovo', serif;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+.site-heading {
+	text-align: center;
+	text-weight: bold;
+}
+
+body {
+	background: #FBFAFB;
+}
