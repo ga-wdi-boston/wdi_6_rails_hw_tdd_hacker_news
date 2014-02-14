@@ -16,7 +16,6 @@ feature 'Vote' do
     comment = create(:comment, submission: submission)
     sign_in_as(user)
     click_on "#{submission.title}"
-    click_on 'View comments'
     click_on 'Up vote'
     expect(page).to have_content 'Voted up!'
   end

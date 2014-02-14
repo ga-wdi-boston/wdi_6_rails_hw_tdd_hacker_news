@@ -12,14 +12,14 @@ class VotesController < ApplicationController
       if @votable.class == Submission
         redirect_to root_path
       elsif @votable.class == Comment
-        redirect_to submission_comments_path(@votable.submission)
+        redirect_to submission_path(@votable.submission)
       end
     else
       flash[:notice] = 'Already voted!'
       if @votable.class == Submission
         redirect_to root_path
       elsif @votable.class == Comment
-        redirect_to submission_comments_path(@votable.submission)
+        redirect_to submission_path(@votable.submission)
       end
     end
   end

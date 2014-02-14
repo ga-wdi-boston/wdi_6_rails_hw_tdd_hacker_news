@@ -2,11 +2,11 @@ class SubmissionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @submissions = Submission.all
+    @submissions = Submission.includes(:user).all
   end
 
   def show
-    @submission = Submission.find(params[:id])
+    @submission = Submission.includes(:user).find(params[:id])
   end
 
   def new

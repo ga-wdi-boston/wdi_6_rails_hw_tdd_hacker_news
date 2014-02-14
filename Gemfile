@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'simplecov', require: false, group: :test
 gem 'newrelic_rpm'
+gem 'bootstrap-sass', '~> 3.1.0'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
@@ -34,11 +35,11 @@ end
 
 # Other gems you may find useful for development
 group :development do
+  gem 'bullet'
   gem 'time_difference'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-  gem 'bullet'
   gem 'debugger'
   gem 'lol_dba'
   gem 'meta_request'
