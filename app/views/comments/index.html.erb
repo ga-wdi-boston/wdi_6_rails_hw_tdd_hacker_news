@@ -14,9 +14,7 @@
 	<% end %>
 </p>
 
-<p class="indented"><%= @post.description %></p><br>
-
-<h3>Comments</h3>
+<p class="indented"><%= @post.description %></p><br><br>
 
 <%= form_for [@post, @comment] do |f| %>
 	<p><%= f.hidden_field :body %></p>
