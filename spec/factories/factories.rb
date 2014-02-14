@@ -8,6 +8,7 @@ FactoryGirl.define do
   	user
     title 'A Wonderful Story'
     url  'http://publishing.cdlib.org/ucpressebooks/view?docId=ft5q2nb3z7&brand=ucpress'
+    id 1
   end
 
   factory :comment do
