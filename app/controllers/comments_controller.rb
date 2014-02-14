@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_article
 
   def index
-    @comments = @article.comments.sort! { |a, b| b.count_votes <=> a.count_votes }
+    @comments = @article.comments.sort! { |a, b| b.votes_count <=> a.votes_count }
   end
 
   def create

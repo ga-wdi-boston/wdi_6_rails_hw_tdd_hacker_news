@@ -2,13 +2,15 @@
 #
 # Table name: articles
 #
-#  id         :integer          not null, primary key
-#  title      :text
-#  url        :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  text       :text
-#  user_id    :integer
+#  id             :integer          not null, primary key
+#  title          :text
+#  url            :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  text           :text
+#  user_id        :integer
+#  comments_count :integer
+#  votes_count    :integer          default(0)
 #
 
 require 'spec_helper'
@@ -41,14 +43,14 @@ describe Article do
       @article = create(:article)
     end
 
-    it 'returns 2 when there are two up votes' do
-      @article.votes << create(:vote_up, user: @user)
-      expect(@article.count_votes).to eq 1
+    it 'returns 1 when there is one up votes' do
+      create(:article_vote, user: @user, direction: true, votable: @article)
+      expect(@article.votes_count).to eq 1
     end
 
-    it 'returns -2 when there are two down votes' do
-      @article.votes << create(:vote_down, user: @user)
-      expect(@article.count_votes).to eq -1
+    it 'returns -1 when there is one down votes' do
+      create(:article_vote, user: @user, direction: false, votable: @article)
+      expect(@article.votes_count).to eq -1
     end
   end
 end

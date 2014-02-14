@@ -15,5 +15,12 @@ class Vote < ActiveRecord::Base
   belongs_to :votable, polymorphic: true
   belongs_to :user
   validates :user_id, uniqueness: { scope: [:votable_type, :votable_id]}, presence: true
+  after_save :count_votes
 
+  def count_votes
+    up_votes = votable.votes.where(direction: true).count
+    down_votes = votable.votes.where(direction: false).count
+    total = up_votes - down_votes
+    votable.update_attributes(votes_count: total)
+  end
 end

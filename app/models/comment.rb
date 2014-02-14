@@ -2,12 +2,13 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
-#  article_id :integer
-#  content    :text
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
+#  id          :integer          not null, primary key
+#  article_id  :integer
+#  content     :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
+#  votes_count :integer          default(0)
 #
 
 class Comment < ActiveRecord::Base
@@ -16,9 +17,4 @@ class Comment < ActiveRecord::Base
   has_many :votes, as: :votable
   validates :content, presence: true
 
-  def count_votes
-    up_votes = votes.where(direction: true).count
-    down_votes = votes.where(direction: false).count
-    up_votes - down_votes
-  end
 end

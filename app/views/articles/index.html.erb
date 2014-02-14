@@ -4,7 +4,7 @@
     <%= link_to article.title, article.url %>
     <p><%= article.text %></p>
     <ul class="submenu">
-      <li>votes (<%= article.count_votes %>)</li>
+      <li>votes (<%= article.votes_count %>)</li>
       <% if user_signed_in? %>
         <li><%= link_to 'vote up',  article_vote_path(article, direction: true), method: :post %> | <%= link_to 'vote down', article_vote_path(article, direction: false), method: :post %></li>
       <% end %>

@@ -19,14 +19,6 @@ FactoryGirl.define do
 
   # Vote factories
 
-  factory :vote_up, class: Vote do
-    direction true
-  end
-
-  factory :vote_down, class: Vote do
-    direction false
-  end
-
   factory :article_vote, class: Vote do
     association :votable, factory: :article
     direction false
