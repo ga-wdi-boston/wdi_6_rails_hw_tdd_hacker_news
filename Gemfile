@@ -18,6 +18,7 @@ group :test do
   gem 'launchy'
   gem 'faker'
   gem 'chronic'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
@@ -28,6 +29,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'pry-stack_explorer'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 # Other gems you may find useful for development
@@ -41,7 +43,6 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'

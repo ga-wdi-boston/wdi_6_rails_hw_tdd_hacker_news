@@ -1,0 +1,18 @@
+<h1>Articles</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title/Link</th>
+    <th>Comments</th>
+    <th>Post Comment</th>
+  </tr>
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= link_to "#{article.user.email}", user_path(article.user) %></td>
+      <td><%= link_to "#{article.title}", article.url %></td>
+      <td><%= link_to "#{article.comments.count} Comments", article_comments_path(article)%></td>
+      <td><%= link_to 'Post Comment', new_article_comment_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
+  <%= link_to "Submit New", new_article_path %>
