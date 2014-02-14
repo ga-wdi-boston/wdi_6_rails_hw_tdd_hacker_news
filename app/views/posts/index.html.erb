@@ -1,12 +1,12 @@
-<h3><%= link_to 'Submit Link', new_post_path %></h3>
+<h3 class="submit"><%= link_to 'Submit Link', new_post_path %></h3>
 
 <% @posts.each do |post| %>
 	<article class="post_<%= post.id %>">
 		<h3>
 			<%= link_to post.title, post.link %>
 		</h3>
-		<p style="margin-left: 20px;"><%= post.description %></p>
-		<p style="margin-left: 20px;">
+		<p class="indented"><%= post.description %></p>
+		<p class="indented">
 
 		  <%= render partial: "votes", locals: {post: post} %>
 

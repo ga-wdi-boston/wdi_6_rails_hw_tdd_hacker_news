@@ -14,20 +14,21 @@
 	<% end %>
 </p>
 
-<p><%= @post.description %></p>
+<p class="indented"><%= @post.description %></p><br>
 
 <h3>Comments</h3>
 
 <%= form_for [@post, @comment] do |f| %>
 	<p><%= f.hidden_field :body %></p>
-	<p><%= f.text_area :body %></p>
-	<p><%= f.submit "Submit Comment" %></p>
+	<p class="indented"><%= f.text_area :body %></p>
+	<p class="indented"><%= f.submit "Submit Comment" %></p>
 <% end %>
 
+<br>
 
 <% @post.comments.each do |comment| %>
 	<article class="comment_<%= comment.id %>" id="<%= comment.id %>">
-		<p style="margin-left: 0px; margin-bottom: 0px;">
+		<p class="metadata">
 			<%= comment.count_votes %> votes
 
 			<%= render partial: "votes", locals: {post: @post, comment: comment} %>
@@ -36,6 +37,6 @@
 			<%= time_ago_in_words(comment.created_at).gsub('about','') %> ago
 			<a href="#<%= comment.id %>">link</a>
 		</p>
-		<p style="margin-left: 20px"><%= comment.body %></p>
+		<p class="indented"><%= comment.body %></p>
 	</article>
 <% end %>
