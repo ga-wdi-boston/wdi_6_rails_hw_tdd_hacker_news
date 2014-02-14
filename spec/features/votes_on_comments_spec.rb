@@ -16,8 +16,8 @@ feature "user can up-vote a comment or article" do
 			visit root_path
 			click_on 'more'
 			click_on 'see and post comments!'
-			expect(page).to have_content 'vote up on comment'
-			click_link 'vote up on comment'
+			save_and_open_page
+			click_link 'up vote'
 			expect(page).to have_content 'up vote.'
 		end
 
@@ -34,8 +34,7 @@ feature "user can up-vote a comment or article" do
 			visit root_path
 			click_on 'more'
 			click_on 'see and post comments!'
-			expect(page).to have_content 'vote down on comment'
-			click_link 'vote down on comment'
+			click_link 'down vote'
 			expect(page).to have_content 'down vote.'
 		end
 end

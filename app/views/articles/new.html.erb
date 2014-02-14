@@ -1,10 +1,10 @@
 
 <%= form_for @article do |f| %>
 	<%= f.label :title %>
-	<%= f.text_field :title %>
+	<%= f.text_field :title, :class => "form-control" %>
 	<%= f.label :blurb %>
-	<%= f.text_area :blurb, cols: 30, rows: 15 %>
+	<%= f.text_area :blurb, cols: 30, rows: 15, :class => "form-control" %>
 	<%= f.label :url %>
-	<%= f.text_field :url %>
-	<%= f.submit "create article" %>
+	<%= f.text_field :url, :class => "form-control" %>
+	<%= f.submit "create article", :class => "btn btn-primary btn-sm"  %>
 <% end %>

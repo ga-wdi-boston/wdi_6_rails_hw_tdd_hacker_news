@@ -15,12 +15,11 @@
     <%= comment.content %>
       <% if user_signed_in? %>
       <p>
-      <%= link_to 'vote up on comment', article_comment_up_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-sm" %> <%= link_to 'vote down on comment', article_comment_down_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-sm"%>
+      <%= link_to '', article_comment_up_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-lg glyphicon glyphicon-circle-arrow-up", :title => "up vote" %> <%= link_to '', article_comment_down_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-danger btn-lg glyphicon glyphicon-circle-arrow-down", :title => "down vote" %>
       </p>
        <% else %>
        <p> Sign in for more options </p>
        <% end %>
   <% end %>
   </nav>
-  <%= link_to 'back', root_path %>
 </section>
