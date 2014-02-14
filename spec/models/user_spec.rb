@@ -10,5 +10,4 @@ describe User do
   it "is invalid without an email or password" do
   	expect(User.create()).to_not be_valid
   end
-
 end

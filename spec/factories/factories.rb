@@ -17,4 +17,27 @@ FactoryGirl.define do
 		content 'la la la la de dah de dah'
 	end
 
+
+  factory :up_vote, class: Vote do
+  	user
+    direction true
+  end
+
+  factory :down_vote, class: Vote do
+  	user
+    direction false
+  end
+
+  factory :article_vote, class: Vote do
+    association :votable, factory: :article
+    direction true
+    association :user
+  end
+
+  factory :comment_vote, class: Vote do
+    association :votable, factory: :comment
+    direction false
+    association :user
+  end
+
 end

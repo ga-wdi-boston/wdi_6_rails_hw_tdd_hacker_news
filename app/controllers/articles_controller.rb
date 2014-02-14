@@ -3,9 +3,7 @@ class ArticlesController < ApplicationController
 	def index
 		#should move logic to model
 		@articles = Article.includes(:votes)
-		@articles.sort { |x,y|
-			x.votes.select { |vote| vote.direction === true }.count <=> y.votes.select { |vote| vote.direction === true }.count
-		}.reverse
+		@articles.sort! { |a, b| b.count_votes <=> a.count_votes }
 	end
 
 	def show
