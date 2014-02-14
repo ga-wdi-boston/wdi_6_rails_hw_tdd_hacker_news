@@ -1,0 +1,28 @@
+<h2>Submission</h2>
+
+<table class="table">
+<tr>
+  <td><%= @submission.title %></td>
+  <td><%= @submission.link %></td>
+  <td><%= @submission.description %></td>
+  <td><%= @submission.user.email %></td>
+</tr>
+</table><br>
+
+<h3>Comments</h3>
+
+<table class="table">
+<% @submission.comments.each do |comment| %>
+<tr>
+<td><%= comment.body %></td>
+<td><%= button_to 'Up vote', submission_comment_votes_path(@submission.id, comment.id), method: :post %>
+<td>Votes: <%= comment.votes.where(direction: true).count %></td>
+<% end %>
+</tr>
+</table>
+
+
+<%= link_to "Leave comment", new_submission_comment_path(@submission.id) %> |
+<%= link_to "All Submissions", submissions_path %>
+
+

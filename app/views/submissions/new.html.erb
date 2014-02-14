@@ -1,0 +1,13 @@
+<%= form_for [@submission] do |form| %>
+
+<%= form.label :title %>
+<%= form.text_field :title %>
+
+<%= form.label :link %>
+<%= form.text_field :link %>
+
+<%= form.label :description %>
+<%= form.text_area :description %>
+
+<%= form.submit "Add" %>
+<% end %>
