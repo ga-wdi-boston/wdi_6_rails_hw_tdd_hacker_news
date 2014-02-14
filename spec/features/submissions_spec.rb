@@ -17,7 +17,6 @@ feature 'Manage Submissions' do
   scenario 'Make a submission as a signed in user' do
     user = create(:user)
     sign_in_as(user)
-    save_and_open_page
     click_on "New Submission"
     fill_in 'Title', with: ('Second Article')
     fill_in 'Link', with: ('www.article.com')

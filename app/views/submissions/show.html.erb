@@ -19,9 +19,10 @@
 <td>Votes: <%= comment.votes.where(direction: true).count %></td>
 <% end %>
 </tr>
+</table>
 
-<nav>
-  <%= link_to "Leave comment", new_submission_comment_path(@submission.id) %>
-</nav>
+
+<%= link_to "Leave comment", new_submission_comment_path(@submission.id) %> |
+<%= link_to "All Submissions", submissions_path %>
 
 

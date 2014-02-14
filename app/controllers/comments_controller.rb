@@ -16,10 +16,10 @@ class CommentsController < ApplicationController
     @comment.assign_attributes(user: current_user)
     if @comment.save
       flash[:notice] = 'Comment added!'
-      redirect_to [@submission, :comments]
+      redirect_to [@submission]
     else
       flash[:errors] = @comment.errors.full_messages.join(', ')
-      redirect_to [@submission, :comments]
+      redirect_to [@submission]
     end
   end
 
