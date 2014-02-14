@@ -24,4 +24,11 @@ HackerNews::Application.routes.draw do
   get "/posts/:post_id/comments/:comment_id/downvoted" => 'votes#downvote',
     as: "post_comment_downvote", defaults: {votable: :comment}
 
+  # deleting post votes
+  get "/posts/:post_id/novote/comments" => 'votes#delete',
+    as: 'post_novote', defaults: {votable: :post}
+
+  # deleting comment votes
+  get "/posts/:post_id/comments/:comment_id/novote" => 'votes#delete',
+    as: 'post_comment_novote', defaults: {votable: :comment}
 end

@@ -3,7 +3,6 @@ class VotesController < ApplicationController
 	before_action :authenticate_user!
 
 	def upvote
-		# binding.pry
 		vote = Vote.new(direction: true, user_id: current_user.id)
 
 		# if the vote is successfully saved & shoveled...
@@ -24,17 +23,19 @@ class VotesController < ApplicationController
 
 		# if the vote is successfully saved & shoveled...
 		if @votable.votes << vote
-			# then show confirmation and redirect to the same page you were at
-			flash[:notice] = "Vote submitted!"
+			# then gray out button in erb and redirect to the same page
 			redirect_to :back
 		else
-			# else show error and redirect to the same page you were at
-			flash[:alert] = "You've already voted."
+			# i don't think this would ever be triggered, but just in case
+			flash[:alert] = "You can't do that."
 			redirect_to :back
 		end
 	end
 
-	def delete_vote
+	def delete
+		vote = Vote.where(user_id: current_user.id, votable_id: votable_id, votable_type: params[:votable].to_s.camelcase)
+		vote.first.destroy!
+		redirect_to :back
 	end
 
 	private

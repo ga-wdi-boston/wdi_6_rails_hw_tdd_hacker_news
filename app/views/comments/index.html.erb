@@ -1,36 +1,36 @@
 <h2>
-	<%= link_to '[+]', [@post, :upvote] %>
-	<%= link_to '[-]', [@post, :downvote] %>
 	<%= link_to @post.title, @post.link %>
 </h2>
 
+<p>
+	<%= render partial: "posts/votes", locals: {post: @post} %>
 
-<h4>
-	<%= @post.votes.where(direction: true).count - @post.votes.where(direction: false).count %> votes
-	by <%= @post.user.email %>
-	<%= time_ago_in_words(@post.created_at).gsub('about','') %> ago
-</h4>
+	<%= @post.count_votes %> votes |
+	posted by <%= @post.user.email %>
+	<%= time_ago_in_words(@post.created_at).gsub('about','') %> ago |
+
+	<% if @post.comments.count > 0 %>
+		<%= pluralize(@post.comments.count, "comment") %>
+	<% end %>
+</p>
 
 <p><%= @post.description %></p>
 
 <h3>Comments</h3>
 
-<h3>What does the fox say?</h3>
 <%= form_for [@post, @comment] do |f| %>
 	<p><%= f.hidden_field :body %></p>
 	<p><%= f.text_area :body %></p>
-	<p><%= f.submit "Submit Comment", controller: :posts, action: :create %></p>
+	<p><%= f.submit "Submit Comment" %></p>
 <% end %>
 
 
 <% @post.comments.each do |comment| %>
 	<article class="comment_<%= comment.id %>" id="<%= comment.id %>">
 		<p style="margin-left: 0px; margin-bottom: 0px;">
-			<%= comment.votes.where(direction: true).count - comment.votes.where(direction: false).count %> votes
+			<%= comment.count_votes %> votes
 
-			<%= link_to '[+]', [@post, comment, :upvote] %>
-			<%= link_to '[-]', [@post, comment, :downvote] %>
-
+			<%= render partial: "votes", locals: {post: @post, comment: comment} %>
 
 			<%= comment.user.email %>
 			<%= time_ago_in_words(comment.created_at).gsub('about','') %> ago

@@ -22,5 +22,9 @@ a {
 }
 
 h1, h1 a {
-	color: orange;
+	color: rgb(235, 99, 22);
+}
+
+.grayed_out {
+	color: gray;
 }

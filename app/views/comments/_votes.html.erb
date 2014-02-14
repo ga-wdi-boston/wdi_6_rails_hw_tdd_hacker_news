@@ -1,0 +1,13 @@
+<% if user_signed_in? == false %>
+	<%= link_to '[+]', [post, comment, :upvote] %>
+	<%= link_to '[-]', [post, comment, :downvote] %>
+<% elsif comment.votes.where(user_id: current_user.id, direction: true).present? %>
+	<span class="grayed_out">[+]</span>
+	<%= link_to '[-]', [post, comment, :novote] %>
+<% elsif comment.votes.where(user_id: current_user.id, direction: false).present? %>
+	<%= link_to '[+]', [post, comment, :novote] %>
+	<span class="grayed_out">[-]</span>
+<% else %>
+	<%= link_to '[+]', [post, comment, :upvote] %>
+	<%= link_to '[-]', [post, comment, :downvote] %>
+<% end %>

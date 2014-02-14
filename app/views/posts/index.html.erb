@@ -1,24 +1,25 @@
-<h3><%= link_to 'Submit', new_post_path %></h3>
+<h3><%= link_to 'Submit Link', new_post_path %></h3>
 
 <% @posts.each do |post| %>
 	<article class="post_<%= post.id %>">
 		<h3>
-			<%= link_to '[+]', [post, :upvote] %>
-			<%= link_to '[-]', [post, :downvote] %>
 			<%= link_to post.title, post.link %>
 		</h3>
 		<p style="margin-left: 20px;"><%= post.description %></p>
 		<p style="margin-left: 20px;">
-			<%= post.votes.where(direction: true).count - post.votes.where(direction: false).count %> votes
-			by <%= post.user.email %>
+
+		  <%= render partial: "votes", locals: {post: post} %>
+
+			<%= post.count_votes %> votes |
+			posted by <%= post.user.email %>
 			<%= time_ago_in_words(post.created_at).gsub('about','') %> ago |
+
 			<% if post.comments.count == 0 %>
-				<%= link_to "comment", post_comments_path(post) %>
-			<% elsif post.comments.count == 1 %>
-				<%= link_to "1 comment", post_comments_path(post) %>
+				<%= link_to "comment", [post, :comments] %>
 			<% else %>
-				<%= link_to "#{post.comments.count} comments", post_comments_path(post) %>
+				<%= link_to pluralize(post.comments.count, "comment"), [post, :comments] %>
 			<% end %>
+
 		</p>
 
 	</article>
