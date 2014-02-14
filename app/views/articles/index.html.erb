@@ -6,7 +6,7 @@
     <ul class="submenu">
       <li>votes (<%= article.count_votes %>)</li>
       <% if user_signed_in? %>
-        <li><%= link_to 'vote up',  [article, :vote_up] %> | <%= link_to 'vote down', [article, :vote_down] %></li>
+        <li><%= link_to 'vote up',  article_vote_path(article, direction: true), method: :create %> | <%= link_to 'vote down', article_vote_path(article, direction: false), method: :create %></li>
       <% end %>
       <li><%= link_to 'comments', [article, :comments] %> (<%= article.comments_count %>)</li>
       <% if article.user %>

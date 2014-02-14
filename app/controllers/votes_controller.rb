@@ -1,46 +1,32 @@
 class VotesController < ApplicationController
   before_action :set_votable
 
-  def vote_up
-    vote = @votable.votes.new(direction: true, user_id: current_user.id)
-    if art_id = params[:article_id]
-      article = Article.find(art_id)
+  def create
+    # get the direction
+    direction = params[:direction]
+    vote = Vote.find_or_initialize_by(user: current_user, votable: @votable)
+    # set the article if there is one (for redirection back to comments index)
+    if article_id = params[:article_id]
+      article = Article.find(article_id)
     end
-    if vote.save
-      flash[:notice] = 'Voted up!'
-      if @votable.is_a?(Article)
-        redirect_to root_path
-      else
+    # ok go ahead and vote
+    if !vote.persisted?
+      vote.direction = direction
+      vote.save
+      flash[:notice] = 'Voted!'
+      # redirect path is determined where the user voted
+      if @votable.is_a? Comment
         redirect_to [article, :comments]
+      else
+        redirect_to root_path
       end
     else
       flash[:notice] = 'Already voted!'
-      if @votable.is_a?(Article)
-        redirect_to root_path
-      else
+      # redirect path is determined where the user voted
+      if @votable.is_a? Comment
         redirect_to [article, :comments]
-      end
-    end
-  end
-
-  def vote_down
-    vote = @votable.votes.new(direction: false, user_id: current_user.id)
-    if art_id = params[:article_id]
-      article = Article.find(art_id)
-    end
-    if vote.save
-      flash[:notice] = 'Voted down!'
-      if @votable.is_a?(Article)
-        redirect_to root_path
       else
-        redirect_to [article, :comments]
-      end
-    else
-      flash[:notice] = 'Already voted!'
-      if @votable.is_a?(Article)
         redirect_to root_path
-      else
-        redirect_to [article, :comments]
       end
     end
   end

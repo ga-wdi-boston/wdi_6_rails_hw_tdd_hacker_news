@@ -11,8 +11,8 @@
   <p><%= comment.content %></p>
   <ol class="submenu">
     <li><%= comment.count_votes %></li>
-    <li><%= link_to 'vote up', [@article, comment, :vote_up] %></li>
-    <li><%= link_to 'vote down', [@article, comment, :vote_down] %></li>
+    <li><%= link_to 'vote up', article_comment_vote_path(@article, comment, direction: true), method: :create %></li>
+    <li><%= link_to 'vote down', article_comment_vote_path(@article, comment, direction: false), method: :create %></li>
   </ol>
 </article>
 <% end %>
