@@ -1,0 +1,18 @@
+<ol>
+  <% @articles.each do |article| %>
+  <li class="article-container">
+    <%= link_to article.title, article.url %>
+    <p><%= article.text %></p>
+    <ul class="submenu">
+      <li>votes (<%= article.votes_count %>)</li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'vote up',  article_vote_path(article, direction: true), method: :post %> | <%= link_to 'vote down', article_vote_path(article, direction: false), method: :post %></li>
+      <% end %>
+      <li><%= link_to 'comments', [article, :comments] %> (<%= article.comments_count %>)</li>
+      <% if article.user %>
+        <li>submitted by (<%= article.user.email %>)</li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
+</ol>
