@@ -1,0 +1,26 @@
+<section class="Comments-For-Article">
+<h1>leave a comment on: <%= @article.title %> </h1>
+  <div>
+  <% if user_signed_in? %>
+    <%= form_for :comment do |f| %>
+      <%= f.label :content, 'content', class: 'display-none'%>
+  		<%= f.text_field :content %>
+      <%= f.submit 'create comment' %>
+    <% end %>
+  <% end %>
+  </div>
+
+  <nav class="Comments-Detials-Nav">
+  <% @comments.each do |comment| %>
+    <%= comment.content %>
+      <% if user_signed_in? %>
+      <ul>
+        <li><%= link_to '', article_comment_up_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-primary btn-lg glyphicon glyphicon-circle-arrow-up", :title => "up vote" %></li>
+        <li><%= link_to '', article_comment_down_vote_path(@article.id, comment.id), method: :post, :class => "btn btn-danger btn-lg glyphicon glyphicon-circle-arrow-down", :title => "down vote" %></li>
+         <% else %>
+         <li> Sign in for more options </li>
+       <% end %>
+       </ul>
+  <% end %>
+  </nav>
+</section>

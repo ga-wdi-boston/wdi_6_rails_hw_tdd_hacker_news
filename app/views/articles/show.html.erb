@@ -1,0 +1,34 @@
+<section class="Article-Details">
+	<h1><% @article.title %></h1>
+	<table class="table">
+		<div class="panel-heading">
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Vote Count</th>
+			<th>Comment Count</th>
+		</tr>
+		</div>
+		<div class="panel-body">
+			<tr>
+				<td> <%= @article.title %> </td>
+				<td> <%= @article.blurb %> </td>
+				<td> <%= @article.votes.count %></td>
+				<td> <%= @article.comments.count %></td>
+			</tr>
+		</div>
+		</table>
+		<nav class="Article-Detials-Nav">
+			<ul>
+				<% if user_signed_in? %>
+				<li><%=link_to '', article_up_vote_path(@article), method: :post, :class => "btn btn-primary btn-lg glyphicon glyphicon-circle-arrow-up", :title => "up vote" %></li>
+			  <li><%= link_to '', article_down_vote_path(@article), method: :post, :class => "btn btn-danger btn-lg glyphicon glyphicon-circle-arrow-down", :title => "down vote"  %></li>
+			  <li class="pull-right"><%= link_to "see and post comments!", article_comments_path(@article.id), :class => "btn btn-info btn-lg" %> </li>
+				<% else %>
+			  <li> Sign in for more options </li>
+		  	<% end %>
+			</ul>
+		</nav>
+</section>
+
+
