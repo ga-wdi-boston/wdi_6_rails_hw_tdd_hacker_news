@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
-gem 'rails_12factor'
+
 gem 'pg'
 gem 'dotenv-rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -9,6 +9,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem 'factory_girl_rails'
+gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
@@ -16,11 +19,11 @@ gem 'devise'
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem 'faker'
   gem 'chronic'
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
@@ -46,4 +49,5 @@ group :development do
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
   gem 'smusher'
+  gem "bullet"
 end
