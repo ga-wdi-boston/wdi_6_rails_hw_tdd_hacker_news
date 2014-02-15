@@ -1,0 +1,13 @@
+<h2><%= @post.title %></h2>
+<h4><%= @post.body %></h4>
+<% @post.comments.each do |comment| %>
+  <%= comment.body %>
+  <%= vote_count_comment(comment) %> points
+  <% if user_signed_in? %>
+    | <%= link_to 'Up vote', post_comment_votes_path(@post, comment, direction: true ), method: :post %> | <%= link_to 'Down vote', post_comment_votes_path(@post, comment, direction: false ), method: :post %>
+  <% end %>
+  </br>
+  </br>
+<% end %>
+</br>
+<%= link_to "Make a comment", new_post_comment_path(@post) %> | <%= link_to "Back to posts", posts_path %>

@@ -1,0 +1,29 @@
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td class="title">
+        <% rank = 1 %>
+        <% @posts.each do |post| %>
+          <% if decay(post) < 1 %>
+            <%= rank %>
+            <%= link_to post.title, post_path(post) %> | 
+            <%= vote_count(post) %> points
+            <% if user_signed_in? %>
+              | <%= link_to 'Up vote', post_votes_path(post, direction: true ), method: :post %> | <%= link_to 'Down vote', post_votes_path(post, direction: false), method: :post %>
+            <% end %>
+            </br>
+          <% rank += 1 %>
+          <% end %>
+        <% end %>
+      </td>
+      <% if user_signed_in? %>
+        <%= link_to 'Create a new article', new_post_path(current_user) %>
+      <% end %>
+      </br>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
