@@ -1,0 +1,8 @@
+<h1>All Comments for Submission</h1>
+
+<% @comments.each do |comment| %>
+	<li><%= comment.body %></li>
+<% end %> </br>
+
+<%= link_to 'Return to Damp-Earth News', submissions_path %>
+

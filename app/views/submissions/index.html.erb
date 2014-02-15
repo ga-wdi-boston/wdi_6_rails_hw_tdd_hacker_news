@@ -1,0 +1,36 @@
+<h1>Damp-Earth News</h1>
+
+	<ul>
+		<% @submissions.each do |submission| %>
+			<li><%= link_to submission.title, submission.url %></li>
+			<li><%= submission.user.email %></li>
+
+				<% if submission.comments.count >= 1 %>
+					<li><%= submission.comments.count%> comments</li>
+				<%else %>
+					<li><%= link_to 'Be the first to leave a comment', new_submission_comment_path(submission.id) %></li>
+				<% end %>
+
+			<li><%= link_to 'View Comments', submission_comments_path(submission.id) %></li>
+
+				<% if user_signed_in? %>
+					<li><%= link_to 'Add Comment', new_submission_comment_path(submission.id) %></li>
+				<% else %>
+					<li><%= link_to 'Add Comment', new_user_session_path %></li>
+				<% end %>
+
+				<% if user_signed_in? %>
+					<li><%= link_to 'Upvote This Submission', new_submission_vote_path(submission.id) %></li></br>
+				<% else %>
+				<% end %>
+			<% end %></br>
+
+		</ul>
+
+				<% if user_signed_in? %>
+					<p><%= link_to 'Add New Submission', new_submission_path %></p>
+				<% else %>
+					<p><%= link_to 'Add New Submission', new_user_session_path %></p>
+				<% end %>
+
+

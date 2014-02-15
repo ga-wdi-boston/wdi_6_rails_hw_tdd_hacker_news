@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem 'factory_girl_rails'
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
@@ -33,7 +34,6 @@ end
 # Other gems you may find useful for development
 group :development do
   gem 'time_difference'
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'bullet'
@@ -41,9 +41,12 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
   gem 'smusher'
+  gem 'better_errors'
 end
+
+gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
