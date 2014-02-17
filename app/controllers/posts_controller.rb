@@ -10,7 +10,11 @@ class PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
-		if @post.save
+		link = Addressable::URI.parse(@post.link)
+		if link.scheme == nil || link.host == nil
+			flash[:notice] = "Invalid email.\nNote: email must take the form http://www.example.com"
+			render :new
+		elsif @post.save
 			flash[:notice] = 'Post created!'
 			redirect_to action: :index
 		else

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 	def index
+		@comment = Comment.new
 		@post = Post.find(params[:post_id])
 		@comments = @post.comments.sort_by { |comment| comment.count_votes}.reverse!
 	end

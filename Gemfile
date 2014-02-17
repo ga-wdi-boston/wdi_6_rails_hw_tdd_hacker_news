@@ -9,8 +9,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.1.0'
 gem 'newrelic_rpm'
+gem 'addressable'
 
 
 

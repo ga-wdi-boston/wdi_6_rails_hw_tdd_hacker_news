@@ -22,4 +22,8 @@ class Comment < ActiveRecord::Base
 		(self.upvotes.where(vote: true).count) - (self.upvotes.where(vote: false).count)
 	end
 
+	def find_user
+		user_id = self.user_id
+		User.find(user_id)
+	end
 end

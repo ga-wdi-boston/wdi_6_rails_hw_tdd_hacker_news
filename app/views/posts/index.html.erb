@@ -1,23 +1,75 @@
-<h1>All Posts</h1>
-<%= link_to 'Submit post', new_post_path %>
-<table class="table">
-	<tr>
-		<th># Votes</th>
-		<th>Description</th>
-		<th></th>
-		<th></th>
-	</tr>
-	<% @posts.each do |post| %>
-	<tr class="article">
-		<td><%= post.count_votes %></td>
-		<td id="article_#{post.id}"><%= link_to post.description, "#{post.link}" %></td>
-		<td><%= post.user.email %></td>
-		<% if user_signed_in? %>
-			<td><%= button_to 'Upvote', new_post_upvote_path(post, data: { vote: true }) %></td>
-			<td><%= button_to 'Downvote', new_post_upvote_path(post, data: { vote: false }) %></td>
-		<% end %>
-		<td><%= link_to "#{post.comments_count} comments", post_comments_path(post.id) %></td>
-	</tr>
+<div class="container85">
+	<table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+		<tbody>
+			<tr bgcolor="#ff660">
+				<td bgcolor="#ff6600" width="100%">
+					<table  border="0" cellpadding="0" cellspacing="0" width="100%" style="padding: 2px;">
+						<tbody>
+							<tr>
+								<td style="width: 18px; padding-right: 4px;">
+									<img src="https://news.ycombinator.com/y18.gif">
+								</td>
+								<td style="line-height: 12pt; height: 10px;">
+									<span class="pagetop">
+										<b><%= link_to 'Fake HN', root_path %></b>
+										<img src="https://news.ycombinator.com/s.gif" height="1" width="10">
+										<a href="#">New</a>  |
+										<a href="#">Comments</a>  |
+										<a href="#">Ask</a>  |
+										<a href="#">Jobs</a>  |
+										<%= link_to 'Submit', new_post_path %>
+									</span>
+								</td>
+								<td style="text-align: right; padding-right: 4px;">
+									<span class="pagetop">
+										<% if user_signed_in? %>
+											<%= link_to 'logout', destroy_user_session_path, method: :delete %>
+										<% else %>
+											<%= link_to 'login', new_user_session_path %>
+										<% end %>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			<tr style="height: 10px;">
+			</tr>
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tbody>
+							<% @posts.each do |post| %>
+								<tr>
+									<% if user_signed_in? %>
+										<td>
+											<%= button_to new_post_upvote_path(post, data: { vote: true }) do %>
+												<img class="vote" src="https://news.ycombinator.com/grayarrow2x.gif">
+											<% end %>
+										</td>
+										<td>
+											<%= button_to new_post_upvote_path(post, data: { vote: false }) do %>
+												<img class="vote flipped" src="https://news.ycombinator.com/grayarrow2x.gif">
+											<% end %>
+										</td>
+									<% else %>
+										<td><img src="https://news.ycombinator.com/s.gif" height="1" width="10"></td>
+										<td><img src="https://news.ycombinator.com/s.gif" height="1" width="10"></td>
+									<% end %>
+										<td class="title" id="article_#{post.id}">
+											<%= link_to post.description, "#{post.link}" %> <span class="comhead">(<%= post.link %>)</span>
+										</td>
+								</tr>
+								<tr>
+									<td colspan="2"></td>
+									<td class="subtext"><%= post.count_votes %> points by <%= post.user.email %> <%= time_ago_in_words(post.created_at) %> ago | <%= link_to "#{post.comments_count} comments", post_comments_path(post.id) %></td>
+								</tr>
 
-<% end %>
-</table>
+							<% end %>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
