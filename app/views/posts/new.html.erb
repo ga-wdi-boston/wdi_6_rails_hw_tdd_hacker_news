@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+	<%= form_for @post do |f| %>
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+
+		<%= f.label :link %>
+		<%= f.text_field :link %>
+
+		<%= f.hidden_field :user_id, value: current_user.id %>
+
+		<%= f.submit %>
+	<% end %>
+<% else %>
+	<p>You must be signed in to submit a post.</p>
+	<%= link_to 'Sign in to start posting!', new_user_session_path %>
+<% end %>
+

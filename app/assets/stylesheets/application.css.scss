@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+.header-middle {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	line-height: 20px;
+	color: #999;
+}
+
+.container85 {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.title {
+	font-family: Verdana;
+	font-size: 10pt;
+	color: #828282;
+}
+
+.subtext {
+	font-family: Verdana;
+	font-size: 7pt;
+	color: #828282;
+}
+
+.comhead {
+font-family: Verdana;
+font-size: 8pt;
+color: #828282;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+}
+
+img.vote {
+	width: 10px;
+	height: 10px;
+}
+
+.display-none {
+	display: none;
+}
+
+.comment-form-box {
+	height: 80px;
+	width: 200px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+img.flipped {
+	-moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+	margin-top: 5px;
+}
+
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+

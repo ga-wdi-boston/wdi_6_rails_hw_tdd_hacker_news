@@ -1,3 +1,9 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: HackerNews_production
+  pool: 5
+
 development:
   adapter: postgresql
   encoding: unicode
