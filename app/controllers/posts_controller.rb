@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+	require "addressable/uri"
+
 	def index
 		@posts = Post.all.includes(:user)
 		@posts.sort_by { |post| post.count_votes}.reverse!
