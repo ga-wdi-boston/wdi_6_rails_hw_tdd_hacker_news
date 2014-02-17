@@ -8,4 +8,6 @@
 
 		<%= f.submit %>
 	<% end %>
+<% else %>
+	<%= link_to 'Sign in to leave your comment!', new_user_session_path %>
 <% end %>

@@ -10,4 +10,8 @@
 
 		<%= f.submit %>
 	<% end %>
+<% else %>
+	<p>You must be signed in to submit a post.</p>
+	<%= link_to 'Sign in to start posting!', new_user_session_path %>
 <% end %>
+
