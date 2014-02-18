@@ -10,7 +10,7 @@
   User.create!(email: Faker::Internet.email, password: 'password')
 end
 
-200.times do |i|
+50.times do |i|
   article = Article.create!(title: Faker::Lorem.word, url: Faker::Lorem.word, user: User.find(1) )
   puts "Created Article #{i}"
 
