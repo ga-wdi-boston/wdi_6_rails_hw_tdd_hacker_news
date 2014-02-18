@@ -9,7 +9,7 @@
 			</tr>
 			<tr class='pad-bottom'>
 				<td class='down'><div class='btn btn-default'><%= link_to '', new_article_vote_path(article, data: {up: false}), method: :post, class: 'glyphicon glyphicon-chevron-down' %></div></td>
-				<td><%= pluralize(article.get_votes, 'point') %> | by <%= article.user.email %> <%= time_ago_in_words(article.created_at) %> | <%= link_to "#{article.comments.count} comments", article_path(article) %></td>
+				<td><%= pluralize(article.comments_count, 'point') %> | by <%= article.user.email %> <%= time_ago_in_words(article.created_at) %> | <%= link_to "#{article.comments_count} comments", article_path(article) %></td>
 			</tr>
 		</div>
 	<% end %>
