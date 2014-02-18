@@ -18,7 +18,6 @@ gem 'newrelic_rpm'
 group :test do
   gem 'capybara'
   gem 'launchy'
-  gem 'faker'
   gem 'chronic'
   gem 'factory_girl_rails'
   gem 'simplecov'
