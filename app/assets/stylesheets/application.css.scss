@@ -11,3 +11,26 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+nav {
+	text-align: center;
+	font-family: Lucida, monospace;
+}
+
+nav p {
+	display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+	font-family: Lucida, monospace;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+

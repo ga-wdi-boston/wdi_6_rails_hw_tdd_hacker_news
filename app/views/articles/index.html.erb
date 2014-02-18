@@ -1,0 +1,13 @@
+<h2>All Articles</h2>
+
+<% @articles.each do |article| %>
+	<h3><%= link_to article.description, "#{article.link}" %></h3>
+	<h4><%= link_to "Comments", article_comments_path(article.id) %></h4>
+	<h4>Votes</h4>
+	<p>Total Number of Votes: <%= article.vote_tally %></p>
+	<p><%= button_to "Up Vote", article_up_vote_path(article.id)%></p>
+	<p><%= button_to "Down Vote", article_down_vote_path(article.id) %></p>
+
+<% end %>
+
+<h3><%= link_to "Create an Article", new_article_path %></h3>

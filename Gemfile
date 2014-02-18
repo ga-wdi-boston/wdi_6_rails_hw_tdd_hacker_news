@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass', '~> 3.1.0'
+
 gem 'rails', '4.0.2'
-gem 'rails_12factor'
 gem 'pg'
 gem 'dotenv-rails'
 gem 'sass-rails', '~> 4.0.0'
@@ -9,6 +10,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem 'newrelic_rpm'
+
+gem 'rails_12factor', group: :production
+
 
 # These are gems you may find useful for testing
 # I have NOT created configuration in the /spec directory for you
@@ -18,6 +23,8 @@ group :test do
   gem 'launchy'
   gem 'faker'
   gem 'chronic'
+  gem 'simplecov', require: false
+  gem "factory_girl_rails"
 end
 
 group :development, :test do
@@ -41,7 +48,6 @@ group :development do
   gem 'lol_dba'
   gem 'meta_request'
   gem 'quiet_assets'
-  gem 'rack-mini-profiler'
   gem 'rails-erd', require: false
   gem 'rails_best_practices', require: false
   gem 'rails-footnotes'
